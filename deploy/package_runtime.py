@@ -53,7 +53,7 @@ def package():
             bundle = Bundle(source)
             require(bundle.id == exported['validation'][method]['bundle_id'], 'EXPORTED_ID_CHANGED')
             shutil.copytree(source, destination/method)
-            allowlist.append({'directory': method, 'id': bundle.id, 'method': method})
+            allowlist.append({'directory': method, 'id': bundle.id, 'method': method, 'graph_digest':bundle.manifest['files']['model.onnx'], 'tokenizer_digest':bundle.manifest['files']['tokenizer.json'], 'corpus_digest':bundle.manifest['corpus_digest'], 'index_digest':bundle.manifest['files']['vectors.npy']})
             del bundle
         atomic_json(destination/'allowlist.json', {'bundles':allowlist,'export_id':exported['export_id'],'release_tag':tag,'asset_sha256':request['asset_sha256']})
         actual_bytes=sum(p.stat().st_size for p in destination.rglob('*') if p.is_file())

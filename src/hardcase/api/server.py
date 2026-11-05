@@ -147,6 +147,13 @@ def execute_search(payload, token, key):
         json.dumps(results, allow_nan=False)
         stages["serialization_ms"] = (time.perf_counter() - serialize_start) * 1000
         stages["elapsed_before_receipt_ms"] = (time.perf_counter() - start) * 1000
+        try:
+            import resource
+            stages['process_peak_rss_mib'] = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+            stages['memory_observer'] = 'Linux process high-water RSS, including startup'
+        except ImportError:
+            stages['process_peak_rss_mib'] = None
+            stages['memory_observer'] = 'Unavailable on this platform'
         receipt.update(results=results, top_document_ids=[r["id"] for r in results], timings=stages, graph_digest=bundle.manifest["files"]["model.onnx"], tokenizer_digest=bundle.manifest["files"]["tokenizer.json"], corpus_digest=bundle.manifest["corpus_digest"], index_digest=bundle.manifest["files"]["vectors.npy"])
         if time.perf_counter() - start > 10:
             commit_receipt(admission, receipt, "timeout")
