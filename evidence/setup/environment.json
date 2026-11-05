@@ -1,0 +1,1 @@
+{"cpu_count":4,"packages":{"huggingface-hub":"2.4.0","numpy":"2.5.4","onnx":"1.23.2","onnxruntime":"1.31.1","safetensors":"0.8.0","sentence-transformers":"6.2.0","tokenizers":"0.23.3","torch":"2.15.0+cpu","transformers":"5.22.1"},"platform":"Linux-7.0.0-1017-azure-x86_64-with-glibc2.39","processor":"x86_64","python":"3.12.13","threads":2}
