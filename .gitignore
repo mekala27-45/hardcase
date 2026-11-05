@@ -12,6 +12,8 @@ data/vault/
 models/
 node_modules/
 site/dist/
+site/test-results/
+runtime/
 *.sqlite*
 *.onnx
 *.safetensors

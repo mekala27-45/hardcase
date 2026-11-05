@@ -36,6 +36,8 @@ def admit(token, key, payload):
             require(current is not None and current["valid"], "BUNDLE_REVOKED_BEFORE_REPLAY")
             return {"replayed": True, "receipt": old["receipt"]}
         require(not session["busy_request"] or session["busy_until"] < datetime.now(timezone.utc), "SESSION_BUSY")
+        if session['busy_request']:
+            db.execute("UPDATE hardcase.query_receipts SET status='timeout',completed_at=now(),receipt=jsonb_build_object('id',id,'bundle_id',bundle_id,'admission_generation',admission_generation,'status','timeout','error','WORKER_LEASE_EXPIRED','results','[]'::jsonb,'fresh',false) WHERE id=%s AND status='pending'", (session['busy_request'],))
         snapshot = db.execute("SELECT a.bundle_id,a.generation,s.valid FROM hardcase.release_aliases a JOIN hardcase.bundle_status s USING(bundle_id) WHERE a.name=%s", (payload["alias"],)).fetchone()
         require(snapshot is not None and snapshot["valid"], "UNAVAILABLE_ALIAS")
         request_id = str(uuid.uuid4())

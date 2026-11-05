@@ -66,6 +66,9 @@ def run():
     evidence['cases'].append({'case': 'process_death_before_receipt_commit', 'status': 'passed', 'child_exit': worker.returncode, 'independent_observer': dict(observed), 'recovery': 'Expired lease permits a new request; original pending key is never reported completed.'})
     admission = admit(token, 'revoke-before-commit', {'query_digest': digest('another authored query'), 'alias': 'default', 'top_k': 10})
     with connect() as db:
+        recovered = db.execute('SELECT status,receipt FROM hardcase.query_receipts WHERE id=%s', (death_admission['request_id'],)).fetchone()
+        require(recovered['status'] == 'timeout' and recovered['receipt']['error'] == 'WORKER_LEASE_EXPIRED', 'STALE_REQUEST_NOT_FINALIZED')
+        evidence['cases'][-1]['post_lease_independent_observation'] = dict(recovered)
         db.execute("UPDATE hardcase.bundle_status SET valid=false,reason='ephemeral fault' WHERE bundle_id=%s", (a,))
     try:
         commit_receipt(admission, {'id': admission['request_id'], 'alias': 'default', 'bundle_id': a, 'results': [{'id': 'must-not-escape'}]})

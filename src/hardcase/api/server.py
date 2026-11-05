@@ -38,6 +38,7 @@ async def lifespan(app):
             require(bundle.id == row["id"], "ALLOWLIST_ID_MISMATCH")
             bundles[bundle.id] = bundle
     except Exception as error:
+        bundles.clear()
         startup_error = type(error).__name__ + ": " + str(error)[:200]
     yield
 
