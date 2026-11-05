@@ -1,0 +1,67 @@
+name: Prepare frozen training data
+on:
+  push:
+    branches: [main]
+    paths: [requests/prepare.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: hardcase-preparation
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      PYTHONPATH: src:.
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      TOKENIZERS_PARALLELISM: 'false'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - name: Resolve exact setup environment
+        run: |
+          python -m pip install -r requirements-resolved.txt --extra-index-url https://download.pytorch.org/whl/cpu
+          python -m pip check
+      - name: Check independent instrument tests
+        run: python -m unittest discover -s tests -v
+      - name: Capture and prepare real corpus
+        run: python -m hardcase.mining.prepare
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: hardcase-train-inputs-${{ github.run_id }}
+          path: |
+            data/processed/
+            data/manifests/
+            data/notices/
+            artifacts/preparation/
+          retention-days: 1
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: hardcase-test-vault-${{ github.run_id }}
+          path: data/vault/
+          retention-days: 1
+          if-no-files-found: error
+      - name: Preserve terminal and reviewable evidence
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          mkdir -p evidence/preparation
+          python -c "import json,os,pathlib; pathlib.Path('evidence/preparation/terminal.json').write_text(json.dumps({'status':os.environ['JOB_STATUS'],'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID']}))"
+          find artifacts/preparation -maxdepth 1 -name '*.json' -type f -exec cp {} evidence/preparation/ \; || true
+          cp data/manifests/*.json evidence/preparation/ 2>/dev/null || true
+          git config user.name 'Ajay Mekala'
+          git config user.email 'mekalaajayk@gmail.com'
+          git switch -c results/preparation-${{ github.run_id }}
+          git add evidence/preparation
+          git commit -m 'evidence: preserve preparation inventory and terminal outcome'
+          git push origin HEAD
