@@ -16,7 +16,7 @@ Automatic approval review rejected further publication to main, transfer of the 
 
 The protected preview request received HTTP 402 `api-deployments-free-per-day`, with a reported 86400-second retry interval. Do not alter billing, create another account or work around the quota. The existing public workbench at https://mekala27-45.github.io/hardcase/ reflects older main evidence and has no configured live API. The Vercel scaffold must not be described as learned inference.
 
-Local Windows commands and native browser control are blocked by Linux-only paths in the workspace permission configuration. Reopen a correctly configured Windows workspace before fresh native browser verification. Later review edits are on GitHub; the earlier local checkout is stale. Do not overwrite the review branch with that checkout.
+Local Windows commands and native browser control are blocked by Linux-only paths in the workspace permission configuration. Native browser zoom was subsequently verified in an isolated headed Chromium desktop by review 42129215925. Public browser verification can likewise use a bounded remote worker after deployment is available. Later review edits are on GitHub; the earlier local checkout is stale. Do not overwrite the review branch with that checkout.
 
 Project IDs: Neon `wispy-haze-91153072`, database `hardcase`, owner `hardcase_owner`; Vercel `prj_xNmGw7TnbVsiquXURbedLzAAHzhA`, team `team_NNcxgB3J9dHQnUJYJJYvRMda`. Credentials are not stored in this document.
 

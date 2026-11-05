@@ -1,7 +1,7 @@
 {
   "status": "passed",
-  "source_commit": "6fa0bd6572091d9eb6b63e3afb3226f9e8a7d1b2",
-  "run_id": "42127330258",
+  "source_commit": "ce8830bff54121209b901c70db60c285422e2142",
+  "run_id": "42129215925",
   "namespace": "interface_verification",
   "live_inference": false,
   "observations": [

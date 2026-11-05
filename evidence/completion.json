@@ -65,9 +65,9 @@
     "evidence": "Five implemented views and real imported training records pass review-interface checks. Published Pages is still the older main version, with no configured genuine public API search."
   },
   "14": {
-    "status": "not done",
-    "verified": false,
-    "evidence": "evidence/frontend/browser-checks.json and scripted-controls.json cover both themes, primary fonts, contrast, 360/768/1440 widths, reduced motion and CSS 200-percent reflow. Native browser zoom and final deployed-state checks remain blocked by the Windows workspace configuration."
+    "status": "done",
+    "verified": true,
+    "evidence": "Review 42129215925 passed both themes, primary fonts, contrast, 360/768/1440 layouts, reduced motion and native Chromium 200-percent zoom. evidence/frontend/native-zoom.json records DPR 1 to 2 and CSS viewport 1440 to 720 with no page overflow in all five views."
   },
   "15": {
     "status": "done",
@@ -77,12 +77,12 @@
   "16": {
     "status": "done",
     "verified": true,
-    "evidence": "Runtime 42127323550 passed all 78 tests without skips. CI 42127330166 passed both hash seeds. Input/model/compatibility assets have retained hashes and release provenance; bounded requests and failed-attempt records are preserved."
+    "evidence": "Runtime 42127323550 passed all 78 tests without skips. CI 42129215961 passed both hash seeds, and interface review 42129215925 passed native zoom. Input/model/compatibility assets retain hashes and release provenance; bounded requests and failed attempts are preserved."
   },
   "17": {
     "status": "not done",
     "verified": false,
-    "evidence": "The isolated runtime restored exact hashed artifacts in a clean runner. Final live artifact/persistence verification, clean final documentation rederivation and native browser checks remain incomplete."
+    "evidence": "Clean isolated runners restored exact hashed model artifacts and rederived the source-bound documents and interface. Final public artifact, learned browser/client and independent production persistence verification remain blocked."
   },
   "18": {
     "status": "not done",
