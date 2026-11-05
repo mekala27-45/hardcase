@@ -1,4 +1,5 @@
 import os
+from urllib.parse import urlparse, parse_qs
 from datetime import datetime, timezone
 from hardcase.contracts import digest, require
 
@@ -7,7 +8,11 @@ def connect():
     import psycopg
     from psycopg.rows import dict_row
     url = os.environ.get("DATABASE_URL")
-    require(bool(url) and "sslmode=" in url, "TLS_DATABASE_REQUIRED")
+    require(bool(url), "TLS_DATABASE_REQUIRED")
+    parsed = urlparse(url)
+    mode = parse_qs(parsed.query).get('sslmode', [''])[0]
+    local_test = parsed.hostname in {'localhost', '127.0.0.1'} and os.getenv('HARDCASE_TEST_DATABASE') == '1'
+    require(mode in {'require', 'verify-ca', 'verify-full'} or local_test and mode == 'disable', "TLS_DATABASE_REQUIRED")
     return psycopg.connect(url, connect_timeout=5, row_factory=dict_row)
 
 
