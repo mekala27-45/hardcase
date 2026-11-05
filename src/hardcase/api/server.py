@@ -113,7 +113,10 @@ def ready():
         return JSONResponse({"ready": False, "reason": "BUNDLE_STARTUP_FAILED", "diagnostic": startup_error}, status_code=503)
     try:
         with connect() as db:
-            db.execute("SELECT 1 FROM hardcase.bundles LIMIT 1")
+            rows=db.execute("SELECT b.id,b.manifest,s.valid FROM hardcase.bundles b JOIN hardcase.bundle_status s ON s.bundle_id=b.id WHERE b.id=ANY(%s)",(list(bundles),)).fetchall()
+            require(len(rows)==len(bundles) and all(row['valid'] and digest(row['manifest'])==row['id'] for row in rows),'REGISTRY_PACKAGE_NOT_READY')
+            aliases=db.execute("SELECT name,bundle_id FROM hardcase.release_aliases WHERE name IN ('base','default','experimental')").fetchall()
+            require(len(aliases)==3 and all(row['bundle_id'] in bundles for row in aliases),'ALIASES_NOT_READY')
     except Exception:
         return JSONResponse({"ready": False, "reason": "DATABASE_UNREACHABLE"}, status_code=503)
     return {"ready": True, "bundles": sorted(bundles), "commit": os.getenv("VERCEL_GIT_COMMIT_SHA", "local")}
@@ -123,7 +126,8 @@ def ready():
 def models():
     with connect() as db:
         aliases = db.execute("SELECT a.name,a.bundle_id,a.generation,s.valid FROM hardcase.release_aliases a JOIN hardcase.bundle_status s USING(bundle_id) ORDER BY a.name").fetchall()
-    return {"aliases": [dict(r) | {"available": r["bundle_id"] in bundles and r["valid"], "experimental": r["name"] == "experimental"} for r in aliases]}
+    report=load_json('runtime/report.json') if Path('runtime/report.json').exists() else {}
+    return {"evaluation_state":report.get('status','pending'),"aliases": [dict(r) | {"available": r["bundle_id"] in bundles and r["valid"], "experimental": r["name"] == "experimental"} for r in aliases]}
 
 
 @app.post("/api/v1/sessions")
