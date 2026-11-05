@@ -46,8 +46,8 @@ app.add_middleware(CORSMiddleware, allow_origins=origins, allow_credentials=Fals
 
 
 class BodyLimit:
-    def __init__(self, application):
-        self.application = application
+    def __init__(self, app):
+        self.application = app
 
     async def __call__(self, scope, receive, send):
         if scope["type"] != "http":
