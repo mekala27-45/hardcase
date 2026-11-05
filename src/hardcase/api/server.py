@@ -147,6 +147,8 @@ def execute_search(payload, token, key):
         bundle = bundles.get(admission["bundle_id"])
         require(bundle is not None, "MODEL_UNAVAILABLE")
         results, stages = bundle.search(payload.query, payload.top_k)
+        for result in results:
+            result['source_reference']={'dataset':'BEIR SciFact','document_id':result['id'],'dataset_url':'https://huggingface.co/datasets/BeIR/scifact','corpus_digest':bundle.manifest['corpus_digest']}
         serialize_start = time.perf_counter()
         json.dumps(results, allow_nan=False)
         stages["serialization_ms"] = (time.perf_counter() - serialize_start) * 1000
@@ -199,7 +201,7 @@ def documents(document_id: str):
     document = next(iter(bundles.values())).documents.get(document_id)
     if not document:
         raise HTTPException(404, "DOCUMENT_NOT_FOUND")
-    return document
+    return document | {"source_reference":{"dataset":"BEIR SciFact","document_id":document_id,"dataset_url":"https://huggingface.co/datasets/BeIR/scifact"}}
 
 
 @app.get("/api/v1/experiments/latest")
