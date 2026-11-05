@@ -29,3 +29,9 @@ The first responsive-navigation check found inconsistent button accessible names
 A later workspace configuration update introduced Linux-only writable paths into the Windows environment. Local command execution and native browser control are currently blocked by the environment's path validation. Review-branch CI remains available. No local check after that change is claimed.
 
 Production database configuration and publication of further commits to main await explicit approval after automatic approval review rejected those actions. The draft pull request keeps subsequent changes reviewable. The test vault remains closed until independently verified learned serving exists.
+
+## Observed export portability failure
+
+The original export worker selected INT8 using its registered development and resource policy. Independent startup probes then produced inconsistent admission outcomes. Three additional standard CPU workers retained the exact same base and candidate float32 vectors, while INT8 differed from its frozen probe by up to 0.029012 at a required 0.00001 tolerance. The observed bundle bytes passed integrity checks. The probes do not by themselves establish the low-level cause.
+
+The [ONNX Runtime quantization guide](https://onnxruntime.ai/docs/performance/model-optimizations/quantization.html) documents CPU-dependent quantization behavior and saturation as possible mechanisms. This is a hypothesis, not a proven diagnosis for this run. The project therefore retains the rejected INT8 artifact and selects the already-verified float32 parent for compatibility before any held-out access. No model weights, corpus vectors, labels or startup tolerances are edited. The original export selection and the compatibility decision have separate content identities. No reduced-range retuning or test-driven rescue is performed.
