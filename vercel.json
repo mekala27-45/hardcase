@@ -1,0 +1,9 @@
+{
+  "buildCommand": "PYTHONPATH=src:. python deploy/package_runtime.py",
+  "functions": {
+    "app.py": {
+      "maxDuration": 30,
+      "excludeFiles": "{site/**,tests/**,docs/**,evidence/**,artifacts/**,data/**,evaluation/**,deploy/**,.github/**,.agents/**,src/hardcase/training/**,src/hardcase/export/**,src/hardcase/data/**,src/hardcase/mining/candidates.py,src/hardcase/mining/prepare.py}"
+    }
+  }
+}
