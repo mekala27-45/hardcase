@@ -46,7 +46,7 @@ def build():
     result['evaluation'].update(paired_rows=existing('evidence/evaluation/paired-rows.json',[]),slices=existing('evidence/evaluation/slices.json',{}),export_drift=existing('evidence/evaluation/export-drift.json',[]),error_details=existing('evidence/evaluation/error-sample.json',[]),timing=existing('evidence/serving/paired-timing.json',{}))
     result['data']['groups']=existing('evidence/preparation/split.json',{})
     result['data']['purge']=existing('evidence/preparation/purge.json',{})
-    result['release']['faults']=existing('evidence/faults/postgres.json',{}).get('cases',[])+existing('evidence/faults/actual-bundles.json',{}).get('cases',[])
+    result['release']['faults']=existing('evidence/faults/runtime-transactions.json',existing('evidence/faults/postgres.json',{})).get('cases',[])+existing('evidence/faults/actual-bundles.json',{}).get('cases',[])
     result['claim_context']={'data':{'source':'evidence/preparation/source.json','source_digest':file_digest('evidence/preparation/source.json'),'namespace':'data_inventory','method':'frozen_preparation','split':'source inventory','aggregation':'verified counts','denominator':1,'unit':'documents/queries/qrel rows','started_at':preparation.get('started_at'),'ended_at':preparation.get('ended_at')}} if source else {}
     result['statement'] = ' '.join(Path('docs/STATEMENT.txt').read_text().split())
     atomic_json("site/public/evidence.json", result)

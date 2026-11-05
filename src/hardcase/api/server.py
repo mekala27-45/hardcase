@@ -104,7 +104,7 @@ async def refusal(request, error):
 
 @app.get("/healthz")
 def health():
-    return {"status": "ok", "schema_version": 1, "commit": os.getenv("VERCEL_GIT_COMMIT_SHA", "local")}
+    return {"status": "ok", "schema_version": 1, "commit": os.getenv("VERCEL_GIT_COMMIT_SHA", "local"), "artifact_startup": {"status": "verified" if bundles and not startup_error else "unavailable", "bundle_ids": sorted(bundles)}, "live_search_verified": False}
 
 
 @app.get("/readyz")
