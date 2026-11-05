@@ -53,14 +53,17 @@ def run():
     observed_receipt = read_receipt(token, admission['request_id'])
     require(observed_receipt['bundle_id'] == b and observed_receipt['admission_generation'] == 2 and observed_receipt['completion_generation'] == 3 and alias_snapshot('default')['bundle_id'] == a, 'INFLIGHT_SNAPSHOT_FAILURE')
     evidence['cases'].append({'case': 'rollback_during_inflight', 'status': 'passed', 'rollback': rollback, 'independent_receipt': observed_receipt, 'inference': 'fixture; actual bundle verification is separate'})
-    child = "from hardcase.registry.postgres import connect; import time; db=connect(); db.execute(\"UPDATE hardcase.release_aliases SET bundle_id=%s,generation=generation+1 WHERE name='default'\", ('" + b + "',)); print('UNCOMMITTED',flush=True); time.sleep(30); db.commit()"
+    death_admission = admit(token, 'process-death-receipt', {'query_digest': digest('process death fixture'), 'alias': 'default', 'top_k': 10})
+    child = "from hardcase.registry.postgres import connect; import time; db=connect(); db.execute(\"UPDATE hardcase.query_receipts SET status='completed',receipt='{}',completed_at=now() WHERE id=%s\", ('" + death_admission['request_id'] + "',)); print('UNCOMMITTED',flush=True); time.sleep(30); db.commit()"
     worker = subprocess.Popen([sys.executable, '-c', child], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     require(worker.stdout.readline().strip() == 'UNCOMMITTED', 'FAULT_CHILD_NOT_READY')
     worker.terminate()
     worker.wait(timeout=10)
-    observed = alias_snapshot('default')
-    require(observed['generation'] == 3 and observed['bundle_id'] == a, 'PARTIAL_ALIAS_COMMIT')
-    evidence['cases'].append({'case': 'process_death_before_commit', 'status': 'passed', 'child_exit': worker.returncode, 'independent_observer': observed})
+    with connect() as db:
+        observed = db.execute('SELECT id,status,receipt FROM hardcase.query_receipts WHERE id=%s', (death_admission['request_id'],)).fetchone()
+        require(observed['status'] == 'pending' and observed['receipt'] is None, 'PARTIAL_RECEIPT_COMMIT')
+        db.execute("UPDATE hardcase.sessions SET busy_until=now()-interval '1 second' WHERE capability_digest=%s", (death_admission['session_digest'],))
+    evidence['cases'].append({'case': 'process_death_before_receipt_commit', 'status': 'passed', 'child_exit': worker.returncode, 'independent_observer': dict(observed), 'recovery': 'Expired lease permits a new request; original pending key is never reported completed.'})
     admission = admit(token, 'revoke-before-commit', {'query_digest': digest('another authored query'), 'alias': 'default', 'top_k': 10})
     with connect() as db:
         db.execute("UPDATE hardcase.bundle_status SET valid=false,reason='ephemeral fault' WHERE bundle_id=%s", (a,))

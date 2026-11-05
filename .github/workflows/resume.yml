@@ -1,0 +1,33 @@
+name: New process encoder resume proof
+on:
+  push:
+    branches: [main]
+    paths: ['deploy/probe_resume.py', '.github/workflows/resume.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  resume:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      PYTHONPATH: src:.
+      TOKENIZERS_PARALLELISM: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - run: python -m pip install -r requirements-resolved.txt --extra-index-url https://download.pytorch.org/whl/cpu
+      - run: python deploy/probe_resume.py
+      - name: Preserve resume observations
+        if: always()
+        run: |
+          mkdir -p evidence/resume
+          python -c "import json,os,pathlib; pathlib.Path('evidence/resume/terminal.json').write_text(json.dumps({'status':'${{ job.status }}','source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID']}))"
+          git config user.name 'Ajay Mekala'
+          git config user.email 'mekalaajayk@gmail.com'
+          git switch -c results/resume-${{ github.run_id }}
+          git add evidence/resume
+          git commit -m 'evidence: retain independent new process resume outcome'
+          git push origin HEAD
