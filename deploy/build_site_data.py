@@ -32,8 +32,16 @@ def build():
         before,after=run.get('before_hashes',{}),run.get('after_hashes',{})
         for name,initial in before.items():
             parameters.append({'arm':arm,'parameter':name,'trainable':name in run.get('trainable_names',[]),'before_digest':initial,'after_digest':after.get(name),'changed':initial!=after[name] if name in after else None})
-    result = {"completion_state": "Experiment in progress", "api_url": os.getenv("PUBLIC_API_URL", ""), "default_model": release.get("default_model"), "training": {"arms": arms, "steps": steps}, "evaluation": evaluation, "release": release, "data": {"inventory": [{"item": key, "observed": value, "source": "evidence/preparation/source.json"} for key, value in source.get("observed", {}).items()], "audit": existing("evidence/preparation/mining-audit.json", [])}, "source_digests": {"preparation": digest(preparation), "selection": digest(selection), "evaluation": digest(evaluation), "release": digest(release)}}
+    result = {"completion_state": "Experiment in progress", "api_url": os.getenv("PUBLIC_API_URL", ""), "default_model": release.get("default_model"), "training": {"arms": arms, "steps": steps}, "evaluation": evaluation, "release": release, "data": {"inventory": [{"item": key, "observed": value, "source": "evidence/preparation/source.json"} for key, value in source.get("observed", {}).items()], "audit": existing("evidence/preparation/mining-audit.json", [])}, "source_digests": {name:file_digest(path) if Path(path).exists() else None for name,path in {"preparation":"evidence/preparation/prepare.json","selection":"evidence/training/selection.json","evaluation":"evidence/evaluation/report.json","release":"evidence/release/decision.json"}.items()}}
     atomic_json("site/public/evidence.json", result)
+    for method in result['evaluation'].get('methods',[]):
+        method['claims']={}
+        if method.get('status')!='completed':
+            continue
+        for metric in ('ndcg10','recall10','recall100','mrr10'):
+            item={'kind':'observed','status':'observed','value':method[metric],'method':method['method'],'namespace':'retrieval_quality','split':'held-out test','aggregation':'mean per-query '+metric,'denominator':method['planned_queries'],'unit':metric,'source':'evidence/evaluation/report.json','source_digest':file_digest('evidence/evaluation/report.json'),'started_at':evaluation['started_at'],'ended_at':evaluation['ended_at']}
+            method['claims'][metric]={'measurement':item,'rendered':render_measurement(item)}
+        method['claim_title']=method['method']+': '+format(method['ndcg10'],'.4f')+' mean nDCG@10 across '+str(method['planned_queries'])+' test queries'
     result['training'].update(parameters=parameters,claims=claims,selection=selection)
     result['evaluation'].update(paired_rows=existing('evidence/evaluation/paired-rows.json',[]),slices=existing('evidence/evaluation/slices.json',{}),export_drift=existing('evidence/evaluation/export-drift.json',[]),error_details=existing('evidence/evaluation/error-sample.json',[]),timing=existing('evidence/serving/paired-timing.json',{}))
     result['data']['groups']=existing('evidence/preparation/split.json',{})
