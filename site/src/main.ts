@@ -26,7 +26,7 @@ function shell(){
  const remembered=localStorage.getItem('hardcase-theme')==='dark'?'dark':'light'; document.documentElement.dataset.theme=remembered;
  app.innerHTML=`<header class="masthead"><a class="wordmark" href="#search">hardcase<span>27 / RETRIEVAL LAB</span></a><div class="header-actions"><a href="https://github.com/mekala27-45/hardcase" target="_blank" rel="noopener">Source code</a><button id="theme" aria-label="Switch color theme">${remembered==='light'?'Dark theme':'Light theme'}</button></div></header><div class="specimen"><span class="eyebrow">SPECIMEN / MINILM + SCIFACT</span><span class="state-mark">${escape(state.completion_state||'Experiment in progress')}</span></div><nav aria-label="Workbench views">${(['search','training','evaluation','release','data'] as Panel[]).map((p,i)=>`<button data-panel="${p}" aria-label="0${i+1} ${p[0].toUpperCase()+p.slice(1)}" aria-current="${p===panel?'page':'false'}"><span>0${i+1}</span>${p[0].toUpperCase()+p.slice(1)}</button>`).join('')}</nav><main id="main" tabindex="-1"></main><footer><p>${statement}</p><a href="https://github.com/mekala27-45/hardcase/blob/main/RESULTS.md" target="_blank" rel="noopener">Completion checklist</a></footer>`;
  document.querySelector('#theme')!.addEventListener('click',()=>{const theme=document.documentElement.dataset.theme==='dark'?'light':'dark';document.documentElement.dataset.theme=theme;localStorage.setItem('hardcase-theme',theme);document.querySelector('#theme')!.textContent=theme==='dark'?'Light theme':'Dark theme';});
- document.querySelectorAll<HTMLButtonElement>('[data-panel]').forEach(button=>button.addEventListener('click',()=>{panel=button.dataset.panel as Panel;location.hash=panel;render();}));
+ document.querySelectorAll<HTMLButtonElement>('[data-panel]').forEach(button=>button.addEventListener('click',()=>{const next=button.dataset.panel as Panel;if(panel!==next)location.hash=next;}));
  render();
 }
 function render(){
@@ -51,7 +51,6 @@ function wire(){
 
  const downloads:Record<string,unknown>={'training':state.training,'evaluation':state.evaluation,'release':state.release,'data':state.data?.audit};Object.entries(downloads).forEach(([id,value])=>document.querySelector(`#download-${id}`)?.addEventListener('click',()=>download(`hardcase-${id}.json`,value||{status:'pending'})));
  wireTables();
- wireEvidence();
  wireResults();
 }
 function wireResults(){
