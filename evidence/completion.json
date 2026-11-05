@@ -1,0 +1,92 @@
+{
+  "1": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "Actual gradient/export probe: evidence/setup/probe.json. Learned free-host startup remains unverified; protected preview creation was blocked by the Vercel daily quota in evidence/hosting/preview-limit.json."
+  },
+  "2": {
+    "status": "done",
+    "verified": true,
+    "evidence": "src/hardcase/claims.py, tests/test_claims.py, evidence/claims/preparation.json and passing CI 42127330166; source-bound documents and missing-data states exercised by review 42127330258."
+  },
+  "3": {
+    "status": "done",
+    "verified": true,
+    "evidence": "evidence/preparation/source.json, split.json and purge.json: 5183 documents, 638 fit queries, 146 validation queries and 25 purged queries, with retained license notices and frozen input assets."
+  },
+  "4": {
+    "status": "done",
+    "verified": true,
+    "evidence": "evidence/preparation/prepare.json records full-corpus BM25 and unchanged-encoder validation; independent metric/ranking checks passed in CI and the full runtime test suite."
+  },
+  "5": {
+    "status": "done",
+    "verified": true,
+    "evidence": "evidence/preparation/teacher-receipt.json records 3625 executed teacher pairs. mining-audit.json and audit-commentary.json retain 40 frozen source-span inspections, clearly separate from human expert adjudication."
+  },
+  "6": {
+    "status": "done",
+    "verified": true,
+    "evidence": "Training run 42113390181 and evidence/training/ledger-audit.json: all three arms completed 120 updates and 960 examples; every fit query appeared, all frozen tensors stayed unchanged, and validation selected hard_contrastive/update 40."
+  },
+  "7": {
+    "status": "done",
+    "verified": true,
+    "evidence": "evidence/export/parity.json, evidence/compatibility/decision.json and evidence/serving/paired-timing.json. Unchanged float32 passed; INT8 portability failure retained. Runtime run 42127323550 measured matched query units without changing selection."
+  },
+  "8": {
+    "status": "done",
+    "verified": true,
+    "evidence": "Runtime 42127323550 verified actual compatible bundles, immutable registry records, alias CAS, in-flight rollback and revocation in isolated PostgreSQL. Production initialization remains explicitly blocked in evidence/hosting/registry-approval.json."
+  },
+  "9": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "evidence/hosting/preview-limit.json and registry-approval.json. No fresh public learned browser/client pair or independent production DB receipt exists; credential configuration and deployment remain blocked."
+  },
+  "10": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "No requests/evaluate.json or final evaluation report has been created. Held-out execution remains 0/1500 main rows and 0/600 export rows pending the pretest live gate."
+  },
+  "11": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "evidence/serving/local-open-loop.json: 60/60 at 1 RPS and 120/120 at 2 RPS, p95 about 33/35 ms and peak server RSS about 430 MiB. The required sixteen-query public smoke is unexecuted."
+  },
+  "12": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "All six actual-artifact fault cases passed in evidence/faults/actual-bundles.json and runtime-transactions.json. The release gate remains a refusal because held-out and public-live evidence are missing; no promotion executed."
+  },
+  "13": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "Five implemented views and real imported training records pass review-interface checks. Published Pages is still the older main version, with no configured genuine public API search."
+  },
+  "14": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "evidence/frontend/browser-checks.json and scripted-controls.json cover both themes, primary fonts, contrast, 360/768/1440 widths, reduced motion and CSS 200-percent reflow. Native browser zoom and final deployed-state checks remain blocked by the Windows workspace configuration."
+  },
+  "15": {
+    "status": "done",
+    "verified": true,
+    "evidence": "AGENTS.md, CLAUDE.md, .agents/skills/*/SKILL.md (three repository-scoped skills), docs/SPEC.md, four model cards, THIRD_PARTY_NOTICES.md, OPERATIONS.md and docs/HANDOFF.md."
+  },
+  "16": {
+    "status": "done",
+    "verified": true,
+    "evidence": "Runtime 42127323550 passed all 78 tests without skips. CI 42127330166 passed both hash seeds. Input/model/compatibility assets have retained hashes and release provenance; bounded requests and failed-attempt records are preserved."
+  },
+  "17": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "The isolated runtime restored exact hashed artifacts in a clean runner. Final live artifact/persistence verification, clean final documentation rederivation and native browser checks remain incomplete."
+  },
+  "18": {
+    "status": "not done",
+    "verified": false,
+    "evidence": "Draft PR 1 is prepared; main publication was rejected by automatic approval review. No product release tag exists. The meaningful implementation history is recorded in evidence/build/commit-inventory.json; artifact prereleases are not product releases."
+  }
+}

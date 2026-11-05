@@ -1,0 +1,11 @@
+{
+  "run_id": 42126025466,
+  "status": "failed",
+  "package_startup": "passed on AMD EPYC 7763",
+  "matched_resource_stage": "completed but output files were not preserved by the failed publisher; no numerical summary is asserted from missing files",
+  "database_failure": "ModuleNotFoundError: psycopg; the measurement environment omitted serving dependencies",
+  "publication_failure": "GitHub App refused a workflow-file update when publishing from an outdated source tree",
+  "fixes": "Install both locked dependency sets. Keep observation commits limited to evidence and never restore an older workflow version.",
+  "source_commit": "d9e2daac7c2a840adc40bd21a392318be82d9486",
+  "test_access": false
+}

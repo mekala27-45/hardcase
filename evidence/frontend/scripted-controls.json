@@ -1,1 +1,56 @@
-{"namespace":"scripted_interface","model_execution":false,"status":"passed","source_commit":"a50b097b02dee09e91a2684ca7611a4dde9a667f","observations":[{"width":360,"theme":"light","viewport":360,"document":360,"chartMinimum":680},{"width":360,"theme":"dark","viewport":360,"document":360,"chartMinimum":680},{"width":768,"theme":"light","viewport":768,"document":768,"chartMinimum":708},{"width":768,"theme":"dark","viewport":768,"document":768,"chartMinimum":708},{"width":1440,"theme":"light","viewport":1440,"document":1440,"chartMinimum":1328},{"width":1440,"theme":"dark","viewport":1440,"document":1440,"chartMinimum":1328}],"reflow":{"zoom":"2","right":1328,"viewport":1440},"zoom_mode":"CSS 200 percent reflow, not native browser zoom control"}
+{
+  "namespace": "scripted_interface",
+  "model_execution": false,
+  "status": "passed",
+  "source_commit": "6fa0bd6572091d9eb6b63e3afb3226f9e8a7d1b2",
+  "observations": [
+    {
+      "width": 360,
+      "theme": "light",
+      "viewport": 360,
+      "document": 360,
+      "chartMinimum": 680
+    },
+    {
+      "width": 360,
+      "theme": "dark",
+      "viewport": 360,
+      "document": 360,
+      "chartMinimum": 680
+    },
+    {
+      "width": 768,
+      "theme": "light",
+      "viewport": 768,
+      "document": 768,
+      "chartMinimum": 708
+    },
+    {
+      "width": 768,
+      "theme": "dark",
+      "viewport": 768,
+      "document": 768,
+      "chartMinimum": 708
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "viewport": 1440,
+      "document": 1440,
+      "chartMinimum": 1328
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "viewport": 1440,
+      "document": 1440,
+      "chartMinimum": 1328
+    }
+  ],
+  "reflow": {
+    "zoom": "2",
+    "right": 1328,
+    "viewport": 1440
+  },
+  "zoom_mode": "CSS 200 percent reflow, not native browser zoom control"
+}

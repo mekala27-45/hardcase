@@ -73,12 +73,4 @@ jobs:
           python -c "import os; from hardcase.contracts import atomic_json; atomic_json('evidence/runtime/terminal.json',{'status':os.environ['JOB_STATUS'],'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'training_run_id':42113390181,'public_live_verified':False})"
           cp runtime/package-receipt.json evidence/runtime/ 2>/dev/null || true
           cp artifacts/runtime/initialization.json evidence/runtime/ 2>/dev/null || true
-          git config user.name 'Ajay Mekala'
-          git config user.email 'mekalaajayk@gmail.com'
-          git switch -c results/runtime-${{ github.run_id }}
-          git add evidence/runtime
-          if [ -d evidence/serving ]; then git add evidence/serving; fi
-          if [ -f evidence/faults/actual-bundles.json ]; then git add evidence/faults/actual-bundles.json; fi
-          if [ -f requests/runtime.json ]; then git add requests/runtime.json; fi
-          git commit -m 'evidence: preserve actual exported runtime and local API observations'
-          git push origin HEAD
+          python deploy/publish_json_evidence.py runtime evidence/runtime evidence/serving evidence/faults/actual-bundles.json requests/runtime.json

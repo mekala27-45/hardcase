@@ -43,3 +43,34 @@ This is a portfolio project, not employment experience or a medical product. The
 ## Rights
 
 Source code is MIT licensed. Dataset and model rights remain separate; see THIRD_PARTY_NOTICES.md.
+
+## Completed training and frozen validation selection
+
+The selected candidate is hard_contrastive. Its checkpoint identity and validation-only selection are retained in [the selection manifest](evidence/training/selection.json). The comparison below uses development validation; it is not held-out quality.
+
+hard_contrastive | completed optimizer budget | 120 updates | denominator 1 | fit | actual_training | 2026-11-05T21:32:40.192018+00:00 to 2026-11-05T21:57:21.810318+00:00 | source evidence/training/hard_contrastive/run.json (dbbe8252d0482d1c956233700f269832148a59d896026d614ced82c8c40a6258)
+
+hard_contrastive | completed training examples | 960 query examples | denominator 1 | fit | actual_training | 2026-11-05T21:32:40.192018+00:00 to 2026-11-05T21:57:21.810318+00:00 | source evidence/training/hard_contrastive/run.json (dbbe8252d0482d1c956233700f269832148a59d896026d614ced82c8c40a6258)
+
+hard_contrastive | mean selected-checkpoint nDCG@10 | 0.69854383 nDCG@10 | denominator 146 | validation | retrieval_quality | 2026-11-05T21:32:40.192018+00:00 to 2026-11-05T21:57:21.810318+00:00 | source evidence/training/hard_contrastive/run.json (dbbe8252d0482d1c956233700f269832148a59d896026d614ced82c8c40a6258)
+
+hard_distilled | completed optimizer budget | 120 updates | denominator 1 | fit | actual_training | 2026-11-05T21:57:21.840066+00:00 to 2026-11-05T22:20:48.427520+00:00 | source evidence/training/hard_distilled/run.json (5453d226e14d12f1b1113297fe97e690e76ad14d461af9bae8beac79d5148778)
+
+hard_distilled | completed training examples | 960 query examples | denominator 1 | fit | actual_training | 2026-11-05T21:57:21.840066+00:00 to 2026-11-05T22:20:48.427520+00:00 | source evidence/training/hard_distilled/run.json (5453d226e14d12f1b1113297fe97e690e76ad14d461af9bae8beac79d5148778)
+
+hard_distilled | mean selected-checkpoint nDCG@10 | 0.69799398 nDCG@10 | denominator 146 | validation | retrieval_quality | 2026-11-05T21:57:21.840066+00:00 to 2026-11-05T22:20:48.427520+00:00 | source evidence/training/hard_distilled/run.json (5453d226e14d12f1b1113297fe97e690e76ad14d461af9bae8beac79d5148778)
+
+uniform_contrastive | completed optimizer budget | 120 updates | denominator 1 | fit | actual_training | 2026-11-05T22:20:48.450220+00:00 to 2026-11-05T22:44:44.261488+00:00 | source evidence/training/uniform_contrastive/run.json (9a00621f3f205864e34cf9e5ad2a992441b2c5da107c9a90796094035ce82dad)
+
+uniform_contrastive | completed training examples | 960 query examples | denominator 1 | fit | actual_training | 2026-11-05T22:20:48.450220+00:00 to 2026-11-05T22:44:44.261488+00:00 | source evidence/training/uniform_contrastive/run.json (9a00621f3f205864e34cf9e5ad2a992441b2c5da107c9a90796094035ce82dad)
+
+uniform_contrastive | mean selected-checkpoint nDCG@10 | 0.6894497 nDCG@10 | denominator 146 | validation | retrieval_quality | 2026-11-05T22:20:48.450220+00:00 to 2026-11-05T22:44:44.261488+00:00 | source evidence/training/uniform_contrastive/run.json (9a00621f3f205864e34cf9e5ad2a992441b2c5da107c9a90796094035ce82dad)
+
+The serving variant is candidate_float32. Selection is frozen before test access. Float32 parity and measured INT8 drift are separate records in [parity.json](evidence/export/parity.json); quantization is not an exact-equivalence claim.
+
+base_float32 | mean symmetric-export nDCG@10 | 0.68090309 nDCG@10 | denominator 146 | validation | retrieval_quality | 2026-11-05T22:44:46.538795+00:00 to 2026-11-05T22:54:38.417064+00:00 | source evidence/export/selection.json (d80c018f2e4c50d010258acd8069e94385118a5eeedc827cd20edd5268b7128f)
+
+candidate_float32 | mean symmetric-export nDCG@10 | 0.69854383 nDCG@10 | denominator 146 | validation | retrieval_quality | 2026-11-05T22:44:46.538795+00:00 to 2026-11-05T22:54:38.417064+00:00 | source evidence/export/selection.json (d80c018f2e4c50d010258acd8069e94385118a5eeedc827cd20edd5268b7128f)
+
+candidate_int8 | mean symmetric-export nDCG@10 | 0.69949976 nDCG@10 | denominator 146 | validation | retrieval_quality | 2026-11-05T22:44:46.538795+00:00 to 2026-11-05T22:54:38.417064+00:00 | source evidence/export/selection.json (d80c018f2e4c50d010258acd8069e94385118a5eeedc827cd20edd5268b7128f)
+

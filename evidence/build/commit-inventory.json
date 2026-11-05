@@ -1,7 +1,7 @@
 {
-  "scope": "Review-branch commit history through the recorded source commit; initial empty repository commit is not counted as a substantive implementation unit",
-  "source_commit": "87903936f30d8471f39db4fde13b8e0a62b1d217",
-  "meaningful_commit_count": 57,
+  "scope": "Review-branch history through the recorded source commit; excludes the initial repository commit from the substantive count.",
+  "source_commit": "e49912a9ba0d307089213ffee99e54af579d8e6c",
+  "meaningful_commit_count": 81,
   "commits": [
     {
       "sha": "7465b769b6dfbaa48440455d94fada54e5a0fa2a",
@@ -350,6 +350,150 @@
       "message": "test: cover populated evidence controls mobile charts and zoom reflow",
       "authored_at": "2026-11-05T22:26:17Z",
       "url": "https://github.com/mekala27-45/hardcase/commit/87903936f30d8471f39db4fde13b8e0a62b1d217"
+    },
+    {
+      "sha": "ee46afd3203b4efc78676a7018b12bb38b214fb2",
+      "message": "docs: preserve observed decisions and scoped agent procedures",
+      "authored_at": "2026-11-05T22:27:52Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/ee46afd3203b4efc78676a7018b12bb38b214fb2"
+    },
+    {
+      "sha": "c7bb70f2eef8356f4d4818e21d72c6099e467353",
+      "message": "ci: scan publishable source and built assets without echoing credentials",
+      "authored_at": "2026-11-05T22:28:42Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/c7bb70f2eef8356f4d4818e21d72c6099e467353"
+    },
+    {
+      "sha": "bfa7b25dbe0666cedeb920408c122bf15fd517e3",
+      "message": "fix: stabilize accessible names for evidence selectors",
+      "authored_at": "2026-11-05T22:29:20Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/bfa7b25dbe0666cedeb920408c122bf15fd517e3"
+    },
+    {
+      "sha": "781c781606d777ca5bac172819a0e73a221bf62e",
+      "message": "fix: require matching registry and aliases before service readiness",
+      "authored_at": "2026-11-05T22:29:52Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/781c781606d777ca5bac172819a0e73a221bf62e"
+    },
+    {
+      "sha": "030916daa66d59f8e27a56b29b7413208e8d28f7",
+      "message": "perf: aggregate matched timing repeats within semantic queries",
+      "authored_at": "2026-11-05T22:31:03Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/030916daa66d59f8e27a56b29b7413208e8d28f7"
+    },
+    {
+      "sha": "801c8d62bd6a2548423a69a09fe24a6ac5cbf3e5",
+      "message": "test: refuse readiness for missing registry rows or mismatched aliases",
+      "authored_at": "2026-11-05T22:31:31Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/801c8d62bd6a2548423a69a09fe24a6ac5cbf3e5"
+    },
+    {
+      "sha": "f112b3450de1a6dae8bbfcc6bea09d933a359184",
+      "message": "fix: prevent hash navigation from resetting evidence filters twice",
+      "authored_at": "2026-11-05T22:32:16Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/f112b3450de1a6dae8bbfcc6bea09d933a359184"
+    },
+    {
+      "sha": "88068a17cfc65aa730b8abe2814fc066e10a224b",
+      "message": "claims: bind site result captions to validated source measurements",
+      "authored_at": "2026-11-05T22:33:40Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/88068a17cfc65aa730b8abe2814fc066e10a224b"
+    },
+    {
+      "sha": "0a39b2a88c008d051c5d72677d653014d2dbc867",
+      "message": "evidence: separate frozen teacher agreement from independent relevance",
+      "authored_at": "2026-11-05T22:38:30Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/0a39b2a88c008d051c5d72677d653014d2dbc867"
+    },
+    {
+      "sha": "23911adfa83a258b688ea32353107b6c66dcdf7f",
+      "message": "ci: prepare bounded runtime verification from the review branch",
+      "authored_at": "2026-11-05T22:40:10Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/23911adfa83a258b688ea32353107b6c66dcdf7f"
+    },
+    {
+      "sha": "926a096fde4a52169a8a3086cebb956aaf3c219c",
+      "message": "test: observe release faults around actual model inference and fresh recovery",
+      "authored_at": "2026-11-05T22:42:32Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/926a096fde4a52169a8a3086cebb956aaf3c219c"
+    },
+    {
+      "sha": "148c520de37d905ad4a9442a7237caf6bd194b4d",
+      "message": "evidence: retain review checks fonts reflow and source scan observations",
+      "authored_at": "2026-11-05T22:44:54Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/148c520de37d905ad4a9442a7237caf6bd194b4d"
+    },
+    {
+      "sha": "77c47a3122248f3a4c6584acebcad6378ecf4666",
+      "message": "api: return corpus source references and clear invalid ranking identities",
+      "authored_at": "2026-11-05T22:47:40Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/77c47a3122248f3a4c6584acebcad6378ecf4666"
+    },
+    {
+      "sha": "102eb5365e1c2373e410ad60b0345e6f2add090c",
+      "message": "evidence: distinguish artifact startup and regenerate source-bound review documents",
+      "authored_at": "2026-11-05T22:52:27Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/102eb5365e1c2373e410ad60b0345e6f2add090c"
+    },
+    {
+      "sha": "05623488c02d7db4d34b509987ec3bfd219e7b26",
+      "message": "audit: inspect forty frozen weak-negative spans without changing supervision",
+      "authored_at": "2026-11-05T22:54:47Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/05623488c02d7db4d34b509987ec3bfd219e7b26"
+    },
+    {
+      "sha": "d561ed9e70b859a4344f6000a46b672e10d78ab1",
+      "message": "runtime: request isolated verification of the frozen trained ONNX packages",
+      "authored_at": "2026-11-05T22:56:18Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/d561ed9e70b859a4344f6000a46b672e10d78ab1"
+    },
+    {
+      "sha": "d6c503f151161b25e99d24b28c399fb6f0c56473",
+      "message": "evidence: retain all three trained arms and frozen float32 and INT8 exports",
+      "authored_at": "2026-11-05T22:56:56Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/d6c503f151161b25e99d24b28c399fb6f0c56473"
+    },
+    {
+      "sha": "7edb7ced3ae5e18ca94e588f1ce96bf75706e50e",
+      "message": "evidence: audit actual budgets and render completed validation-only training claims",
+      "authored_at": "2026-11-05T22:58:14Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/7edb7ced3ae5e18ca94e588f1ce96bf75706e50e"
+    },
+    {
+      "sha": "d9e2daac7c2a840adc40bd21a392318be82d9486",
+      "message": "debug: measure actual cross-runner startup drift and retain failed runtime receipts",
+      "authored_at": "2026-11-05T22:59:12Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/d9e2daac7c2a840adc40bd21a392318be82d9486"
+    },
+    {
+      "sha": "ed10df9e59874e0766046e30d386febda621751c",
+      "message": "runtime: investigate CPU portability and prepare a guarded float32 fallback",
+      "authored_at": "2026-11-05T23:02:39Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/ed10df9e59874e0766046e30d386febda621751c"
+    },
+    {
+      "sha": "8be6d4ddfdad3da4e8d1ec95092655750bd28cbc",
+      "message": "deploy: prepare protected preview of actual immutable ONNX artifacts",
+      "authored_at": "2026-11-05T23:03:48Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/8be6d4ddfdad3da4e8d1ec95092655750bd28cbc"
+    },
+    {
+      "sha": "6913431a1ed6335208b65a0d46da0a3855c00081",
+      "message": "export: retain observed INT8 portability failure and request unchanged float32 fallback",
+      "authored_at": "2026-11-05T23:05:04Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/6913431a1ed6335208b65a0d46da0a3855c00081"
+    },
+    {
+      "sha": "35d850958b6c2ad467b382f2713235804b6b0be4",
+      "message": "fix: bind compatibility request to the retained diagnostic blob",
+      "authored_at": "2026-11-05T23:06:46Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/35d850958b6c2ad467b382f2713235804b6b0be4"
+    },
+    {
+      "sha": "e49912a9ba0d307089213ffee99e54af579d8e6c",
+      "message": "runtime: verify the retained float32 fallback with frozen serving dependencies",
+      "authored_at": "2026-11-05T23:08:41Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/e49912a9ba0d307089213ffee99e54af579d8e6c"
     }
   ]
 }

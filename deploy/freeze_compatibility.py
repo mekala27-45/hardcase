@@ -10,8 +10,8 @@ from hardcase.inference.bundle import Bundle
 
 def run():
     request=load_json('requests/compatibility.json')
-    observed=load_json('evidence/runtime/startup-diagnostic.json')
-    diagnostic_bytes=Path('evidence/runtime/startup-diagnostic.json').read_bytes()
+    observed=load_json('evidence/runtime-attempts/startup-trial-1.json')
+    diagnostic_bytes=Path('evidence/runtime-attempts/startup-trial-1.json').read_bytes()
     require(hashlib.sha1(b'blob '+str(len(diagnostic_bytes)).encode()+b'\0'+diagnostic_bytes).hexdigest()==request['diagnostic_git_blob'],'DIAGNOSTIC_CHANGED')
     rows={r['method']:r for r in observed['rows']}
     require(rows['candidate_int8']['startup_passed'] is False and rows['candidate_float32']['startup_passed'] is True and rows['base_float32']['startup_passed'] is True,'FALLBACK_NOT_SUPPORTED_BY_OBSERVATION')
@@ -23,7 +23,7 @@ def run():
         bundle=Bundle(original['bundles'][method])
         require(bundle.id==original['validation'][method]['bundle_id'],'FALLBACK_BUNDLE_CHANGED')
         del bundle
-    decision={'namespace':'export_parity','reason':'Frozen INT8 startup vectors failed the original tolerance on an independent runner; use the already-exported float32 parent without changing model or index bytes.','original_variant':'candidate_int8','variant':'candidate_float32','prior_export_id':original['export_id'],'diagnostic_sha256':file_digest('evidence/runtime/startup-diagnostic.json'),'diagnostic_run_id':observed['run_id'],'source_commit':os.getenv('GITHUB_SHA'),'run_id':os.getenv('GITHUB_RUN_ID'),'test_access':False,'created_at':utcnow(),'retraining':False,'tolerance_changed':False}
+    decision={'namespace':'export_parity','reason':'Frozen INT8 startup vectors failed the original tolerance on an independent runner; use the already-exported float32 parent without changing model or index bytes.','original_variant':'candidate_int8','variant':'candidate_float32','prior_export_id':original['export_id'],'diagnostic_sha256':file_digest('evidence/runtime-attempts/startup-trial-1.json'),'diagnostic_run_id':observed['run_id'],'source_commit':os.getenv('GITHUB_SHA'),'run_id':os.getenv('GITHUB_RUN_ID'),'test_access':False,'created_at':utcnow(),'retraining':False,'tolerance_changed':False}
     atomic_json('artifacts/export/selection-original.json',original)
     updated={k:v for k,v in original.items() if k!='export_id'}
     updated.update(variant='candidate_float32',compatibility_fallback=decision,created_at=decision['created_at'])

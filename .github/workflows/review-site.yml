@@ -18,6 +18,7 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '24'
+      - run: python deploy/decide_release.py
       - run: python deploy/render_docs.py
       - run: python deploy/build_site_data.py
       - run: npm ci
@@ -32,7 +33,7 @@ jobs:
       - name: Print review observation records
         if: always()
         run: |
-          python -c "import json, pathlib; paths=['evidence/frontend/browser-checks.json','evidence/frontend/scripted-controls.json','evidence/verification/source-scan.json']; print('HARDCASE_REVIEW_RECORDS='+json.dumps({p:json.loads(pathlib.Path(p).read_text()) for p in paths if pathlib.Path(p).exists()}))"
+          python -c "import json, pathlib; paths=['evidence/frontend/browser-checks.json','evidence/frontend/scripted-controls.json','evidence/verification/source-scan.json','evidence/release/decision.json']; print('HARDCASE_REVIEW_RECORDS='+json.dumps({p:json.loads(pathlib.Path(p).read_text()) for p in paths if pathlib.Path(p).exists()}))"
       - name: Print generated source-bound documents
         run: |
           python -c "import json,pathlib; paths=['README.md','RESULTS.md','evidence/claims/preparation.json']+[str(p) for p in pathlib.Path('model-cards').glob('*.md')]; print('HARDCASE_GENERATED_DOCS='+json.dumps({p:pathlib.Path(p).read_text() for p in paths}))"
