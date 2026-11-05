@@ -2,6 +2,7 @@ import {test,expect} from '@playwright/test';
 import fs from 'node:fs';
 
 test('scripted populated evidence controls and 200 percent reflow',async({page})=>{
+ page.setDefaultTimeout(10000);
  const fixtures={
   completion_state:'Interface fixture, not experiment evidence',
   statement:'Scripted interface test. These values are not model observations.',
