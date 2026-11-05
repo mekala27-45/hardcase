@@ -24,3 +24,5 @@ jobs:
       - run: python -m pip install -r requirements-serve.txt httpx==0.28.1
       - run: python -m unittest discover -s tests -v
       - run: python -m compileall -q src evaluation deploy
+
+      - run: python deploy/check_source.py

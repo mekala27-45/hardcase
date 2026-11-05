@@ -23,6 +23,7 @@ jobs:
         working-directory: site
       - run: npm run build
         working-directory: site
+      - run: python deploy/check_source.py
       - run: npx playwright install --with-deps chromium
         working-directory: site
       - run: npx playwright test
