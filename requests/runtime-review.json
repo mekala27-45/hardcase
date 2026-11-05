@@ -2,5 +2,7 @@
   "training_run_id": 42113390181,
   "mode": "local_verification_only",
   "selection_id": "bc763a19f62ca113ed8454de3851d1fb80748c1bf530379ad2205b7a2731417a",
-  "serving_asset_sha256": "11fc590c7057fc0469350a24dabaa8822b261cf2f87e1f10d586828f9fa2f262"
+  "serving_asset_sha256": "11fc590c7057fc0469350a24dabaa8822b261cf2f87e1f10d586828f9fa2f262",
+  "attempt": 2,
+  "reason": "Measure the first cross-runner startup mismatch without changing the frozen bundle or admission tolerance."
 }

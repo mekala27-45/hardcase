@@ -1,0 +1,19 @@
+{
+  "status": "failed",
+  "observed_at": "2026-11-05T22:59:03.645Z",
+  "runs": [
+    {
+      "run_id": 42125528516,
+      "source": "ab8c8c2be8aa7854828b3fa10b07b48df6bc71cb"
+    },
+    {
+      "run_id": 42125648092,
+      "source": "d561ed9e70b859a4344f6000a46b672e10d78ab1"
+    }
+  ],
+  "boundary": "Package startup probe",
+  "code": "STARTUP_PARITY_FAILED",
+  "served": false,
+  "secondary_failure": "Unanchored runtime/ ignore rule also ignored evidence/runtime; failure retained here from completed job logs.",
+  "investigation": "New diagnostic measures all three actual bundles on another runner. No parity tolerance or frozen selection changed."
+}
