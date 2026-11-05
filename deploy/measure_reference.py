@@ -75,6 +75,7 @@ def run():
             atomic_json('evidence/serving/'+method+'-matched.json',{'status':'unsupported','measurement':None})
             continue
         subprocess.run([sys.executable,'-m','hardcase.inference.measure',exported['bundles'][method],'artifacts/export/timing-queries.json','evidence/serving/'+method+'-matched.json',exported['bundles']['base_float32']],check=True)
+    subprocess.run([sys.executable,'deploy/compare_timing.py'],check=True)
     atomic_json('evidence/serving/matched-context.json',{'source_commit':os.getenv('GITHUB_SHA'),'run_id':os.getenv('GITHUB_RUN_ID'),'platform':platform.platform(),'export_id':exported['export_id'],'selected_variant_unchanged':exported['variant'],'timing_inputs_digest':digest(load_json('artifacts/export/timing-queries.json')),'comparison':'Separate fresh processes on the same runner. PyTorch reference and symmetric ONNX variants; no network or database in these timings.'})
 
 
