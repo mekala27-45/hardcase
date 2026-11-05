@@ -48,6 +48,10 @@ def transition(proposal, available, kind="promote"):
             return previous["receipt"]
         require(datetime.fromisoformat(proposal["expires_at"]) > datetime.now(timezone.utc), "EXPIRED_PROPOSAL")
         current = db.execute("SELECT * FROM hardcase.release_aliases WHERE name=%s FOR UPDATE", (proposal["alias"],)).fetchone()
+        previous = db.execute("SELECT proposal_digest,receipt FROM hardcase.release_events WHERE id=%s", (proposal["idempotency_key"],)).fetchone()
+        if previous:
+            require(previous["proposal_digest"] == proposal_digest, "IDEMPOTENCY_CONFLICT")
+            return previous["receipt"]
         require(current is not None and current["generation"] == proposal["expected_generation"] and current["bundle_id"] == proposal["current_bundle_id"], "ALIAS_GENERATION_CONFLICT")
         status = db.execute("SELECT valid FROM hardcase.bundle_status WHERE bundle_id=%s FOR SHARE", (proposal["target_bundle_id"],)).fetchone()
         require(status is not None and status["valid"], "REVOKED_OR_MISSING_TARGET")

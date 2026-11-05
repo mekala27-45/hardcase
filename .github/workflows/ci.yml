@@ -1,0 +1,26 @@
+name: Independent contracts and API checks
+on:
+  push:
+    branches: [main]
+    paths: ['src/**', 'evaluation/**', 'tests/**', 'db/**', '.github/workflows/ci.yml']
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      matrix:
+        hashseed: ['1', '271']
+    env:
+      PYTHONPATH: src:.
+      PYTHONHASHSEED: ${{ matrix.hashseed }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - run: python -m pip install -r requirements-serve.txt httpx==0.28.1
+      - run: python -m unittest discover -s tests -v
+      - run: python -m compileall -q src evaluation deploy

@@ -32,6 +32,8 @@ def admit(token, key, payload):
         if old:
             require(old["request_digest"] == request_digest, "IDEMPOTENCY_CONFLICT")
             require(old["status"] == "completed", "REQUEST_PENDING_OR_FAILED")
+            current = db.execute("SELECT valid FROM hardcase.bundle_status WHERE bundle_id=%s", (old["bundle_id"],)).fetchone()
+            require(current is not None and current["valid"], "BUNDLE_REVOKED_BEFORE_REPLAY")
             return {"replayed": True, "receipt": old["receipt"]}
         require(not session["busy_request"] or session["busy_until"] < datetime.now(timezone.utc), "SESSION_BUSY")
         snapshot = db.execute("SELECT a.bundle_id,a.generation,s.valid FROM hardcase.release_aliases a JOIN hardcase.bundle_status s USING(bundle_id) WHERE a.name=%s", (payload["alias"],)).fetchone()
