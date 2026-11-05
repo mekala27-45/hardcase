@@ -68,6 +68,8 @@ jobs:
           python -c "import time,urllib.request; ready=False; exec('for _ in range(45):\n try:\n  ready=urllib.request.urlopen(\"http://127.0.0.1:8000/readyz\",timeout=2).status==200\n  if ready: break\n except Exception: time.sleep(1)'); assert ready, 'LOCAL_RUNTIME_NOT_READY'"
       - name: Observe local open-loop requests and independent DB readback
         run: python deploy/measure_api.py
+      - name: Observe actual model transaction fault boundaries
+        run: python deploy/observe_runtime_transactions.py
       - name: Preserve runtime results
         if: always()
         env:
@@ -83,6 +85,7 @@ jobs:
           git add evidence/runtime
           if [ -d evidence/serving ]; then git add evidence/serving; fi
           if [ -f evidence/faults/actual-bundles.json ]; then git add evidence/faults/actual-bundles.json; fi
+          if [ -f evidence/faults/runtime-transactions.json ]; then git add evidence/faults/runtime-transactions.json; fi
           if [ -f requests/runtime.json ]; then git add requests/runtime.json; fi
           git commit -m 'evidence: preserve actual exported runtime and local API observations'
           git push origin HEAD
