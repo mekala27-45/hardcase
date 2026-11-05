@@ -1,0 +1,355 @@
+{
+  "scope": "Review-branch commit history through the recorded source commit; initial empty repository commit is not counted as a substantive implementation unit",
+  "source_commit": "87903936f30d8471f39db4fde13b8e0a62b1d217",
+  "meaningful_commit_count": 57,
+  "commits": [
+    {
+      "sha": "7465b769b6dfbaa48440455d94fada54e5a0fa2a",
+      "message": "Initial commit",
+      "authored_at": "2026-11-05T20:54:07Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/7465b769b6dfbaa48440455d94fada54e5a0fa2a"
+    },
+    {
+      "sha": "573c69b9a0e266e24f67c11a88008f9ddcc6db56",
+      "message": "chore: scaffold hardcase training api site and dependency groups",
+      "authored_at": "2026-11-05T20:58:42Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/573c69b9a0e266e24f67c11a88008f9ddcc6db56"
+    },
+    {
+      "sha": "37ff4e5885453a2d24653d1b09c2a53263dd76cd",
+      "message": "docs: preregister retrieval training comparison and release criteria",
+      "authored_at": "2026-11-05T20:58:57Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/37ff4e5885453a2d24653d1b09c2a53263dd76cd"
+    },
+    {
+      "sha": "e424e70768bd970196b98087422f60afec62bf68",
+      "message": "test: probe actual gradients export database and free hosting",
+      "authored_at": "2026-11-05T20:59:06Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/e424e70768bd970196b98087422f60afec62bf68"
+    },
+    {
+      "sha": "29f97ad2f905c755dfc721fb9066a4741564d5af",
+      "message": "feat: render source bound model and experiment claims",
+      "authored_at": "2026-11-05T21:06:25Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/29f97ad2f905c755dfc721fb9066a4741564d5af"
+    },
+    {
+      "sha": "b86d5765f0d8c974a5de4fd7e76e5cc41ab876a0",
+      "message": "test: refuse unsupported numbers modes and incomplete evidence",
+      "authored_at": "2026-11-05T21:06:32Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/b86d5765f0d8c974a5de4fd7e76e5cc41ab876a0"
+    },
+    {
+      "sha": "ae733ee59323cdbbdea9c10fc4835489306a0e35",
+      "message": "feat: capture licensed benchmark data with stable document identity",
+      "authored_at": "2026-11-05T21:06:39Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/ae733ee59323cdbbdea9c10fc4835489306a0e35"
+    },
+    {
+      "sha": "7670aa16cb835d54246cbec905947bfc8c8344f8",
+      "message": "feat: build grouped splits purge manifests and encoded text views",
+      "authored_at": "2026-11-05T21:06:47Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/7670aa16cb835d54246cbec905947bfc8c8344f8"
+    },
+    {
+      "sha": "d4e255540e4192f6fab096db6ec87bf9f9ee121d",
+      "message": "test: enforce inventory schema and label isolation boundaries",
+      "authored_at": "2026-11-05T21:06:55Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/d4e255540e4192f6fab096db6ec87bf9f9ee121d"
+    },
+    {
+      "sha": "d07a0bbd4bce9b6d111cc671bb51a864b667eedd",
+      "message": "feat: implement full corpus lexical and base encoder retrieval",
+      "authored_at": "2026-11-05T21:07:02Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/d07a0bbd4bce9b6d111cc671bb51a864b667eedd"
+    },
+    {
+      "sha": "5ca1c2fabe6ee1e75eacf8670529010af5af96f3",
+      "message": "test: verify ranking ties vector parity and source view alignment",
+      "authored_at": "2026-11-05T21:07:10Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/5ca1c2fabe6ee1e75eacf8670529010af5af96f3"
+    },
+    {
+      "sha": "506c129e872a8649d1f5ff82259b5adda0f508c0",
+      "message": "feat: mine reproducible weak negatives and deterministic sample schedules",
+      "authored_at": "2026-11-05T21:07:17Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/506c129e872a8649d1f5ff82259b5adda0f508c0"
+    },
+    {
+      "sha": "690154d7eb0a5abe3ee70e37976c3f99761217c7",
+      "message": "evidence: freeze verified model revisions and successful cpu probe",
+      "authored_at": "2026-11-05T21:07:27Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/690154d7eb0a5abe3ee70e37976c3f99761217c7"
+    },
+    {
+      "sha": "d835c1fe6046a5882411ee69b2642cd8b6ec2501",
+      "message": "feat: retain actual encoder receipts and pinned artifact identities",
+      "authored_at": "2026-11-05T21:07:36Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/d835c1fe6046a5882411ee69b2642cd8b6ec2501"
+    },
+    {
+      "sha": "3913ab8e31b9a91d5ac58b075f0b20aed6e8ae07",
+      "message": "feat: implement tested contrastive and teacher distillation objectives",
+      "authored_at": "2026-11-05T21:07:43Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/3913ab8e31b9a91d5ac58b075f0b20aed6e8ae07"
+    },
+    {
+      "sha": "1650bfdb9d27c7c654daa123eec2a4ee06ce792b",
+      "message": "test: validate positive masks candidate alignment and loss gradients",
+      "authored_at": "2026-11-05T21:07:52Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/1650bfdb9d27c7c654daa123eec2a4ee06ce792b"
+    },
+    {
+      "sha": "c6aca39f69f4e4ea4198af0abed831abd0722915",
+      "message": "feat: independently grade full corpus retrieval metrics",
+      "authored_at": "2026-11-05T21:08:00Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/c6aca39f69f4e4ea4198af0abed831abd0722915"
+    },
+    {
+      "sha": "a92faf42e80254e9ea8a3b56268574922c658326",
+      "message": "feat: score real teacher pairs and freeze complete development inputs",
+      "authored_at": "2026-11-05T21:08:09Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/a92faf42e80254e9ea8a3b56268574922c658326"
+    },
+    {
+      "sha": "552fb2d655330f36a6e0147295338c6f9b752d03",
+      "message": "test: independently grade rankings uncertainty and method denominators",
+      "authored_at": "2026-11-05T21:17:12Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/552fb2d655330f36a6e0147295338c6f9b752d03"
+    },
+    {
+      "sha": "9141f17e080992f4f6ec9b69b686449f48826b9b",
+      "message": "feat: publish complete resumable optimizer checkpoints atomically",
+      "authored_at": "2026-11-05T21:17:19Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/9141f17e080992f4f6ec9b69b686449f48826b9b"
+    },
+    {
+      "sha": "5d69f20b10d4151183cf4f18d35a67a2d5c3a912",
+      "message": "feat: execute matched encoder training with validation checkpoint selection",
+      "authored_at": "2026-11-05T21:17:33Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/5d69f20b10d4151183cf4f18d35a67a2d5c3a912"
+    },
+    {
+      "sha": "57acd94d24f3d60a9be1c76be838045d18a76cce",
+      "message": "feat: bind model indexes and release aliases in a versioned registry",
+      "authored_at": "2026-11-05T21:17:42Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/57acd94d24f3d60a9be1c76be838045d18a76cce"
+    },
+    {
+      "sha": "988652ba8867a92391a6bf3b134fce516c533ff4",
+      "message": "test: refuse incomplete or failing promotion evidence",
+      "authored_at": "2026-11-05T21:17:52Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/988652ba8867a92391a6bf3b134fce516c533ff4"
+    },
+    {
+      "sha": "b49e33a6775f159183962d729787f15832956f80",
+      "message": "feat: validate immutable bundles and measure standalone cpu inference",
+      "authored_at": "2026-11-05T21:17:59Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/b49e33a6775f159183962d729787f15832956f80"
+    },
+    {
+      "sha": "5c71b154510f386c224f9907b3ebf6b1a56e4f50",
+      "message": "feat: export compatible encoder bundles and measured quantization variants",
+      "authored_at": "2026-11-05T21:18:06Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/5c71b154510f386c224f9907b3ebf6b1a56e4f50"
+    },
+    {
+      "sha": "22396cce586dbe4c927de6153dbbe8bd3074a2f8",
+      "message": "feat: expose fresh encoder search with bounded sessions and receipts",
+      "authored_at": "2026-11-05T21:18:14Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/22396cce586dbe4c927de6153dbbe8bd3074a2f8"
+    },
+    {
+      "sha": "35c5271b83269b1e6501725063eb3586dfe22141",
+      "message": "test: enforce request limits bundle integrity and concurrent transition replay",
+      "authored_at": "2026-11-05T21:18:25Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/35c5271b83269b1e6501725063eb3586dfe22141"
+    },
+    {
+      "sha": "3f9d53f150944d6424ec620bcbf9aaa24c1b97aa",
+      "message": "fix: match ASGI middleware construction and local test workspace",
+      "authored_at": "2026-11-05T21:30:34Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/3f9d53f150944d6424ec620bcbf9aaa24c1b97aa"
+    },
+    {
+      "sha": "681d43013c19f7e03538216fad2bf9022d1282e4",
+      "message": "feat: build search training evaluation release and data workbench views",
+      "authored_at": "2026-11-05T21:30:41Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/681d43013c19f7e03538216fad2bf9022d1282e4"
+    },
+    {
+      "sha": "3c1b2f97738362c5a6d359a9cb20d446bc8686cf",
+      "message": "style: apply testing bench typography themes and source-bound site data",
+      "authored_at": "2026-11-05T21:30:49Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/3c1b2f97738362c5a6d359a9cb20d446bc8686cf"
+    },
+    {
+      "sha": "711d0fcb528a99fc75b8f7fe7c662d2109eedcb8",
+      "message": "evidence: freeze observed corpus split and teacher preparation receipts",
+      "authored_at": "2026-11-05T21:30:57Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/711d0fcb528a99fc75b8f7fe7c662d2109eedcb8"
+    },
+    {
+      "sha": "5ec6cb55fc6039fc9045f3bd29b584673f5bcc9c",
+      "message": "ci: execute frozen three-arm training and retain hashed model assets",
+      "authored_at": "2026-11-05T21:31:10Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/5ec6cb55fc6039fc9045f3bd29b584673f5bcc9c"
+    },
+    {
+      "sha": "cb3035845e4f61bcc032415d26f8408242b356bb",
+      "message": "test: observe alias races inflight rollback revocation and process death",
+      "authored_at": "2026-11-05T21:36:07Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/cb3035845e4f61bcc032415d26f8408242b356bb"
+    },
+    {
+      "sha": "9e3fd24d69937717676a746b8bf6d8e2b466353c",
+      "message": "feat: grade frozen heldout rankings grouped uncertainty and export drift",
+      "authored_at": "2026-11-05T21:36:16Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/9e3fd24d69937717676a746b8bf6d8e2b466353c"
+    },
+    {
+      "sha": "957c916814ebff53b08c61aa6485b58235b8595c",
+      "message": "test: prove fresh-process resume and preserve incomplete evaluation denominators",
+      "authored_at": "2026-11-05T21:40:10Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/957c916814ebff53b08c61aa6485b58235b8595c"
+    },
+    {
+      "sha": "042e183f38ef4ad03020c7316be61eaae0f90960",
+      "message": "build: verify bounded runtime assets and retain frozen experiment inputs",
+      "authored_at": "2026-11-05T21:40:21Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/042e183f38ef4ad03020c7316be61eaae0f90960"
+    },
+    {
+      "sha": "8e6ce35d97566d517c8baa6da1e0283a233ce25b",
+      "message": "build: lock the observed frontend dependency graph",
+      "authored_at": "2026-11-05T21:40:29Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/8e6ce35d97566d517c8baa6da1e0283a233ce25b"
+    },
+    {
+      "sha": "4919c9d53a1c1c5ac437dad279cc7c3348512dad",
+      "message": "fix: enforce terminal receipt ownership and matched serving memory scope",
+      "authored_at": "2026-11-05T21:48:46Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/4919c9d53a1c1c5ac437dad279cc7c3348512dad"
+    },
+    {
+      "sha": "845cbe0aa52a3f2c0343d1b2d0073973f31f23ce",
+      "message": "docs: specify frozen experiment procedures and project operating guidance",
+      "authored_at": "2026-11-05T21:48:55Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/845cbe0aa52a3f2c0343d1b2d0073973f31f23ce"
+    },
+    {
+      "sha": "4dd6354186deb13dcdba2aa4ad183fdc3de24656",
+      "message": "feat: render measured charts inspectable audit pairs and sortable evidence",
+      "authored_at": "2026-11-05T21:49:02Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/4dd6354186deb13dcdba2aa4ad183fdc3de24656"
+    },
+    {
+      "sha": "9f4d93b04c75f012f8243ae1624504167b9a4a14",
+      "message": "evidence: retain exact resume proof database faults and durable input assets",
+      "authored_at": "2026-11-05T21:49:09Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/9f4d93b04c75f012f8243ae1624504167b9a4a14"
+    },
+    {
+      "sha": "cbd01045dd0547e681290a4a9009a29621baf5a2",
+      "message": "docs: generate source-bound results model cards and license provenance",
+      "authored_at": "2026-11-05T21:49:17Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/cbd01045dd0547e681290a4a9009a29621baf5a2"
+    },
+    {
+      "sha": "8afa6085fce4831905f69294f60cb56942c2d82d",
+      "message": "test: verify responsive themes contrast primary fonts and empty evidence states",
+      "authored_at": "2026-11-05T21:49:26Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/8afa6085fce4831905f69294f60cb56942c2d82d"
+    },
+    {
+      "sha": "07b2d57f54ae9eea7664383a1c457efa622d2dfe",
+      "message": "ci: pin observed action revisions and preserve frontend terminal failures",
+      "authored_at": "2026-11-05T21:49:35Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/07b2d57f54ae9eea7664383a1c457efa622d2dfe"
+    },
+    {
+      "sha": "a055af501961f919630c20278c4d44cee962190d",
+      "message": "test: observe real bundle corruption and bounded local API persistence",
+      "authored_at": "2026-11-05T21:52:49Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/a055af501961f919630c20278c4d44cee962190d"
+    },
+    {
+      "sha": "fb0b16e0eed2e1d9955027fe64b68241b30ad047",
+      "message": "ci: verify fixed trained artifacts through isolated live local API",
+      "authored_at": "2026-11-05T21:52:58Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/fb0b16e0eed2e1d9955027fe64b68241b30ad047"
+    },
+    {
+      "sha": "ddb102ffe8d7dcf44a8c5f9e0b80411974dca473",
+      "message": "fix: match runtime measurement dependency to the observed lock",
+      "authored_at": "2026-11-05T21:53:14Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/ddb102ffe8d7dcf44a8c5f9e0b80411974dca473"
+    },
+    {
+      "sha": "2a962ea714ce816e59b66a96ec4d44f384a0154e",
+      "message": "fix: keep navigation accessible names stable across responsive layouts",
+      "authored_at": "2026-11-05T21:53:23Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/2a962ea714ce816e59b66a96ec4d44f384a0154e"
+    },
+    {
+      "sha": "d3d96e6b847ee70d1c9ba25d580b5280a06e24db",
+      "message": "evidence: retain responsive theme font and contrast observations",
+      "authored_at": "2026-11-05T22:05:47Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/d3d96e6b847ee70d1c9ba25d580b5280a06e24db"
+    },
+    {
+      "sha": "812985be8c298ed4106d5459b9345515471c53e1",
+      "message": "fix: refuse partial startup and finalize expired worker leases",
+      "authored_at": "2026-11-05T22:05:57Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/812985be8c298ed4106d5459b9345515471c53e1"
+    },
+    {
+      "sha": "f0cea95ed5728730fa7ca4775167bb397d53cdc5",
+      "message": "perf: compare frozen PyTorch and ONNX variants on matched validation queries",
+      "authored_at": "2026-11-05T22:06:09Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/f0cea95ed5728730fa7ca4775167bb397d53cdc5"
+    },
+    {
+      "sha": "677bfd823d60bf477e92b0545a90d428e5593b5c",
+      "message": "fix: measure process memory high-water marks including startup peaks",
+      "authored_at": "2026-11-05T22:06:18Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/677bfd823d60bf477e92b0545a90d428e5593b5c"
+    },
+    {
+      "sha": "adcee55ec685c63e3492a77a30bd907bbf218eeb",
+      "message": "ci: preserve frozen heldout execution behind verified live prerequisites",
+      "authored_at": "2026-11-05T22:06:28Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/adcee55ec685c63e3492a77a30bd907bbf218eeb"
+    },
+    {
+      "sha": "ab8c8c2be8aa7854828b3fa10b07b48df6bc71cb",
+      "message": "release: bind model versions and promotion gates to independent live evidence",
+      "authored_at": "2026-11-05T22:10:37Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/ab8c8c2be8aa7854828b3fa10b07b48df6bc71cb"
+    },
+    {
+      "sha": "17558cf84271cf25e3ed482713df68125ff825a9",
+      "message": "fix: separate the local load envelope from sixteen-query public smoke",
+      "authored_at": "2026-11-05T22:19:02Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/17558cf84271cf25e3ed482713df68125ff825a9"
+    },
+    {
+      "sha": "fcf22e6479bcb8fb49fddee2e44810a067d39432",
+      "message": "evaluation: define lexical and source-property slices before heldout execution",
+      "authored_at": "2026-11-05T22:20:27Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/fcf22e6479bcb8fb49fddee2e44810a067d39432"
+    },
+    {
+      "sha": "7ee34015a1063a0cb839da597e9b2fc03fc12cfb",
+      "message": "ui: inspect training samples paired queries and descriptive evidence slices",
+      "authored_at": "2026-11-05T22:24:09Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/7ee34015a1063a0cb839da597e9b2fc03fc12cfb"
+    },
+    {
+      "sha": "87903936f30d8471f39db4fde13b8e0a62b1d217",
+      "message": "test: cover populated evidence controls mobile charts and zoom reflow",
+      "authored_at": "2026-11-05T22:26:17Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/87903936f30d8471f39db4fde13b8e0a62b1d217"
+    }
+  ]
+}
