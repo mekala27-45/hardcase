@@ -1,0 +1,5 @@
+Portfolio retrieval training experiment on a frozen scientific benchmark.
+Rankings indicate benchmark relevance, not claim truth or clinical advice.
+Training, teacher supervision, held-out quality and live serving evidence
+are reported separately. Results apply to the declared data, artifacts,
+compute budget and environment. A candidate may fail promotion.
