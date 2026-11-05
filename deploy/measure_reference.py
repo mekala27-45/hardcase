@@ -45,6 +45,8 @@ def torch_measure():
             serialization_ms=(time.perf_counter()-serialization_start)*1000
             rows.append({'query_id':q['id'],'repeat':repeat,'encoding_ms':encoding_ms,'search_ms':search_ms,'serialization_ms':serialization_ms,'total_ms':(time.perf_counter()-started)*1000})
             peak=max(peak,process.memory_info().rss)
+    import resource
+    peak=max(peak,resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024)
     atomic_json('evidence/serving/torch-reference.json',{'namespace':'serving_measurement','method':'selected_pytorch_parent','state_digest':candidate['state_digest'],'query_digest':digest(queries),'cold_load_ms':load_ms,'peak_rss_mib':peak/1024**2,'observations':rows,'queries':len(queries),'repeats':5,'threads':2,'platform':platform.platform(),'observed_at':utcnow(),'purpose':'Post-freeze matched reference audit; serving selection unchanged.'})
 
 

@@ -7,6 +7,7 @@ import time
 import urllib.error
 import urllib.request
 import uuid
+from pathlib import Path
 from hardcase.contracts import atomic_json, load_json, require, utcnow
 from hardcase.registry.postgres import connect
 
@@ -27,6 +28,7 @@ def request(path,payload=None,token=None,key=None):
 
 def measure():
     queries=load_json('artifacts/export/timing-queries.json')
+    server_pid=int(Path('artifacts/runtime/api.pid').read_text())
     tokens=[]
     for _ in range(4):
         status,body=request('/api/v1/sessions',{})
@@ -69,7 +71,9 @@ def measure():
     with connect() as db:
         observed=db.execute('SELECT receipt FROM hardcase.query_receipts WHERE id=%s',(cold['id'],)).fetchone()
     require(observed and observed['receipt']['bundle_id']==cold['bundle_id'] and observed['receipt']['top_document_ids']==cold['top_document_ids'],'LOCAL_INDEPENDENT_RECEIPT_MISMATCH')
-    atomic_json('evidence/serving/local-open-loop.json',{'namespace':'serving_measurement','environment':'GitHub standard CPU; local HTTP and ephemeral PostgreSQL; not public Vercel','observed_at':utcnow(),'concurrency_cap':4,'first_request':cold_observation,'summaries':summary,'observations':sorted(rows,key=lambda r:(r['rate'],r['index'])),'independent_db_match':True,'public_live_verified':False})
+    status_text=Path(f'/proc/{server_pid}/status').read_text()
+    peak_kib=int(next(line.split()[1] for line in status_text.splitlines() if line.startswith('VmHWM:')))
+    atomic_json('evidence/serving/local-open-loop.json',{'namespace':'serving_measurement','environment':'GitHub standard CPU; local HTTP and ephemeral PostgreSQL; not public Vercel','observed_at':utcnow(),'concurrency_cap':4,'server_peak_rss_mib':peak_kib/1024,'memory_observer':'Independent Linux /proc server process VmHWM high-water mark','first_request':cold_observation,'summaries':summary,'observations':sorted(rows,key=lambda r:(r['rate'],r['index'])),'independent_db_match':True,'public_live_verified':False})
 
 
 if __name__=='__main__':

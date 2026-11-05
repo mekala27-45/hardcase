@@ -30,6 +30,11 @@ def main():
             rss = max(rss, process.memory_info().rss)
             observations.append({"query_id": query["id"], "repeat": repeat, **timing})
     ordered = sorted(r["total_ms"] for r in observations)
+    try:
+        import resource
+        rss = max(rss, resource.getrusage(resource.RUSAGE_SELF).ru_maxrss * (1 if sys.platform == 'darwin' else 1024))
+    except ImportError:
+        rss = max(rss, getattr(process.memory_info(), 'peak_wset', rss))
     result = {"namespace": "serving_measurement", "bundle_id": bundle.id, "companion_bundle": companion.id if companion else None, "cold_load_ms": cold_load_ms, "peak_rss_mib": rss / 1024**2, "warm_p95_ms": ordered[int(0.95 * (len(ordered) - 1))], "observations": observations, "queries": len(queries), "repeats": 5, "warmup_queries": min(3, len(queries)), "measured_at": utcnow(), "torch_imported": "torch" in sys.modules, "measurement": "CPU inference and serialization; network and DB excluded"}
     atomic_json(sys.argv[3], result)
 
