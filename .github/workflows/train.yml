@@ -1,0 +1,70 @@
+name: Train three frozen retrieval arms
+on:
+  push:
+    branches: [main]
+    paths: [requests/train.json]
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: hardcase-training
+  cancel-in-progress: false
+jobs:
+  train:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 300
+    env:
+      PYTHONPATH: src:.
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      TOKENIZERS_PARALLELISM: 'false'
+      HF_HUB_DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - name: Verify source artifact metadata
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api repos/${{ github.repository }}/actions/artifacts/13454977032 > artifact.json
+          python -c "from hardcase.contracts import *; r=load_json('requests/train.json'); a=load_json('artifact.json'); require(a['digest']==r['input_artifact_digest'] and a['workflow_run']['id']==r['preparation_run_id'] and not a['expired'], 'INPUT_ARTIFACT_MISMATCH')"
+      - uses: actions/download-artifact@v4
+        with:
+          name: hardcase-train-inputs-42109854166
+          run-id: 42109854166
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Validate frozen preparation
+        run: |
+          python -c "from hardcase.contracts import *; from pathlib import Path; r=load_json('requests/train.json'); p=load_json('data/manifests/preparation.json'); require(p['preparation_id']==r['preparation_id'] and digest(load_json('requests/experiment.json'))==r['config_digest'], 'PREPARATION_MISMATCH'); require(not Path('data/vault').exists(), 'TEST_VAULT_PRESENT')"
+      - name: Install exact observed environment
+        run: |
+          python -m pip install -r requirements-resolved.txt --extra-index-url https://download.pytorch.org/whl/cpu
+          python -m pip check
+          python -m unittest discover -s tests -v
+      - name: Execute all three equal-budget arms
+        run: python -m hardcase.training.run
+      - name: Export and freeze serving variant before test
+        run: python -m hardcase.export.build
+      - name: Preserve terminal and package immutable assets
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: python deploy/preserve_training.py
+      - name: Publish bounded model assets
+        if: always() && hashFiles('artifacts/delivery/delivery.json') != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create training-assets-${{ github.run_id }} artifacts/delivery/* --target ${{ github.sha }} --prerelease --title 'Hardcase training artifacts ${{ github.run_id }}' --notes 'Immutable experiment artifacts. This is not a promotion or a completed product release. See delivery.json for content hashes and evidence/training for observed outcomes.'
+      - name: Publish reviewable evidence
+        if: always()
+        run: |
+          git config user.name 'Ajay Mekala'
+          git config user.email 'mekalaajayk@gmail.com'
+          git switch -c results/training-${{ github.run_id }}
+          git add evidence/training evidence/export || true
+          git commit -m 'evidence: preserve actual training and export outcomes'
+          git push origin HEAD
