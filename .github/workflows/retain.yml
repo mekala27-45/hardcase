@@ -1,0 +1,40 @@
+name: Retain frozen input provenance
+on:
+  push:
+    branches: [main]
+    paths: [requests/retain.json]
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+jobs:
+  retain:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      PYTHONPATH: src:.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - name: Retain exact preparation archives
+        run: |
+          mkdir -p artifacts/retained
+          gh api repos/${{ github.repository }}/actions/artifacts/13454977032/zip > artifacts/retained/train-inputs.zip
+          gh api repos/${{ github.repository }}/actions/artifacts/13454752413/zip > artifacts/retained/test-vault.zip
+          python -c "from hardcase.contracts import *; r=load_json('requests/retain.json'); [require(file_digest('artifacts/retained/'+n)==h, 'RETENTION_HASH_MISMATCH') for n,h in r['assets'].items()]; atomic_json('artifacts/retained/provenance.json',r)"
+          gh release create input-assets-42109854166 artifacts/retained/* --target a92faf42e80254e9ea8a3b56268574922c658326 --prerelease --title 'Frozen SciFact preparation inputs' --notes 'Exact preparation artifacts with provenance.json SHA256 hashes. Training inputs include data/notices with separate upstream, corpus and BEIR notices. The test vault is reserved for the frozen final evaluator and was not supplied to the training process. This is not a product release.'
+      - name: Preserve retention receipt
+        if: always()
+        run: |
+          mkdir -p evidence/retention
+          cp requests/retain.json evidence/retention/inputs.json
+          python -c "import os; from hardcase.contracts import atomic_json; atomic_json('evidence/retention/terminal.json',{'status':'${{ job.status }}','run_id':os.environ['GITHUB_RUN_ID'],'source_commit':os.environ['GITHUB_SHA'],'release_tag':'input-assets-42109854166'})"
+          git config user.name 'Ajay Mekala'
+          git config user.email 'mekalaajayk@gmail.com'
+          git switch -c results/retention-${{ github.run_id }}
+          git add evidence/retention
+          git commit -m 'evidence: retain frozen input archive publication outcome'
+          git push origin HEAD
