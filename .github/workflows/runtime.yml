@@ -38,7 +38,7 @@ jobs:
         with:
           python-version: '3.12.13'
       - name: Install observed measurement environment
-        run: python -m pip install -r requirements-resolved.txt --extra-index-url https://download.pytorch.org/whl/cpu
+        run: python -m pip install -r requirements-resolved.txt -r requirements-serve.txt httpx==0.28.1 --extra-index-url https://download.pytorch.org/whl/cpu
       - name: Fetch fixed training asset release
         run: |
           mkdir -p artifacts/downloads

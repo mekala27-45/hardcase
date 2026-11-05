@@ -24,8 +24,8 @@ def run():
             summaries.append({'method':method,'status':'unexecuted','mean_query_ms':None})
             continue
         raw=load_json(path)
-        if raw.get('status')=='unsupported':
-            summaries.append({'method':method,'status':'unsupported','mean_query_ms':None})
+        if raw.get('status') in {'unsupported','failed'}:
+            summaries.append({'method':method,'status':raw['status'],'mean_query_ms':None,'diagnostic':raw.get('diagnostic')})
             continue
         by_query=aggregate(raw['observations'])
         observations[method]=by_query

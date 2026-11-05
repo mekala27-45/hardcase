@@ -1,0 +1,6 @@
+{
+  "training_run_id": 42113390181,
+  "asset_sha256": "11fc590c7057fc0469350a24dabaa8822b261cf2f87e1f10d586828f9fa2f262",
+  "trials": 3,
+  "purpose": "Diagnose inconsistent startup of unchanged frozen bundles. No test access or tolerance changes."
+}
