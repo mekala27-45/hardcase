@@ -1,0 +1,88 @@
+name: Review the trained runtime without deployment
+on:
+  push:
+    branches: [build/day27-evidence-completion]
+    paths: ['requests/runtime-review.json']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_PASSWORD: ephemeral-runtime-only
+          POSTGRES_DB: hardcase_runtime
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      PYTHONPATH: src:.
+      HARDCASE_TEST_DATABASE: '1'
+      DATABASE_URL: postgresql://postgres:ephemeral-runtime-only@127.0.0.1:5432/hardcase_runtime?sslmode=disable
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OMP_NUM_THREADS: '2'
+      MKL_NUM_THREADS: '2'
+      TOKENIZERS_PARALLELISM: 'false'
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12.13'
+      - name: Install observed measurement environment
+        run: python -m pip install -r requirements-resolved.txt --extra-index-url https://download.pytorch.org/whl/cpu
+      - name: Validate fixed review request and instrument
+        run: |
+          python -c "from hardcase.contracts import load_json,require; r=load_json('requests/runtime-review.json'); require(r['training_run_id']==42113390181 and r['mode']=='local_verification_only','UNAPPROVED_RUNTIME_REVIEW')"
+          python -m unittest discover -s tests
+          python -c "import os,platform,time; from pathlib import Path; from hardcase.contracts import atomic_json; lines=Path('/proc/cpuinfo').read_text().splitlines(); atomic_json('evidence/runtime/host.json',{'cpu_model':next((s.split(':',1)[1].strip() for s in lines if s.startswith('model name')),None),'logical_cpus':os.cpu_count(),'threads_per_model':2,'platform':platform.platform(),'python':platform.python_version(),'clock_resolution_seconds':time.get_clock_info('perf_counter').resolution,'source_commit':os.environ['GITHUB_SHA']})"
+      - name: Fetch fixed training asset release
+        run: |
+          mkdir -p artifacts/downloads
+          gh release download training-assets-42113390181 --pattern serving-bundles.tar.gz --pattern delivery.json --dir artifacts/downloads
+          python -c "from hardcase.contracts import *; from deploy.package_runtime import safe_unpack; d=load_json('artifacts/downloads/delivery.json'); require(d['selection_id']==load_json('requests/runtime-review.json')['selection_id'],'REVIEW_SELECTION_CHANGED'); a=next(r for r in d['assets'] if r['name']=='serving-bundles.tar.gz'); require(file_digest('artifacts/downloads/serving-bundles.tar.gz')==a['sha256'],'DELIVERY_HASH_CHANGED'); require(a['sha256']==load_json('requests/runtime-review.json')['serving_asset_sha256'],'REVIEW_DELIVERY_CHANGED'); safe_unpack('artifacts/downloads/serving-bundles.tar.gz','.'); e=load_json('artifacts/export/selection.json'); require(e['selection_id']==d['selection_id'],'DELIVERY_PARENT_CHANGED'); atomic_json('requests/runtime.json',{'release_tag':'training-assets-42113390181','asset_sha256':a['sha256'],'export_id':e['export_id'],'variant':e['variant']})"
+      - name: Verify actual package and fault refusals
+        run: |
+          python deploy/package_runtime.py
+          python deploy/observe_bundle_faults.py
+      - name: Verify matched reference resources without changing selection
+        run: |
+          gh release download input-assets-42109854166 --pattern train-inputs.zip --dir artifacts/downloads
+          python -c "from hardcase.contracts import *; from zipfile import ZipFile; require(file_digest('artifacts/downloads/train-inputs.zip')==load_json('requests/retain.json')['assets']['train-inputs.zip'],'INPUT_HASH_CHANGED'); ZipFile('artifacts/downloads/train-inputs.zip').extractall('.')"
+          python deploy/measure_reference.py
+      - name: Initialize isolated runtime database
+        run: |
+          python -c "from hardcase.registry.postgres import connect; from pathlib import Path; db=connect(); db.execute(Path('db/migrations/001_registry.sql').read_text(),prepare=False); db.commit(); db.close()"
+          python deploy/register_runtime.py
+          python -c "from hardcase.contracts import *; from hardcase.inference.bundle import Bundle; p=load_json('runtime/bundles/allowlist.json'); atomic_json('evidence/runtime/registry-input.json',{'package':p,'manifests':[Bundle('runtime/bundles/'+r['directory']).manifest for r in p['bundles']]})"
+      - name: Start actual local ONNX API
+        run: |
+          python -m uvicorn hardcase.api.server:app --host 127.0.0.1 --port 8000 > artifacts/runtime/api.log 2>&1 &
+          echo $! > artifacts/runtime/api.pid
+          python -c "import time,urllib.request; ready=False; exec('for _ in range(45):\n try:\n  ready=urllib.request.urlopen(\"http://127.0.0.1:8000/readyz\",timeout=2).status==200\n  if ready: break\n except Exception: time.sleep(1)'); assert ready, 'LOCAL_RUNTIME_NOT_READY'"
+      - name: Observe local open-loop requests and independent DB readback
+        run: python deploy/measure_api.py
+      - name: Preserve runtime results
+        if: always()
+        env:
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          mkdir -p evidence/runtime
+          python -c "import os; from hardcase.contracts import atomic_json; atomic_json('evidence/runtime/terminal.json',{'status':os.environ['JOB_STATUS'],'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'training_run_id':42113390181,'public_live_verified':False})"
+          cp runtime/package-receipt.json evidence/runtime/ 2>/dev/null || true
+          cp artifacts/runtime/initialization.json evidence/runtime/ 2>/dev/null || true
+          git config user.name 'Ajay Mekala'
+          git config user.email 'mekalaajayk@gmail.com'
+          git switch -c results/runtime-review-${{ github.run_id }}
+          git add evidence/runtime
+          if [ -d evidence/serving ]; then git add evidence/serving; fi
+          if [ -f evidence/faults/actual-bundles.json ]; then git add evidence/faults/actual-bundles.json; fi
+          if [ -f requests/runtime.json ]; then git add requests/runtime.json; fi
+          git commit -m 'evidence: preserve actual exported runtime and local API observations'
+          git push origin HEAD

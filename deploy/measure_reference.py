@@ -58,7 +58,7 @@ def teacher_diagnostic(model,tokenizer,matrix,ids):
     scores=load_json('data/processed/teacher-scores.json')
     frozen=load_json('data/manifests/preparation.json')
     require(digest(lists)==frozen['candidate_digest'] and digest(scores)==frozen['teacher_digest'],'DIAGNOSTIC_FROZEN_LIST_CHANGED')
-    audit=load_json('artifacts/preparation/mining-audit.json')
+    audit=load_json('evidence/preparation/mining-audit.json')
     query_ids=sorted({row['query_id'] for row in audit})
     row_index={d:i for i,d in enumerate(ids)}
     observations=[]
