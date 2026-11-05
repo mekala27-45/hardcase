@@ -12,7 +12,7 @@ A controlled study of selective retrieval-encoder fine-tuning, mined weak negati
 
 ## Current execution state
 
-The published interface displays retained evidence. Live learned search has not yet been verified. The production database credential transfer is awaiting explicit approval. Final test evaluation remains closed until the pretest live check passes. Training state is recorded in the linked workflow and imported terminal manifests, not inferred from this description.
+The published interface displays retained evidence. Live learned search has not yet been verified. Production publication, registry initialization and deployment credentials await explicit approval. Vercel also rejected the prepared preview at its daily free deployment limit. Final test evaluation remains closed until the pretest live check passes. Training state is recorded in the linked workflow and imported terminal manifests, not inferred from this description.
 
 [Actual training workflow](https://github.com/mekala27-45/hardcase/actions/runs/42113390181)
 

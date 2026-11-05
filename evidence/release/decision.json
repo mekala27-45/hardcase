@@ -63,9 +63,9 @@
       "threshold": true
     }
   ],
-  "created_at": "2026-11-05T23:26:34.744949+00:00",
+  "created_at": "2026-11-05T23:29:12.903964+00:00",
   "decision": "candidate_refused_default_remains_baseline",
-  "decision_digest": "fe178c222f4cab6c757e88b70a01c339dc10be07b2abfa408b1fb5ec6dfbdf50",
+  "decision_digest": "0abc5a4e74c2f4e275dbddcde3ca4fc0aea1291b836a6cdcd2c1a74f0816e294",
   "default_model": "Pretrained baseline",
   "evidence_digest": "7ecd5705fa69ce2041b3e619e1de834005b82ebe8f9ad9a3d7c785bd972aaae3",
   "model_execution": false,

@@ -1,7 +1,7 @@
 {
   "scope": "Review-branch history through the recorded source commit; excludes the initial repository commit from the substantive count.",
-  "source_commit": "e49912a9ba0d307089213ffee99e54af579d8e6c",
-  "meaningful_commit_count": 81,
+  "source_commit": "c0a49e9f56efa0263b41c2d031249fae36d5308a",
+  "meaningful_commit_count": 87,
   "commits": [
     {
       "sha": "7465b769b6dfbaa48440455d94fada54e5a0fa2a",
@@ -494,6 +494,42 @@
       "message": "runtime: verify the retained float32 fallback with frozen serving dependencies",
       "authored_at": "2026-11-05T23:08:41Z",
       "url": "https://github.com/mekala27-45/hardcase/commit/e49912a9ba0d307089213ffee99e54af579d8e6c"
+    },
+    {
+      "sha": "634c0edb6ce4e63794ef83bcd4ff7544b066b063",
+      "message": "evidence: retain verified learned API faults resources and explicit completion blockers",
+      "authored_at": "2026-11-05T23:19:35Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/634c0edb6ce4e63794ef83bcd4ff7544b066b063"
+    },
+    {
+      "sha": "78be94f58fe13a16f9cf13651bcb7e49ab9792bf",
+      "message": "docs: preserve the verified runtime restoration path and outstanding approval scope",
+      "authored_at": "2026-11-05T23:20:38Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/78be94f58fe13a16f9cf13651bcb7e49ab9792bf"
+    },
+    {
+      "sha": "2612e34a98df33b39b0049df42a5be10591ab444",
+      "message": "test: verify native 200 percent Chromium zoom on an isolated desktop",
+      "authored_at": "2026-11-05T23:26:08Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/2612e34a98df33b39b0049df42a5be10591ab444"
+    },
+    {
+      "sha": "efb53650b72612ded8a5c79c75916f80807e62bf",
+      "message": "evidence: record native zoom verification and the remaining external release blockers",
+      "authored_at": "2026-11-05T23:28:48Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/efb53650b72612ded8a5c79c75916f80807e62bf"
+    },
+    {
+      "sha": "0608c456fcbd761a120e208ea05f29e08ee1dfa6",
+      "message": "fix: install the frozen inference dependencies through Vercel project metadata",
+      "authored_at": "2026-11-05T23:31:54Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/0608c456fcbd761a120e208ea05f29e08ee1dfa6"
+    },
+    {
+      "sha": "c0a49e9f56efa0263b41c2d031249fae36d5308a",
+      "message": "test: verify project installation against the frozen serving dependency graph",
+      "authored_at": "2026-11-05T23:33:06Z",
+      "url": "https://github.com/mekala27-45/hardcase/commit/c0a49e9f56efa0263b41c2d031249fae36d5308a"
     }
   ]
 }

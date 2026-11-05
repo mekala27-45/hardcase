@@ -1,7 +1,7 @@
 {
   "namespace": "interface_accessibility",
   "model_execution": false,
-  "source_commit": "ce8830bff54121209b901c70db60c285422e2142",
+  "source_commit": "71fe9d256ca434d6552f033d12b25d60971ed4f7",
   "zoom_method": "Native Chromium page zoom using X11 keyboard events",
   "observations": [
     {
@@ -96,5 +96,5 @@
     "outer": 1440
   },
   "status": "passed",
-  "observed_at": "2026-11-05T23:27:09.323Z"
+  "observed_at": "2026-11-05T23:30:01.034Z"
 }

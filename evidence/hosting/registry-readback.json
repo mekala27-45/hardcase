@@ -1,0 +1,11 @@
+{
+  "namespace": "hosting_read_only",
+  "model_execution": false,
+  "project_id": "wispy-haze-91153072",
+  "database": "hardcase",
+  "operation": "Read-only row counts after rejected initialization; no transaction executed.",
+  "observed_at": "2026-11-05T23:34:16.809Z",
+  "model_versions": "0",
+  "bundles": "0",
+  "aliases": "0"
+}

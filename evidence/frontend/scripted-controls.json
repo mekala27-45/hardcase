@@ -2,7 +2,7 @@
   "namespace": "scripted_interface",
   "model_execution": false,
   "status": "passed",
-  "source_commit": "ce8830bff54121209b901c70db60c285422e2142",
+  "source_commit": "71fe9d256ca434d6552f033d12b25d60971ed4f7",
   "observations": [
     {
       "width": 360,

@@ -1,7 +1,7 @@
 {
   "status": "passed",
-  "source_commit": "ce8830bff54121209b901c70db60c285422e2142",
-  "run_id": "42129215925",
+  "source_commit": "71fe9d256ca434d6552f033d12b25d60971ed4f7",
+  "run_id": "42129655117",
   "namespace": "interface_verification",
   "live_inference": false,
   "observations": [
@@ -27,9 +27,9 @@
       "headingFont": true,
       "bodyFont": true,
       "monoFont": true,
-      "inkContrast": 13.593970588939737,
-      "secondaryContrast": 9.81424420322524,
-      "controlContrast": 6.683127388295377
+      "inkContrast": 10.840621449581336,
+      "secondaryContrast": 5.593113306878701,
+      "controlContrast": 4.058641983211137
     },
     {
       "width": 360,
@@ -53,9 +53,9 @@
       "headingFont": true,
       "bodyFont": true,
       "monoFont": true,
-      "inkContrast": 13.593970588939737,
-      "secondaryContrast": 9.81424420322524,
-      "controlContrast": 6.683127388295377
+      "inkContrast": 10.840621449581336,
+      "secondaryContrast": 5.593113306878701,
+      "controlContrast": 4.058641983211137
     },
     {
       "width": 360,
@@ -79,9 +79,9 @@
       "headingFont": true,
       "bodyFont": true,
       "monoFont": true,
-      "inkContrast": 13.593970588939737,
-      "secondaryContrast": 9.81424420322524,
-      "controlContrast": 6.683127388295377
+      "inkContrast": 10.840621449581336,
+      "secondaryContrast": 5.593113306878701,
+      "controlContrast": 4.058641983211137
     },
     {
       "width": 360,
@@ -105,9 +105,9 @@
       "headingFont": true,
       "bodyFont": true,
       "monoFont": true,
-      "inkContrast": 13.593970588939737,
-      "secondaryContrast": 9.81424420322524,
-      "controlContrast": 6.683127388295377
+      "inkContrast": 10.840621449581336,
+      "secondaryContrast": 5.593113306878701,
+      "controlContrast": 4.058641983211137
     },
     {
       "width": 360,
@@ -131,9 +131,9 @@
       "headingFont": true,
       "bodyFont": true,
       "monoFont": true,
-      "inkContrast": 13.593970588939737,
-      "secondaryContrast": 9.81424420322524,
-      "controlContrast": 6.683127388295377
+      "inkContrast": 10.840621449581336,
+      "secondaryContrast": 5.593113306878701,
+      "controlContrast": 4.058641983211137
     },
     {
       "width": 360,
