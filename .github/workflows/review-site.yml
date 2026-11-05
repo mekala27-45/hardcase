@@ -28,6 +28,10 @@ jobs:
         working-directory: site
       - run: npx playwright test
         working-directory: site
+      - name: Print review observation records
+        if: always()
+        run: |
+          python -c "import json, pathlib; paths=['evidence/frontend/browser-checks.json','evidence/frontend/scripted-controls.json','evidence/verification/source-scan.json']; print('HARDCASE_REVIEW_RECORDS='+json.dumps({p:json.loads(pathlib.Path(p).read_text()) for p in paths if pathlib.Path(p).exists()}))"
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
