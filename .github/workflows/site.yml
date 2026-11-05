@@ -29,6 +29,12 @@ jobs:
         run: |
           if [ -f package-lock.json ]; then npm ci; else npm install; fi
           npm run build
+      - name: Validate responsive themes and evidence states
+        working-directory: site
+        run: |
+          mkdir -p ../evidence/frontend
+          npx playwright install --with-deps chromium
+          npx playwright test
       - name: Preserve resolved frontend inputs
         run: |
           mkdir -p evidence/frontend
