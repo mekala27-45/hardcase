@@ -1,6 +1,7 @@
 """Frozen held-out execution. This entry point never chooses a checkpoint."""
 import os
 import platform
+import re
 import time
 from pathlib import Path
 from hardcase.contracts import Stage, atomic_json, digest, file_digest, load_json, require, utcnow
@@ -37,8 +38,11 @@ def run():
     import torch
     config = load_json('requests/experiment.json')
     request = load_json('requests/evaluate.json')
+    require(re.fullmatch(r'[a-z0-9][a-z0-9-]{4,60}', request['evaluation_id']) is not None, 'UNSAFE_EVALUATION_ID')
     selection = load_json('artifacts/training/selection.json')
     exported = load_json('artifacts/export/selection.json')
+    require(digest({k:v for k,v in selection.items() if k!='selection_id'}) == selection['selection_id'], 'SELECTION_CONTENT_CHANGED')
+    require(digest({k:v for k,v in exported.items() if k!='export_id'}) == exported['export_id'], 'EXPORT_SELECTION_CONTENT_CHANGED')
     live = load_json('evidence/live/pretest.json')
     require(selection['selection_id'] == request['selection_id'] and exported['export_id'] == request['export_id'], 'EVALUATION_FREEZE_CHANGED')
     require(exported['selection_id'] == selection['selection_id'], 'EXPORT_PARENT_CHANGED')
