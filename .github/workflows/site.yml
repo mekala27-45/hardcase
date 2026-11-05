@@ -1,0 +1,53 @@
+name: Workbench build and Pages
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', 'evidence/**', 'deploy/build_site_data.py', '.github/workflows/site.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: hardcase-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12.13'
+      - run: python deploy/build_site_data.py
+      - name: Resolve frontend lock
+        working-directory: site
+        run: |
+          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          npm run build
+      - name: Preserve resolved frontend inputs
+        run: |
+          mkdir -p evidence/frontend
+          cp site/package-lock.json evidence/frontend/package-lock.json
+          git config user.name 'Ajay Mekala'
+          git config user.email 'mekalaajayk@gmail.com'
+          git switch -c results/frontend-${{ github.run_id }}
+          git add evidence/frontend
+          git commit -m 'evidence: retain resolved frontend dependency graph'
+          git push origin HEAD
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/deploy-pages@v4
+        id: deployment
