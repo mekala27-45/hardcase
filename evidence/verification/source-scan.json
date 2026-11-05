@@ -1,0 +1,8 @@
+{
+  "files_checked": 259,
+  "findings": [],
+  "observed_at": "2026-11-05T23:29:15.847418+00:00",
+  "scope": "Tracked text and existing built site text; no secret values printed; this scan does not certify absence of all possible sensitive content",
+  "source_commit": "71fe9d256ca434d6552f033d12b25d60971ed4f7",
+  "status": "passed"
+}

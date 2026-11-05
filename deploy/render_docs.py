@@ -1,6 +1,6 @@
 """Generate public numeric prose from validated source artifacts only."""
 from pathlib import Path
-from hardcase.contracts import atomic_json, digest, file_digest, load_json
+from hardcase.contracts import atomic_json, digest, file_digest, load_json, require
 from hardcase.claims import render_measurement, render_results
 
 
@@ -28,7 +28,29 @@ def main():
     measurements.append(observation(teacher['pairs'],'cross_encoder','teacher_supervision','fit','executed pair count',1,'pairs','evidence/preparation/teacher-receipt.json',teacher['started_at'],teacher['ended_at']))
     rendered='\n\n'.join(render_measurement(m) for m in measurements)
     atomic_json('evidence/claims/preparation.json',measurements)
-    readme='# Hardcase\n\n'+statement+'\n\nA controlled study of selective retrieval-encoder fine-tuning, mined weak negatives and teacher distillation, with an inspectable ONNX serving path.\n\n[Open the workbench](https://mekala27-45.github.io/hardcase/) | [Completion evidence](RESULTS.md) | [Specification](docs/SPEC.md) | [Operations](OPERATIONS.md)\n\n## Current execution state\n\nThe published interface displays retained evidence. Live learned search has not yet been verified. The production database credential transfer is awaiting explicit approval. Final test evaluation remains closed until the pretest live check passes. Training state is recorded in the linked workflow and imported terminal manifests, not inferred from this description.\n\n[Actual training workflow](https://github.com/mekala27-45/hardcase/actions/runs/42113390181)\n\n## Observed preparation\n\n'+rendered+'\n\n## Reproduction\n\nRead OPERATIONS.md before executing a stage. Frozen inputs are retained under [input-assets-42109854166](https://github.com/mekala27-45/hardcase/releases/tag/input-assets-42109854166); verify requests/retain.json hashes before use. The test vault is excluded from training. Selected model assets and independent rankings are linked only after their runs complete.\n\n## Limits\n\nThis is a portfolio project, not employment experience or a medical product. The teacher is weak supervision. Published qrels can be incomplete, pretrained exposure is unknown and a single seed does not establish training stability. A completed negative result is valid.\n\n## Rights\n\nSource code is MIT licensed. Dataset and model rights remain separate; see THIRD_PARTY_NOTICES.md.\n'
+    readme='# Hardcase\n\n'+statement+'\n\nA controlled study of selective retrieval-encoder fine-tuning, mined weak negatives and teacher distillation, with an inspectable ONNX serving path.\n\n[Open the workbench](https://mekala27-45.github.io/hardcase/) | [Completion evidence](RESULTS.md) | [Specification](docs/SPEC.md) | [Operations](OPERATIONS.md)\n\n## Current execution state\n\nThe published interface displays retained evidence. Live learned search has not yet been verified. Production publication, registry initialization and deployment credentials await explicit approval. Vercel also rejected the prepared preview at its daily free deployment limit. Final test evaluation remains closed until the pretest live check passes. Training state is recorded in the linked workflow and imported terminal manifests, not inferred from this description.\n\n[Actual training workflow](https://github.com/mekala27-45/hardcase/actions/runs/42113390181)\n\n## Observed preparation\n\n'+rendered+'\n\n## Reproduction\n\nRead OPERATIONS.md before executing a stage. Frozen inputs are retained under [input-assets-42109854166](https://github.com/mekala27-45/hardcase/releases/tag/input-assets-42109854166); verify requests/retain.json hashes before use. The test vault is excluded from training. Selected model assets and independent rankings are linked only after their runs complete.\n\n## Limits\n\nThis is a portfolio project, not employment experience or a medical product. The teacher is weak supervision. Published qrels can be incomplete, pretrained exposure is unknown and a single seed does not establish training stability. A completed negative result is valid.\n\n## Rights\n\nSource code is MIT licensed. Dataset and model rights remain separate; see THIRD_PARTY_NOTICES.md.\n'
+    training_path=Path('evidence/training/selection.json')
+    if training_path.exists():
+        trained=load_json(training_path)
+        training_text='\n## Completed training and frozen validation selection\n\nThe selected candidate is '+trained['candidate']['arm']+'. Its checkpoint identity and validation-only selection are retained in [the selection manifest](evidence/training/selection.json). The comparison below uses development validation; it is not held-out quality.\n\n'
+        for selected in trained['arms']:
+            run_path='evidence/training/'+selected['arm']+'/run.json'
+            observed_run=load_json(run_path)
+            require(observed_run['status']=='completed','INCOMPLETE_IMPORTED_TRAINING')
+            for key,unit,aggregation in [('actual_updates','updates','completed optimizer budget'),('examples','query examples','completed training examples')]:
+                item=observation(observed_run[key],selected['arm'],'actual_training','fit',aggregation,1,unit,run_path,observed_run['started_at'],observed_run['ended_at'])
+                training_text+=render_measurement(item)+'\n\n'
+            item=observation(selected['ndcg10'],selected['arm'],'retrieval_quality','validation','mean selected-checkpoint nDCG@10',selected['query_count'],'nDCG@10',run_path,observed_run['started_at'],observed_run['ended_at'])
+            training_text+=render_measurement(item)+'\n\n'
+        export_path=Path('evidence/export/export.json')
+        if export_path.exists():
+            exported=load_json('evidence/export/selection.json')
+            window=load_json(export_path)
+            training_text+='The serving variant is '+exported['variant']+'. Selection is frozen before test access. Float32 parity and measured INT8 drift are separate records in [parity.json](evidence/export/parity.json); quantization is not an exact-equivalence claim.\n\n'
+            for method,result in exported['validation'].items():
+                item=observation(result['ndcg10'],method,'retrieval_quality','validation','mean symmetric-export nDCG@10',result['queries'],'nDCG@10','evidence/export/selection.json',window['started_at'],window['ended_at'])
+                training_text+=render_measurement(item)+'\n\n'
+        readme+=training_text
     write('README.md',readme)
     split=load_json('evidence/preparation/split.json')
     for method in ['base_encoder']+config['arms']:

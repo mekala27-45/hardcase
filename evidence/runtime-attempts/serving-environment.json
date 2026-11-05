@@ -1,0 +1,19 @@
+{
+  "source_run": 42126831552,
+  "job_id": 127593050838,
+  "source_step": "python -m pip install -r requirements-serve.txt",
+  "source": "Successful installation record in retained GitHub job logs",
+  "python": "3.12.13",
+  "platform": "ubuntu-24.04 x86_64",
+  "packages": 31,
+  "lock": "requirements-serve-resolved.txt",
+  "warning": "The later compatibility-request validation failed; dependency installation itself completed successfully.",
+  "shared_dependency_resolution": {
+    "filelock": {
+      "serving_capture": "4.2.9",
+      "locked": "4.2.4",
+      "source": "requirements-resolved.txt from successful setup/training",
+      "reason": "Use the original observed shared training pin; verify the combined locked environment in CI."
+    }
+  }
+}

@@ -38,14 +38,20 @@ jobs:
         with:
           python-version: '3.12.13'
       - name: Install observed measurement environment
-        run: python -m pip install -r requirements-resolved.txt --extra-index-url https://download.pytorch.org/whl/cpu
+        run: python -m pip install -r requirements-resolved.txt -r requirements-serve-resolved.txt httpx==0.28.1 --extra-index-url https://download.pytorch.org/whl/cpu
+      - name: Validate fixed review request and instrument
+        run: |
+          python -c "from hardcase.contracts import load_json,require; r=load_json('requests/runtime-review.json'); require(r['training_run_id']==42113390181 and r['mode']=='local_verification_only','UNAPPROVED_RUNTIME_REVIEW')"
+          python -m unittest discover -s tests
+          python -c "import os,platform,time; from pathlib import Path; from hardcase.contracts import atomic_json; lines=Path('/proc/cpuinfo').read_text().splitlines(); atomic_json('evidence/runtime/host.json',{'cpu_model':next((s.split(':',1)[1].strip() for s in lines if s.startswith('model name')),None),'logical_cpus':os.cpu_count(),'threads_per_model':2,'platform':platform.platform(),'python':platform.python_version(),'clock_resolution_seconds':time.get_clock_info('perf_counter').resolution,'source_commit':os.environ['GITHUB_SHA']})"
       - name: Fetch fixed training asset release
         run: |
           mkdir -p artifacts/downloads
-          gh release download training-assets-42113390181 --pattern serving-bundles.tar.gz --pattern delivery.json --dir artifacts/downloads
-          python -c "from hardcase.contracts import *; from deploy.package_runtime import safe_unpack; d=load_json('artifacts/downloads/delivery.json'); a=next(r for r in d['assets'] if r['name']=='serving-bundles.tar.gz'); require(file_digest('artifacts/downloads/serving-bundles.tar.gz')==a['sha256'],'DELIVERY_HASH_CHANGED'); safe_unpack('artifacts/downloads/serving-bundles.tar.gz','.'); e=load_json('artifacts/export/selection.json'); require(e['selection_id']==d['selection_id'],'DELIVERY_PARENT_CHANGED'); atomic_json('requests/runtime.json',{'release_tag':'training-assets-42113390181','asset_sha256':a['sha256'],'export_id':e['export_id'],'variant':e['variant']})"
+          python -c "import re,subprocess; from hardcase.contracts import *; tag=load_json('requests/runtime-review.json').get('artifact_release_tag','training-assets-42113390181'); require(re.fullmatch(r'training-assets-[0-9]+',tag) is not None,'UNAPPROVED_ASSET_TAG'); subprocess.run(['gh','release','download',tag,'--pattern','serving-bundles.tar.gz','--pattern','delivery.json','--dir','artifacts/downloads'],check=True)"
+          python -c "from hardcase.contracts import *; from deploy.package_runtime import safe_unpack; d=load_json('artifacts/downloads/delivery.json'); require(d['selection_id']==load_json('requests/runtime-review.json')['selection_id'],'REVIEW_SELECTION_CHANGED'); a=next(r for r in d['assets'] if r['name']=='serving-bundles.tar.gz'); require(file_digest('artifacts/downloads/serving-bundles.tar.gz')==a['sha256'],'DELIVERY_HASH_CHANGED'); require(a['sha256']==load_json('requests/runtime-review.json')['serving_asset_sha256'],'REVIEW_DELIVERY_CHANGED'); safe_unpack('artifacts/downloads/serving-bundles.tar.gz','.'); e=load_json('artifacts/export/selection.json'); require(e['selection_id']==d['selection_id'],'DELIVERY_PARENT_CHANGED'); atomic_json('requests/runtime.json',{'release_tag':load_json('requests/runtime-review.json').get('artifact_release_tag','training-assets-42113390181'),'asset_sha256':a['sha256'],'export_id':e['export_id'],'variant':e['variant']})"
       - name: Verify actual package and fault refusals
         run: |
+          python deploy/diagnose_startup.py
           python deploy/package_runtime.py
           python deploy/observe_bundle_faults.py
       - name: Verify matched reference resources without changing selection
@@ -57,6 +63,7 @@ jobs:
         run: |
           python -c "from hardcase.registry.postgres import connect; from pathlib import Path; db=connect(); db.execute(Path('db/migrations/001_registry.sql').read_text(),prepare=False); db.commit(); db.close()"
           python deploy/register_runtime.py
+          python -c "from hardcase.contracts import *; from hardcase.inference.bundle import Bundle; p=load_json('runtime/bundles/allowlist.json'); atomic_json('evidence/runtime/registry-input.json',{'package':p,'manifests':[Bundle('runtime/bundles/'+r['directory']).manifest for r in p['bundles']]})"
       - name: Start actual local ONNX API
         run: |
           python -m uvicorn hardcase.api.server:app --host 127.0.0.1 --port 8000 > artifacts/runtime/api.log 2>&1 &
@@ -64,6 +71,8 @@ jobs:
           python -c "import time,urllib.request; ready=False; exec('for _ in range(45):\n try:\n  ready=urllib.request.urlopen(\"http://127.0.0.1:8000/readyz\",timeout=2).status==200\n  if ready: break\n except Exception: time.sleep(1)'); assert ready, 'LOCAL_RUNTIME_NOT_READY'"
       - name: Observe local open-loop requests and independent DB readback
         run: python deploy/measure_api.py
+      - name: Observe actual model transaction fault boundaries
+        run: python deploy/observe_runtime_transactions.py
       - name: Preserve runtime results
         if: always()
         env:
@@ -73,12 +82,4 @@ jobs:
           python -c "import os; from hardcase.contracts import atomic_json; atomic_json('evidence/runtime/terminal.json',{'status':os.environ['JOB_STATUS'],'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID'],'training_run_id':42113390181,'public_live_verified':False})"
           cp runtime/package-receipt.json evidence/runtime/ 2>/dev/null || true
           cp artifacts/runtime/initialization.json evidence/runtime/ 2>/dev/null || true
-          git config user.name 'Ajay Mekala'
-          git config user.email 'mekalaajayk@gmail.com'
-          git switch -c results/runtime-${{ github.run_id }}
-          git add evidence/runtime
-          if [ -d evidence/serving ]; then git add evidence/serving; fi
-          if [ -f evidence/faults/actual-bundles.json ]; then git add evidence/faults/actual-bundles.json; fi
-          if [ -f requests/runtime.json ]; then git add requests/runtime.json; fi
-          git commit -m 'evidence: preserve actual exported runtime and local API observations'
-          git push origin HEAD
+          python deploy/publish_json_evidence.py runtime evidence/runtime evidence/serving evidence/faults/actual-bundles.json evidence/faults/runtime-transactions.json requests/runtime.json

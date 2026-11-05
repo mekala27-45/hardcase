@@ -1,0 +1,97 @@
+{
+  "bundle_id": "43f7a256426411096133ff091bac9c2564db5c0487ea5a3c99bb5677f1c1cfda",
+  "candidate": "hard_contrastive",
+  "checks": [
+    {
+      "name": "three_arms_complete",
+      "observed": true,
+      "passed": true,
+      "threshold": true
+    },
+    {
+      "name": "validation_gain",
+      "observed": 0.017640742412402544,
+      "passed": true,
+      "threshold": 0.01
+    },
+    {
+      "name": "float32_parity",
+      "observed": true,
+      "passed": true,
+      "threshold": true
+    },
+    {
+      "name": "heldout_complete",
+      "observed": false,
+      "passed": false,
+      "threshold": true
+    },
+    {
+      "name": "test_gain",
+      "observed": null,
+      "passed": false,
+      "threshold": 0
+    },
+    {
+      "name": "grouped_interval_lower",
+      "observed": null,
+      "passed": false,
+      "threshold": -0.01
+    },
+    {
+      "name": "recall100_change",
+      "observed": null,
+      "passed": false,
+      "threshold": -0.02
+    },
+    {
+      "name": "warm_p95_ms",
+      "observed": 33.03656799999999,
+      "passed": true,
+      "threshold": 1500
+    },
+    {
+      "name": "peak_rss_mib",
+      "observed": 429.59375,
+      "passed": true,
+      "threshold": 768
+    },
+    {
+      "name": "live_bundle_verified",
+      "observed": false,
+      "passed": false,
+      "threshold": true
+    }
+  ],
+  "created_at": "2026-11-05T23:29:12.903964+00:00",
+  "decision": "candidate_refused_default_remains_baseline",
+  "decision_digest": "0abc5a4e74c2f4e275dbddcde3ca4fc0aea1291b836a6cdcd2c1a74f0816e294",
+  "default_model": "Pretrained baseline",
+  "evidence_digest": "7ecd5705fa69ce2041b3e619e1de834005b82ebe8f9ad9a3d7c785bd972aaae3",
+  "model_execution": false,
+  "namespace": "scripted_release",
+  "observed": {
+    "float32_parity": true,
+    "heldout_complete": false,
+    "interval_lower": null,
+    "live_bundle_verified": false,
+    "peak_rss_mib": 429.59375,
+    "recall100_change": null,
+    "test_gain": null,
+    "three_arms_complete": true,
+    "validation_gain": 0.017640742412402544,
+    "warm_p95_ms": 33.03656799999999
+  },
+  "passed": false,
+  "policy_digest": "5493106b1d2b7e864afe0ebb425dd3b0db0f66c357774186c7d4d9b2442ae02c",
+  "resource_environment": "GitHub standard CPU; local HTTP and ephemeral PostgreSQL; not public Vercel",
+  "resource_scope": "60-second one-request-per-second local HTTP and PostgreSQL envelope; public smoke is separate",
+  "source_digests": {
+    "export": "7cb57e9d01af4b5333501228e3790f4ab34996327e6de3afaa030ab8a7bce368",
+    "local_serving": "7f12c0d7012ea3b64cabb0d544965fe050a302cc16a7367d8cd4993001ebcd91",
+    "preparation": "8e6893cf634a34279e66ba9f817225ebd9346f9f2cb2233aa5683f0fcd503036",
+    "runs": "445b45a8322ce12bd4a69d1055a1ebcbbe27726e433deb03c760a914bc76c239",
+    "selection": "7fdd187527ea4a1883fbf5f7c01851bdf23789910fe1a4ff735da7abf0a0dbfb"
+  },
+  "variant": "candidate_float32"
+}

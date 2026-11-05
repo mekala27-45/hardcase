@@ -11,6 +11,7 @@ from hardcase.training.encoder import download_locked, load_encoder, encode, par
 from hardcase.inference.bundle import Bundle
 from .metrics import grade_inventory, qrel_map
 from .statistics import grouped_bootstrap, grouped_sign_flip, benjamini_hochberg, quantile
+from .slices import boundaries, describe
 
 
 def summaries(rows, methods, planned):
@@ -145,10 +146,10 @@ def run():
         errors = list({r['query_id']:r for r in sample}.values())
         atomic_json(root / 'error-sample.json', errors)
         train_queries = load_json('data/processed/train-queries.json')
-        lengths = [len(train_queries[q]['text']) for q in load_json('data/manifests/split.json')['fit']]
-        boundaries = [quantile(lengths, p) for p in (1/3,2/3)]
-        slices = [{'query_id': q, 'length_bin': sum(len(queries[q]['text'])>b for b in boundaries), 'relevant_count_bin': 'one' if len([s for s in gold[q].values() if s>0])==1 else 'multiple', 'any_relevant_truncated': any(documents[d].get('truncated',False) for d,s in gold[q].items() if s>0)} for q in query_ids]
-        atomic_json(root / 'slices.json', {'development_length_boundaries': boundaries, 'rows': slices, 'interpretation': 'Descriptive source-property slices; no subgroup significance claim.'})
+        bins=boundaries(train_queries,load_json('data/manifests/split.json')['fit'],load_json('data/processed/train-qrels.json'),documents)
+        slices=describe(queries,labels,documents,bins,main)
+        atomic_json(root / 'slices.json', slices)
+        atomic_json(root / 'paired-rows.json',paired)
         report = {'namespace': 'retrieval_quality', 'status': 'completed' if all(r['status']=='completed' for r in main) else 'incomplete', 'methods': summaries(main, methods, len(query_ids)), 'exports': summaries(export_rows, export_methods, len(query_ids)), 'primary': primary, 'secondary': secondary, 'errors': [{k:v for k,v in r.items() if k!='relevant_documents'} for r in errors], 'selection_id': selection['selection_id'], 'export_id': exported['export_id'], 'candidate': candidate, 'main_completed_rows': sum(r['status']=='completed' for r in main), 'main_planned_rows': len(main), 'export_completed_rows': sum(r['status']=='completed' for r in export_rows), 'export_planned_rows': len(export_rows), 'test_query_count': len(query_ids), 'corpus_count': len(ids), 'label_digest': digest(labels), 'groups_digest': digest(groups), 'source_commit': os.getenv('GITHUB_SHA','local'), 'run_id': os.getenv('GITHUB_RUN_ID','local'), 'platform': platform.platform(), 'started_at': terminal['started_at'], 'ended_at': utcnow(), 'conclusion': 'Frozen comparison only. Promotion also requires independent live and resource evidence.'}
         report['report_digest'] = digest(report)
         atomic_json(root / 'report.json', report)

@@ -1,0 +1,11 @@
+{
+  "status": "failed",
+  "deployment_id": "dpl_3RGMnWn6ZMchf4bG3VTHLSBQDVZG",
+  "source_commit": "01c85cc2b8fdae6256689e4afb6ea711deb0c026",
+  "observed_error": "ModuleNotFoundError: No module named numpy",
+  "cause": "Vercel installed the default pyproject.toml dependencies, which were empty. The required inference packages were only optional or in requirements files.",
+  "correction": "Make the exact observed inference-only dependency lock the project default dependencies.",
+  "build_probe_reached": true,
+  "model_startup_passed": false,
+  "observed_at": "2026-11-05T23:31:43.649Z"
+}

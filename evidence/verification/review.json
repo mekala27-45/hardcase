@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "run_id": 42129215925,
+  "source_head": "2612e34a98df33b39b0049df42a5be10591ab444",
+  "tested_merge_commit": "ce8830bff54121209b901c70db60c285422e2142",
+  "ci": {
+    "run_id": 42129215961,
+    "status": "success",
+    "hash_seeds": [
+      1,
+      271
+    ]
+  },
+  "runtime": {
+    "run_id": 42127323550,
+    "status": "success",
+    "tests": 78,
+    "skipped": 0
+  },
+  "live_public_inference": false,
+  "native_browser_zoom": "verified at 200 percent by native X11 keyboard events in headed Chromium",
+  "observed_at": "2026-11-05T23:28:39.394Z"
+}

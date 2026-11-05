@@ -1,0 +1,42 @@
+{
+  "status": "uploaded_and_observed",
+  "training_run_id": 42113390181,
+  "training_source_commit": "5ec6cb55fc6039fc9045f3bd29b584673f5bcc9c",
+  "evidence_commit": "48fe0ffb0735acbf4c53f036b920f1a496caa0ac",
+  "release_id": 435855343,
+  "release_tag": "training-assets-42113390181",
+  "observed_at": "2026-11-05T22:56:46.144Z",
+  "assets": [
+    {
+      "name": "delivery.json",
+      "bytes": 959,
+      "sha256": "6a3c3cab16cb21194438d1d904af0de016779dc84ce2aa1a2dd36e7cb766a1cf",
+      "url": "https://github.com/mekala27-45/hardcase/releases/download/training-assets-42113390181/delivery.json"
+    },
+    {
+      "name": "hard_contrastive.tar.gz",
+      "bytes": 109415158,
+      "sha256": "faf7561f020005f36dac71b62608223da7b22a42f748a7ab407d76f68ad6f019",
+      "url": "https://github.com/mekala27-45/hardcase/releases/download/training-assets-42113390181/hard_contrastive.tar.gz"
+    },
+    {
+      "name": "hard_distilled.tar.gz",
+      "bytes": 109414243,
+      "sha256": "0a0be6c828662c576bfad24a60e92457f170a54359ab2927972bce2ecf74b9d6",
+      "url": "https://github.com/mekala27-45/hardcase/releases/download/training-assets-42113390181/hard_distilled.tar.gz"
+    },
+    {
+      "name": "serving-bundles.tar.gz",
+      "bytes": 254134829,
+      "sha256": "11fc590c7057fc0469350a24dabaa8822b261cf2f87e1f10d586828f9fa2f262",
+      "url": "https://github.com/mekala27-45/hardcase/releases/download/training-assets-42113390181/serving-bundles.tar.gz"
+    },
+    {
+      "name": "uniform_contrastive.tar.gz",
+      "bytes": 109430555,
+      "sha256": "cbe63fc9f377c91405cdbad6bf3e084dc4ba42bfe902ffcdb04bda908ec68c25",
+      "url": "https://github.com/mekala27-45/hardcase/releases/download/training-assets-42113390181/uniform_contrastive.tar.gz"
+    }
+  ],
+  "test_access": false
+}

@@ -25,15 +25,10 @@ jobs:
         run: |
           python -c "from hardcase.contracts import *; r=load_json('requests/evaluate.json'); p=load_json('evidence/live/pretest.json'); require(p['status']=='verified' and digest(p)==r['pretest_live_digest'],'PRETEST_LIVE_EVIDENCE_MISSING')"
       - name: Restore fixed data and model assets
-        run: |
-          mkdir -p artifacts/downloads artifacts/training
-          gh release download input-assets-42109854166 --dir artifacts/downloads
-          gh release download training-assets-42113390181 --dir artifacts/downloads
-          python -c "from hardcase.contracts import *; from zipfile import ZipFile; from deploy.package_runtime import safe_unpack; r=load_json('requests/retain.json'); [require(file_digest('artifacts/downloads/'+n)==h,'INPUT_HASH_CHANGED') for n,h in r['assets'].items()]; ZipFile('artifacts/downloads/train-inputs.zip').extractall('.'); ZipFile('artifacts/downloads/test-vault.zip').extractall('data/vault'); d=load_json('artifacts/downloads/delivery.json'); [require(file_digest('artifacts/downloads/'+a['name'])==a['sha256'],'MODEL_ASSET_CHANGED') for a in d['assets']]; [safe_unpack('artifacts/downloads/'+a['name'],'.') for a in d['assets']]"
-          gh api 'repos/mekala27-45/hardcase/contents/evidence/training/selection.json?ref=results/training-42113390181' --jq .content | base64 --decode > artifacts/training/selection.json
+        run: python deploy/restore_evaluation.py
       - name: Install frozen evaluation environment
         run: |
-          python -m pip install -r requirements-resolved.txt --extra-index-url https://download.pytorch.org/whl/cpu
+          python -m pip install -r requirements-resolved.txt -r requirements-serve-resolved.txt httpx==0.28.1 --extra-index-url https://download.pytorch.org/whl/cpu
           python -m pip check
           python -m unittest discover -s tests -v
       - name: Execute unchanged full-corpus methods and independent grading
@@ -46,9 +41,4 @@ jobs:
           mkdir -p evidence/evaluation
           cp artifacts/evaluation/*/*.json evidence/evaluation/ 2>/dev/null || true
           python -c "import os; from hardcase.contracts import atomic_json; atomic_json('evidence/evaluation/terminal.json',{'status':os.environ['JOB_STATUS'],'source_commit':os.environ['GITHUB_SHA'],'run_id':os.environ['GITHUB_RUN_ID']})"
-          git config user.name 'Ajay Mekala'
-          git config user.email 'mekalaajayk@gmail.com'
-          git switch -c results/evaluation-${{ github.run_id }}
-          git add evidence/evaluation
-          git commit -m 'evidence: preserve frozen heldout rankings and independent analysis'
-          git push origin HEAD
+          python deploy/publish_json_evidence.py evaluation evidence/evaluation

@@ -48,6 +48,40 @@ def torch_measure():
     import resource
     peak=max(peak,resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*1024)
     atomic_json('evidence/serving/torch-reference.json',{'namespace':'serving_measurement','method':'selected_pytorch_parent','state_digest':candidate['state_digest'],'query_digest':digest(queries),'cold_load_ms':load_ms,'peak_rss_mib':peak/1024**2,'observations':rows,'queries':len(queries),'repeats':5,'threads':2,'platform':platform.platform(),'observed_at':utcnow(),'purpose':'Post-freeze matched reference audit; serving selection unchanged.'})
+    teacher_diagnostic(model,tokenizer,matrix,ids)
+
+
+def teacher_diagnostic(model,tokenizer,matrix,ids):
+    from hardcase.training.loss import validate_candidate_alignment
+    queries=load_json('data/processed/train-queries.json')
+    lists=load_json('data/processed/candidates.json')
+    scores=load_json('data/processed/teacher-scores.json')
+    frozen=load_json('data/manifests/preparation.json')
+    require(digest(lists)==frozen['candidate_digest'] and digest(scores)==frozen['teacher_digest'],'DIAGNOSTIC_FROZEN_LIST_CHANGED')
+    audit=load_json('evidence/preparation/mining-audit.json')
+    query_ids=sorted({row['query_id'] for row in audit})
+    row_index={d:i for i,d in enumerate(ids)}
+    observations=[]
+    started=utcnow()
+    for query_id in query_ids:
+        positive=sorted(lists[query_id]['positives'])[0]
+        candidates=[positive]+[r['id'] for r in lists[query_id]['hard']]
+        record=scores[query_id+':'+positive]
+        validate_candidate_alignment(candidates,lists[query_id]['positives'],record)
+        vector=encode(model,tokenizer,[queries[query_id]['text']],256)[0]
+        student=[float(matrix[row_index[d]]@vector) for d in candidates]
+        comparable,concordant,ties=0,0,0
+        for i in range(len(candidates)):
+            for j in range(i+1,len(candidates)):
+                left=student[i]-student[j]
+                right=record['scores'][i]-record['scores'][j]
+                if left==0 or right==0:ties+=1
+                else:
+                    comparable+=1
+                    concordant+=int(left*right>0)
+        observations.append({'query_id':query_id,'candidate_ids':candidates,'teacher_scores':record['scores'],'student_cosines':student,'comparable_pairs':comparable,'concordant_pairs':concordant,'ties_excluded':ties,'pair_agreement':concordant/comparable if comparable else None})
+    denominator=sum(r['comparable_pairs'] for r in observations)
+    atomic_json('evidence/serving/teacher-agreement.json',{'namespace':'teacher_supervision','split':'fit audit lists; training-exposed diagnostic','queries':len(query_ids),'candidate_lists_digest':digest(lists),'teacher_scores_digest':digest(scores),'selection_rule':'Distinct queries in the frozen preparation audit; lexicographically first known positive per query','observations':observations,'comparable_pairs':denominator,'pair_agreement':sum(r['concordant_pairs'] for r in observations)/denominator if denominator else None,'started_at':started,'ended_at':utcnow(),'interpretation':'Agreement with weak teacher supervision only. This is neither held-out relevance nor independent quality.'})
 
 
 def run():
@@ -74,7 +108,11 @@ def run():
         if method not in exported['bundles']:
             atomic_json('evidence/serving/'+method+'-matched.json',{'status':'unsupported','measurement':None})
             continue
-        subprocess.run([sys.executable,'-m','hardcase.inference.measure',exported['bundles'][method],'artifacts/export/timing-queries.json','evidence/serving/'+method+'-matched.json',exported['bundles']['base_float32']],check=True)
+        result=subprocess.run([sys.executable,'-m','hardcase.inference.measure',exported['bundles'][method],'artifacts/export/timing-queries.json','evidence/serving/'+method+'-matched.json',exported['bundles']['base_float32']],capture_output=True,text=True)
+        if result.returncode:
+            atomic_json('evidence/serving/'+method+'-matched.json',{'status':'failed','measurement':None,'exit_code':result.returncode,'diagnostic':result.stderr[-1500:],'interpretation':'Startup and parity requirements remain enforced; no timing value is substituted.'})
+            require(method!=exported['variant'],'SELECTED_VARIANT_MEASUREMENT_FAILED')
+    subprocess.run([sys.executable,'deploy/compare_timing.py'],check=True)
     atomic_json('evidence/serving/matched-context.json',{'source_commit':os.getenv('GITHUB_SHA'),'run_id':os.getenv('GITHUB_RUN_ID'),'platform':platform.platform(),'export_id':exported['export_id'],'selected_variant_unchanged':exported['variant'],'timing_inputs_digest':digest(load_json('artifacts/export/timing-queries.json')),'comparison':'Separate fresh processes on the same runner. PyTorch reference and symmetric ONNX variants; no network or database in these timings.'})
 
 

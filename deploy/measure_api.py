@@ -73,7 +73,7 @@ def measure():
     require(observed and observed['receipt']['bundle_id']==cold['bundle_id'] and observed['receipt']['top_document_ids']==cold['top_document_ids'],'LOCAL_INDEPENDENT_RECEIPT_MISMATCH')
     status_text=Path(f'/proc/{server_pid}/status').read_text()
     peak_kib=int(next(line.split()[1] for line in status_text.splitlines() if line.startswith('VmHWM:')))
-    atomic_json('evidence/serving/local-open-loop.json',{'namespace':'serving_measurement','environment':'GitHub standard CPU; local HTTP and ephemeral PostgreSQL; not public Vercel','observed_at':utcnow(),'concurrency_cap':4,'server_peak_rss_mib':peak_kib/1024,'memory_observer':'Independent Linux /proc server process VmHWM high-water mark','first_request':cold_observation,'summaries':summary,'observations':sorted(rows,key=lambda r:(r['rate'],r['index'])),'independent_db_match':True,'public_live_verified':False})
+    atomic_json('evidence/serving/local-open-loop.json',{'namespace':'serving_measurement','environment':'GitHub standard CPU; local HTTP and ephemeral PostgreSQL; not public Vercel','bundle_id':cold['bundle_id'],'observed_at':utcnow(),'concurrency_cap':4,'server_peak_rss_mib':peak_kib/1024,'memory_observer':'Independent Linux /proc server process VmHWM high-water mark','first_request':cold_observation,'summaries':summary,'observations':sorted(rows,key=lambda r:(r['rate'],r['index'])),'independent_db_match':True,'public_live_verified':False})
 
 
 if __name__=='__main__':

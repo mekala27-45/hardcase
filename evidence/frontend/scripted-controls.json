@@ -1,0 +1,56 @@
+{
+  "namespace": "scripted_interface",
+  "model_execution": false,
+  "status": "passed",
+  "source_commit": "71fe9d256ca434d6552f033d12b25d60971ed4f7",
+  "observations": [
+    {
+      "width": 360,
+      "theme": "light",
+      "viewport": 360,
+      "document": 360,
+      "chartMinimum": 680
+    },
+    {
+      "width": 360,
+      "theme": "dark",
+      "viewport": 360,
+      "document": 360,
+      "chartMinimum": 680
+    },
+    {
+      "width": 768,
+      "theme": "light",
+      "viewport": 768,
+      "document": 768,
+      "chartMinimum": 708
+    },
+    {
+      "width": 768,
+      "theme": "dark",
+      "viewport": 768,
+      "document": 768,
+      "chartMinimum": 708
+    },
+    {
+      "width": 1440,
+      "theme": "light",
+      "viewport": 1440,
+      "document": 1440,
+      "chartMinimum": 1328
+    },
+    {
+      "width": 1440,
+      "theme": "dark",
+      "viewport": 1440,
+      "document": 1440,
+      "chartMinimum": 1328
+    }
+  ],
+  "reflow": {
+    "zoom": "2",
+    "right": 1328,
+    "viewport": 1440
+  },
+  "zoom_mode": "CSS 200 percent reflow, not native browser zoom control"
+}

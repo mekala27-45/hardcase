@@ -10,4 +10,4 @@ Never put credentials, capabilities, private visitor text or model weights into 
 
 Edit result generators and source artifacts rather than hand-writing measured claims. Run `python -m hardcase.claims` to regenerate RESULTS.md. Missing evidence is not done and has no numeric substitute. A setup gradient probe is not benchmark training; a health deployment is not learned inference; a scripted fault is not production reliability.
 
-Project procedures are in skills/prepare-retrieval-training, skills/evaluate-retriever and skills/promote-model-bundle. These are repository procedures, not globally installed personal skills. They grant no external permissions. Follow the current user authorization and preserve any explicit approval blocker.
+Project procedures are in .agents/skills/prepare-retrieval-training, .agents/skills/evaluate-retriever and .agents/skills/promote-model-bundle. These are repository procedures, not globally installed personal skills. They grant no external permissions. Follow the current user authorization and preserve any explicit approval blocker.
