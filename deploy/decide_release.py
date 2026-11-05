@@ -13,6 +13,7 @@ def decide(config, sources):
     study=sources.get('evaluation',{})
     live=sources.get('live',{})
     serving=sources.get('serving',{})
+    local=sources.get('local_serving',{})
     candidate=selection.get('candidate',{}).get('arm')
     variant=exported.get('variant')
     target=exported.get('validation',{}).get(variant,{}).get('bundle_id')
@@ -29,6 +30,8 @@ def decide(config, sources):
     if serving:
         require(serving.get('bundle_id')==target and serving.get('origin')=='public_production','RELEASE_SERVING_SCOPE_MISMATCH')
         require(serving.get('deployment_ids')==[live.get('deployment_id')],'RELEASE_SERVING_DEPLOYMENT_MISMATCH')
+    if local:
+        require(local.get('bundle_id')==target and local.get('independent_db_match') is True,'RELEASE_LOCAL_PACKAGE_MISMATCH')
     runs=sources.get('runs',{})
     complete_arms=len(runs)==len(config['arms']) and all(runs.get(arm,{}).get('status')=='completed' and runs[arm].get('actual_updates')==config['optimizer_updates'] and runs[arm].get('examples')==config['optimizer_updates']*config['microbatch_queries']*config['accumulation_steps'] for arm in config['arms'])
     base_validation=sources.get('preparation',{}).get('baseline_validation',{}).get('base_encoder')
@@ -41,16 +44,18 @@ def decide(config, sources):
     interval=study.get('primary',{}).get('estimate') or {}
     candidate_recall=methods.get(candidate,{}).get('recall100')
     base_recall=methods.get('base_encoder',{}).get('recall100')
-    public_complete=serving.get('status')=='completed' and serving.get('planned')==serving.get('completed')==12 and serving.get('warm_denominator')==10
-    observed={'three_arms_complete':complete_arms,'validation_gain':candidate_validation-base_validation if candidate_validation is not None and base_validation is not None else None,'float32_parity':float_ok,'heldout_complete':heldout,'test_gain':interval.get('mean_difference') if heldout else None,'interval_lower':interval.get('lower') if heldout else None,'recall100_change':candidate_recall-base_recall if heldout and candidate_recall is not None and base_recall is not None else None,'warm_p95_ms':serving.get('warm_p95_ms') if public_complete else None,'peak_rss_mib':serving.get('peak_rss_mib') if public_complete else None,'live_bundle_verified':live.get('status')=='verified' and all(live.get(k) is True for k in ('learned_fresh_browser','learned_fresh_client','independent_db_match'))}
+    public_complete=serving.get('status')=='completed' and serving.get('planned')==serving.get('completed')==16
+    load_row=next((r for r in local.get('summaries',[]) if r.get('requests_per_second')==1),{})
+    local_complete=load_row.get('duration_seconds')==60 and load_row.get('scheduled')==load_row.get('completed')==60
+    observed={'three_arms_complete':complete_arms,'validation_gain':candidate_validation-base_validation if candidate_validation is not None and base_validation is not None else None,'float32_parity':float_ok,'heldout_complete':heldout,'test_gain':interval.get('mean_difference') if heldout else None,'interval_lower':interval.get('lower') if heldout else None,'recall100_change':candidate_recall-base_recall if heldout and candidate_recall is not None and base_recall is not None else None,'warm_p95_ms':load_row.get('warm_p95_ms') if local_complete else None,'peak_rss_mib':local.get('server_peak_rss_mib') if local_complete else None,'live_bundle_verified':public_complete and live.get('status')=='verified' and all(live.get(k) is True for k in ('learned_fresh_browser','learned_fresh_client','independent_db_match'))}
     decision=release_gate(observed,config['promotion'])
-    decision.update(namespace='scripted_release',model_execution=False,bundle_id=target,candidate=candidate,variant=variant,decision='eligible_for_authorized_promotion' if decision['passed'] else 'candidate_refused_default_remains_baseline',default_model='Pretrained baseline',source_digests={k:digest(v) for k,v in sources.items()},observed=observed,created_at=utcnow())
+    decision.update(namespace='scripted_release',model_execution=False,bundle_id=target,candidate=candidate,variant=variant,decision='eligible_for_authorized_promotion' if decision['passed'] else 'candidate_refused_default_remains_baseline',default_model='Pretrained baseline',resource_environment=local.get('environment'),resource_scope='60-second one-request-per-second local HTTP and PostgreSQL envelope; public smoke is separate',source_digests={k:digest(v) for k,v in sources.items()},observed=observed,created_at=utcnow())
     decision['decision_digest']=digest(decision)
     return decision
 
 
 def main():
-    paths={'selection':'evidence/training/selection.json','export':'evidence/export/selection.json','evaluation':'evidence/evaluation/report.json','live':'evidence/live/pretest.json','serving':'evidence/serving/public-smoke.json','preparation':'evidence/preparation/prepare.json'}
+    paths={'selection':'evidence/training/selection.json','export':'evidence/export/selection.json','evaluation':'evidence/evaluation/report.json','live':'evidence/live/pretest.json','serving':'evidence/serving/public-smoke.json','local_serving':'evidence/serving/local-open-loop.json','preparation':'evidence/preparation/prepare.json'}
     sources={name:load_json(path) for name,path in paths.items() if Path(path).exists()}
     config=load_json('requests/experiment.json')
     sources['runs']={arm:load_json(f'evidence/training/{arm}/run.json') for arm in config['arms'] if Path(f'evidence/training/{arm}/run.json').exists()}
