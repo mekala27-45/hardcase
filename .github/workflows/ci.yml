@@ -2,7 +2,7 @@ name: Independent contracts and API checks
 on:
   push:
     branches: [main]
-    paths: ['src/**', 'evaluation/**', 'tests/**', 'db/**', '.github/workflows/ci.yml']
+    paths: ['src/**', 'evaluation/**', 'deploy/**', 'tests/**', 'db/**', '.github/workflows/ci.yml']
   pull_request:
 permissions:
   contents: read
