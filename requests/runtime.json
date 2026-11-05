@@ -1,6 +1,6 @@
 {
-  "release_tag": "training-assets-42113390181",
-  "asset_sha256": "11fc590c7057fc0469350a24dabaa8822b261cf2f87e1f10d586828f9fa2f262",
-  "export_id": "fc6d57815ece729c258f2ade8bfc123bc0216f16176f0f1ec2b6eb1e6b726bb0",
-  "variant": "candidate_int8"
+  "release_tag": "training-assets-42127068812",
+  "asset_sha256": "1ce55394810d40e3457ebec5a312ad20135f64559c4a9f7fef55d877e2b7e356",
+  "export_id": "7b4d374da3bc93378f138409b2df47507c72a11e5bfa7bf4b8d833743ca9b943",
+  "variant": "candidate_float32"
 }

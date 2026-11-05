@@ -36,7 +36,7 @@ jobs:
         with:
           python-version: '3.12.13'
       - name: Install observed measurement environment
-        run: python -m pip install -r requirements-resolved.txt -r requirements-serve.txt httpx==0.28.1 --extra-index-url https://download.pytorch.org/whl/cpu
+        run: python -m pip install -r requirements-resolved.txt -r requirements-serve-resolved.txt httpx==0.28.1 --extra-index-url https://download.pytorch.org/whl/cpu
       - name: Validate fixed review request and instrument
         run: |
           python -c "from hardcase.contracts import load_json,require; r=load_json('requests/runtime-review.json'); require(r['training_run_id']==42113390181 and r['mode']=='local_verification_only','UNAPPROVED_RUNTIME_REVIEW')"
