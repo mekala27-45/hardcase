@@ -47,7 +47,7 @@ def package():
         require(not destination.exists(), 'RUNTIME_ALREADY_ASSEMBLED')
         destination.mkdir(parents=True)
         allowlist = []
-        methods = list(dict.fromkeys(['base_float32', request['variant'], 'candidate_float32']))
+        methods = ['base_float32', request['variant']]
         for method in methods:
             source = temporary/'expanded/artifacts/bundles'/method
             bundle = Bundle(source)

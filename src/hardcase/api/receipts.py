@@ -56,7 +56,8 @@ def commit_receipt(admission, receipt, status="completed"):
         receipt["status"] = final_status
         if final_status != "completed":
             receipt["results"] = []
-        db.execute("UPDATE hardcase.query_receipts SET status=%s,receipt=%s,completed_at=now() WHERE id=%s AND status='pending'", (final_status, Jsonb(receipt), admission["request_id"]))
+        updated = db.execute("UPDATE hardcase.query_receipts SET status=%s,receipt=%s,completed_at=now() WHERE id=%s AND status='pending'", (final_status, Jsonb(receipt), admission["request_id"]))
+        require(updated.rowcount == 1, 'RECEIPT_ALREADY_TERMINAL')
         db.execute("UPDATE hardcase.sessions SET busy_request=NULL,busy_until=NULL WHERE capability_digest=%s AND busy_request=%s", (admission["session_digest"], admission["request_id"]))
     require(not revoked, "BUNDLE_REVOKED_BEFORE_COMMIT")
     return receipt
@@ -65,6 +66,6 @@ def commit_receipt(admission, receipt, status="completed"):
 def read_receipt(token, request_id):
     session_digest = capability_digest(token)
     with connect() as db:
-        row = db.execute("SELECT q.receipt FROM hardcase.query_receipts q JOIN hardcase.sessions s ON s.capability_digest=q.session_digest WHERE q.id=%s AND q.session_digest=%s AND s.expires_at>now() AND q.status='completed'", (request_id, session_digest)).fetchone()
+        row = db.execute("SELECT q.receipt FROM hardcase.query_receipts q JOIN hardcase.sessions s ON s.capability_digest=q.session_digest JOIN hardcase.bundle_status b ON b.bundle_id=q.bundle_id WHERE q.id=%s AND q.session_digest=%s AND s.expires_at>now() AND q.status='completed' AND b.valid", (request_id, session_digest)).fetchone()
     require(row is not None, "RECEIPT_NOT_FOUND")
     return row["receipt"]

@@ -26,6 +26,8 @@ pending_tasks = set()
 @asynccontextmanager
 async def lifespan(app):
     global startup_error
+    startup_error = None
+    bundles.clear()
     try:
         package = load_json(ROOT / "allowlist.json")
         require(1 <= len(package["bundles"]) <= 3, "PACKAGED_BUNDLE_LIMIT")
