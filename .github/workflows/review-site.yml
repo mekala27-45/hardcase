@@ -30,10 +30,15 @@ jobs:
         working-directory: site
       - run: npx playwright test
         working-directory: site
+      - name: Verify native browser zoom
+        run: |
+          sudo apt-get install -y xvfb xdotool
+          xvfb-run -a -s '-screen 0 1600x1200x24' node verify-native-zoom.mjs
+        working-directory: site
       - name: Print review observation records
         if: always()
         run: |
-          python -c "import json, pathlib; paths=['evidence/frontend/browser-checks.json','evidence/frontend/scripted-controls.json','evidence/verification/source-scan.json','evidence/release/decision.json']; print('HARDCASE_REVIEW_RECORDS='+json.dumps({p:json.loads(pathlib.Path(p).read_text()) for p in paths if pathlib.Path(p).exists()}))"
+          python -c "import json, pathlib; paths=['evidence/frontend/browser-checks.json','evidence/frontend/scripted-controls.json','evidence/frontend/native-zoom.json','evidence/verification/source-scan.json','evidence/release/decision.json']; print('HARDCASE_REVIEW_RECORDS='+json.dumps({p:json.loads(pathlib.Path(p).read_text()) for p in paths if pathlib.Path(p).exists()}))"
       - name: Print generated source-bound documents
         run: |
           python -c "import json,pathlib; paths=['README.md','RESULTS.md','evidence/claims/preparation.json']+[str(p) for p in pathlib.Path('model-cards').glob('*.md')]; print('HARDCASE_GENERATED_DOCS='+json.dumps({p:pathlib.Path(p).read_text() for p in paths}))"
