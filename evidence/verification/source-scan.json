@@ -1,0 +1,1 @@
+{"files_checked":146,"findings":[],"observed_at":"2026-11-05T22:43:02.083862+00:00","scope":"Tracked text and existing built site text; no secret values printed; this scan does not certify absence of all possible sensitive content","source_commit":"a50b097b02dee09e91a2684ca7611a4dde9a667f","status":"passed"}
