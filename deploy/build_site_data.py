@@ -44,6 +44,10 @@ def build():
         method['claim_title']=method['method']+': '+format(method['ndcg10'],'.4f')+' mean nDCG@10 across '+str(method['planned_queries'])+' test queries'
     result['training'].update(parameters=parameters,claims=claims,selection=selection)
     result['evaluation'].update(paired_rows=existing('evidence/evaluation/paired-rows.json',[]),slices=existing('evidence/evaluation/slices.json',{}),export_drift=existing('evidence/evaluation/export-drift.json',[]),error_details=existing('evidence/evaluation/error-sample.json',[]),timing=existing('evidence/serving/paired-timing.json',{}))
+    audit_comments={(r['query_id'],r['document_id']):r for r in existing('evidence/preparation/audit-commentary.json',{}).get('rows',[])}
+    for row in result['data']['audit']:
+        note=audit_comments.get((row['query_id'],row['document_id']))
+        if note:row['review']='Assistant semantic inspection, not human expert adjudication. '+note['comment']
     result['data']['groups']=existing('evidence/preparation/split.json',{})
     result['data']['purge']=existing('evidence/preparation/purge.json',{})
     result['release']['faults']=existing('evidence/faults/runtime-transactions.json',existing('evidence/faults/postgres.json',{})).get('cases',[])+existing('evidence/faults/actual-bundles.json',{}).get('cases',[])
