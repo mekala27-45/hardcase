@@ -1,0 +1,86 @@
+{
+  "verified_at": "2026-11-14T02:12:39.535Z",
+  "deployment_id": "dpl_EogbfiZVonSLZU97reMvh1KNsgDg",
+  "source_commit": "9e413f9479732f92acc0a1ab1b240bf32a43b01c",
+  "production_url": "https://hardcase-taupe.vercel.app",
+  "database": {
+    "project_id": "wispy-haze-91153072",
+    "branch_id": "br-late-fog-bepe457v",
+    "database": "hardcase",
+    "model_count": 2,
+    "bundle_count": 2,
+    "alias_count": 3,
+    "event_count": 3
+  },
+  "sensitive_environment_variables": [
+    {
+      "key": "DATABASE_URL",
+      "type": "sensitive",
+      "target": [
+        "production",
+        "preview"
+      ]
+    },
+    {
+      "key": "OPERATOR_TOKEN",
+      "type": "sensitive",
+      "target": [
+        "production",
+        "preview"
+      ]
+    }
+  ],
+  "operator_checks": [
+    {
+      "path": "/ops/promotions",
+      "credential": "missing",
+      "status": 401,
+      "body": "{\"detail\":\"SESSION_REQUIRED\"}"
+    },
+    {
+      "path": "/ops/promotions",
+      "credential": "public-session",
+      "status": 403,
+      "body": "{\"detail\":\"OPERATOR_REQUIRED\"}"
+    },
+    {
+      "path": "/ops/promotions",
+      "credential": "invalid",
+      "status": 403,
+      "body": "{\"detail\":\"OPERATOR_REQUIRED\"}"
+    },
+    {
+      "path": "/ops/rollback",
+      "credential": "missing",
+      "status": 401,
+      "body": "{\"detail\":\"SESSION_REQUIRED\"}"
+    },
+    {
+      "path": "/ops/rollback",
+      "credential": "public-session",
+      "status": 403,
+      "body": "{\"detail\":\"OPERATOR_REQUIRED\"}"
+    },
+    {
+      "path": "/ops/rollback",
+      "credential": "invalid",
+      "status": 403,
+      "body": "{\"detail\":\"OPERATOR_REQUIRED\"}"
+    }
+  ],
+  "deployment_protection_checks": [
+    {
+      "url": "https://hardcase-7rt9dbfj0-mekala27-45s-projects.vercel.app/readyz",
+      "status": 302,
+      "loginRequired": true
+    },
+    {
+      "url": "https://hardcase-j8ldopm3j-mekala27-45s-projects.vercel.app/readyz",
+      "status": 302,
+      "loginRequired": true
+    }
+  ],
+  "protection_setting": "all_except_custom_domains",
+  "protection_setting_changed": false,
+  "scope_note": "Existing production domain is publicly reachable; generated production and preview URLs remain protected. A proposed protection change was rejected and was not retried or worked around because no change was needed."
+}
