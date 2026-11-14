@@ -83,6 +83,6 @@ function extraPanels(){
  return '';
 }
 
-async function start(){try{const response=await fetch(import.meta.env.BASE_URL+'evidence.json');if(response.ok)state=await response.json();}catch{}statement=state.statement||'Experiment evidence unavailable.';api=state.api_url||'';const hash=location.hash.slice(1);if(['search','training','evaluation','release','data'].includes(hash))panel=hash as Panel;shell();}
+async function start(){try{const response=await fetch(import.meta.env.BASE_URL+'evidence.json',{cache:'no-store'});if(response.ok)state=await response.json();}catch{}statement=state.statement||'Experiment evidence unavailable.';api=state.api_url||'';const hash=location.hash.slice(1);if(['search','training','evaluation','release','data'].includes(hash))panel=hash as Panel;shell();}
 window.addEventListener('hashchange',()=>{const value=location.hash.slice(1);if(['search','training','evaluation','release','data'].includes(value)){panel=value as Panel;render();}});
 start();
