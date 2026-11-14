@@ -12,7 +12,7 @@ A controlled study of selective retrieval-encoder fine-tuning, mined weak negati
 
 ## Current execution state
 
-Public learned search has verified browser, separate-client and independent database receipts. The baseline remains the default; public sessions cannot promote or roll back a model. See [live deployment evidence](docs/LIVE-DEPLOYMENT.md). The frozen held-out evaluation has been requested. No final test quality claim is made until its retained report and independent audit are available. Training, evaluation, public runtime checks and exploratory comparisons remain separate evidence.
+Public learned search has verified browser, separate-client and independent database receipts. The baseline remains the default; public sessions cannot promote or roll back a model. See [live deployment evidence](docs/LIVE-DEPLOYMENT.md). The first frozen held-out attempt is completed. Missing export rows remain missing. Its original rankings and independent regrading are in [evaluation evidence](evidence/evaluation/). Training, evaluation, public runtime checks and exploratory comparisons remain separate evidence.
 
 [Actual training workflow](https://github.com/mekala27-45/hardcase/actions/runs/42113390181)
 
@@ -47,6 +47,48 @@ Source code is MIT licensed. Dataset and model rights remain separate; see THIRD
 ## Paired diagnostic workbench
 
 The [Compare view](https://mekala27-45.github.io/hardcase/#compare) runs bounded, serial baseline/candidate pairs with alias snapshots, persisted receipt verification and explicit failure states. It shows shared documents, rank changes and a browser-only reciprocal-rank fusion preview. Downloadable reports omit raw query text and credentials. These unlabeled diagnostics do not alter the frozen study, select a checkpoint or establish quality. See [the comparison guide](docs/COMPARISON.md).
+
+## First frozen held-out result
+
+bm25 | mean per-query ndcg10 | 0.63225475 ndcg10 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+bm25 | mean per-query recall100 | 0.86188889 recall100 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+base_encoder | mean per-query ndcg10 | 0.64508165 ndcg10 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+base_encoder | mean per-query recall100 | 0.925 recall100 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+uniform_contrastive | mean per-query ndcg10 | 0.65849697 ndcg10 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+uniform_contrastive | mean per-query recall100 | 0.93166667 recall100 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+hard_contrastive | mean per-query ndcg10 | 0.66021724 ndcg10 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+hard_contrastive | mean per-query recall100 | 0.93666667 recall100 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+hard_distilled | mean per-query ndcg10 | 0.66071785 ndcg10 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+hard_distilled | mean per-query recall100 | 0.93666667 recall100 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+candidate_float32 | mean per-query ndcg10 | 0.66021724 ndcg10 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+candidate_float32 | mean per-query recall100 | 0.93666667 recall100 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+candidate_int8 | mean per-query ndcg10 | 0.6607783 ndcg10 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+candidate_int8 | mean per-query recall100 | 0.935 recall100 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+The grouped uncertainty interval, all prespecified secondary contrasts, slices, failed exports and error examples remain in the source report. Observed differences do not establish causal explanations or training-seed stability.
+
+hard_contrastive | candidate minus baseline mean nDCG@10 | 0.015135584 absolute nDCG@10 change | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+hard_contrastive | grouped 95 percent interval lower bound | 0.0058122288 absolute nDCG@10 change | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+hard_contrastive | grouped 95 percent interval upper bound | 0.025411053 absolute nDCG@10 change | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
+
+None of the prespecified secondary contrasts clears the 0.05 BH-adjusted threshold. This study does not establish an advantage from hard-negative mining over uniform training or from distillation over hard-negative training. The validation-selected candidate remains fixed even when another arm has a higher test mean.
+
+INT8 executed on this evaluation worker. Its earlier failures on other CPU workers remain in compatibility evidence; this successful run neither erases those failures nor changes the pretest float32 serving selection.
 
 ## Completed training and frozen validation selection
 

@@ -44,6 +44,8 @@ Selected checkpoint and parameter hashes: [evidence/training/hard_distilled/run.
 
 ## Evaluation and deployment
 
-Public learned search has verified browser, separate-client and independent database receipts. The baseline remains the default; public sessions cannot promote or roll back a model. See [live deployment evidence](docs/LIVE-DEPLOYMENT.md). The frozen held-out evaluation has been requested. No final test quality claim is made until its retained report and independent audit are available. Training, evaluation, public runtime checks and exploratory comparisons remain separate evidence.
+Public learned search has verified browser, separate-client and independent database receipts. The baseline remains the default; public sessions cannot promote or roll back a model. See [live deployment evidence](docs/LIVE-DEPLOYMENT.md). The first frozen held-out attempt is completed. Missing export rows remain missing. Its original rankings and independent regrading are in [evaluation evidence](evidence/evaluation/). Training, evaluation, public runtime checks and exploratory comparisons remain separate evidence.
+
+hard_distilled | mean per-query nDCG@10 | 0.66071785 nDCG@10 | denominator 300 | held-out test | retrieval_quality | 2026-11-14T02:23:51.016206+00:00 to 2026-11-14T02:48:17.685598+00:00 | source evidence/evaluation/report.json (9f5e4a99b3f5e916b245ce73b415c9a8d753d15eb56141e4a8a28f0483b67ae0)
 
 Test qrels may be incomplete, pretrained benchmark exposure is unknown, and one training seed does not demonstrate stability. Source notices are retained separately. Do not describe the teacher as an independent evaluator or this project as foundation-model pretraining.

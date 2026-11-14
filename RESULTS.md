@@ -26,11 +26,11 @@ compute budget and environment. A candidate may fail promotion.
    Evidence: Actual-bundle registry and transactional rollback/revocation tests: evidence/faults/runtime-transactions.json. The initialized production registry and matching receipts are independently observed in evidence/live/.
 9  done: Live learned inference verified by browser, separate client and fresh DB read.
    Evidence: Unchanged deploy/verify_live.py revalidates separate public browser/client responses against independently queried production database receipts and packaged artifact identities in evidence/live/.
-10  not done: Complete frozen held-out rankings, independent metrics and paired analysis.
-   Evidence: Frozen request requests/evaluate.json is admitted. Completion requires the retained first evaluation report and passing independent ranking audit; no pending row is counted as complete.
+10  done: Complete frozen held-out rankings, independent metrics and paired analysis.
+   Evidence: evidence/evaluation/report.json and independent-audit.json bind the first frozen attempt, retained rankings, original judgments, all planned rows and independent regrading.
 11  done: Measured serving stages, memory, admission behavior and bounded public smoke.
    Evidence: Local staged timing and open-loop observations remain in evidence/serving/. The bounded public smoke binds sixteen serial requests and persisted readbacks in public-smoke.json and evidence/live/client-observations.json; first observer failure is retained under evidence/serving/attempts/.
-12  not done: Evidence-bound release decision and all six independently observed fault cases.
+12  done: Evidence-bound release decision and all six independently observed fault cases.
    Evidence: evidence/release/decision.json derives eligibility or refusal from frozen study, public verification and local resource evidence. All six actual-artifact fault cases are retained. A refusal is a valid completed decision and does not promote a model.
 13  done: Five working views with genuine live search and inspectable model evidence.
    Evidence: The public workbench serves genuine learned searches with artifact receipts. Existing training/evaluation/release/data views and the added Compare view retain explicit missing states. See evidence/live/observations.json and frontend checks.
@@ -40,7 +40,7 @@ compute budget and environment. A candidate may fail promotion.
    Evidence: AGENTS.md, CLAUDE.md, .agents/skills/*/SKILL.md (three repository-scoped skills), docs/SPEC.md, four model cards, THIRD_PARTY_NOTICES.md, OPERATIONS.md and docs/HANDOFF.md.
 16  done: Passing CI, bounded worker requests and retained artifact provenance.
    Evidence: Runtime 42127323550 passed all 78 tests without skips. CI 42129215961 passed both hash seeds, and interface review 42129215925 passed native zoom. Input/model/compatibility assets retain hashes and release provenance; bounded requests and failed attempts are preserved.
-17  not done: Clean-worktree rederivation and final live artifact/persistence verification.
-   Evidence: Fresh checkout and immutable input assets are available. Final clean regrading requires the retained held-out rankings and a passing independent audit.
+17  done: Clean-worktree rederivation and final live artifact/persistence verification.
+   Evidence: Hash-locked original inputs were restored into a fresh checkout for independent regrading. Public browser/client/DB proof is separate in evidence/live/release-20261114/; the original pretest is unchanged.
 18  not done: Authorized release and tag after commits with this evidence checklist.
    Evidence: Main contains the merged implementation and live proof. A product release tag remains pending final verified core evidence; asset prereleases do not satisfy this line.

@@ -57,6 +57,14 @@ def main():
                 item=observation(row[metric],row['method'],'retrieval_quality','held-out test','mean per-query '+metric,row['planned_queries'],metric,'evidence/evaluation/report.json',study['started_at'],study['ended_at'])
                 readme+=render_measurement(item)+'\n\n'
         readme+='The grouped uncertainty interval, all prespecified secondary contrasts, slices, failed exports and error examples remain in the source report. Observed differences do not establish causal explanations or training-seed stability.\n'
+        primary=study.get('primary',{}).get('estimate')
+        if primary:
+            for field,description in [('mean_difference','candidate minus baseline mean nDCG@10'),('lower','grouped 95 percent interval lower bound'),('upper','grouped 95 percent interval upper bound')]:
+                readme+='\n'+render_measurement(observation(primary[field],study['candidate'],'retrieval_quality','held-out test',description,primary['queries'],'absolute nDCG@10 change','evidence/evaluation/report.json',study['started_at'],study['ended_at']))+'\n'
+        if study.get('secondary') and all(r.get('bh_adjusted_p') is not None and r['bh_adjusted_p']>.05 for r in study['secondary']):
+            readme+='\nNone of the prespecified secondary contrasts clears the 0.05 BH-adjusted threshold. This study does not establish an advantage from hard-negative mining over uniform training or from distillation over hard-negative training. The validation-selected candidate remains fixed even when another arm has a higher test mean.\n'
+        if any(r['method']=='candidate_int8' and r['status']=='completed' for r in study.get('exports',[])):
+            readme+='\nINT8 executed on this evaluation worker. Its earlier failures on other CPU workers remain in compatibility evidence; this successful run neither erases those failures nor changes the pretest float32 serving selection.\n'
     training_path=Path('evidence/training/selection.json')
     if training_path.exists():
         trained=load_json(training_path)
