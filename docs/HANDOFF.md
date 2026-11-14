@@ -1,6 +1,6 @@
 # Continue Hardcase
 
-The repository review branch is `build/day27-evidence-completion`, with draft PR [1](https://github.com/mekala27-45/hardcase/pull/1). Main remains `ab8c8c2be8aa7854828b3fa10b07b48df6bc71cb`; it has not received the later review work. Read RESULTS.md and the latest runtime terminal before describing completion.
+PR [1](https://github.com/mekala27-45/hardcase/pull/1) is merged. The prepared Neon registry is initialized, production and preview credentials are stored as sensitive Vercel variables, and the production demo is public. Operators remain protected. The earlier approval blockers are resolved for Hardcase only. Read generated RESULTS.md and current evidence before describing completion.
 
 ## Frozen experiment
 
@@ -10,22 +10,24 @@ Original model checkpoints and export artifacts remain under `training-assets-42
 
 The intended learned bundle is `43f7a256426411096133ff091bac9c2564db5c0487ea5a3c99bb5677f1c1cfda`. The unchanged base bundle is `7d1a32fef82ec596b80a04cfc7abe73a7a0388733464bd4dd60ca112492cc310`. The base remains the default until every promotion gate passes. A failed quality result is a valid conclusion.
 
-## Pending external actions
+## Current execution and authority
 
-Automatic approval review rejected further publication to main, transfer of the Hardcase database credential to Vercel, and initialization of persistent model/bundle/alias records in Neon. The read-only SQL manifest hashes matched, but the database initialization transaction did not execute. The exact prepared transaction is deploy/registry-initialization.sql. Do not retry through another transport. Obtain explicit approval to publish PR 1, execute the prepared registry initialization, and store the Hardcase database and protected operator credentials in the Hardcase Vercel production/preview environments. Public production access also needs the project-specific protection setting reviewed; the operator endpoints must remain protected.
+The original live pretest is immutable at evidence/live/pretest.json. requests/evaluate.json binds its digest and the frozen model/export selection. The first held-out attempt is [43545916335](https://github.com/mekala27-45/hardcase/actions/runs/43545916335); import its retained outcomes rather than launching another selection or overwriting the attempt.
 
-The manual protected preview request received HTTP 402 `api-deployments-free-per-day`, with a reported 86400-second retry interval. Do not alter billing, create another account or work around the quota. The existing public workbench at https://mekala27-45.github.io/hardcase/ reflects older main evidence and has no configured live API. The Vercel scaffold must not be described as learned inference. A separate automatic Git deployment of runtime evidence branch 01c85cc2b8fdae6256689e4afb6ea711deb0c026 failed because Vercel installed the formerly empty default pyproject.toml dependency list and NumPy was absent. Commit 0608c456fcbd761a120e208ea05f29e08ee1dfa6 fixes that list with the exact 31 serving dependencies. Package installation and pip check passed in CI 42130247824 on c0a49e9f56efa0263b41c2d031249fae36d5308a. The corrected package has not yet been verified on Vercel; the manual API quota and the automatic Git build failure are separate observations.
+Later public verification is kept separately in evidence/live/release-20261114/. Its browser and separate-client receipts match independent Neon records on the same deployment as the sixteen-query public smoke. requests/release-check.json pins those later proof digests. The initial observer failure from comparing JSON key order is retained, and the corrected observer compares structural values.
 
-Local Windows commands and native browser control are blocked by Linux-only paths in the workspace permission configuration. Native browser zoom was subsequently verified in an isolated headed Chromium desktop by review 42129215925. Public browser verification can likewise use a bounded remote worker after deployment is available. Later review edits are on GitHub; the earlier local checkout is stale. Do not overwrite the review branch with that checkout.
+Public workbench: https://mekala27-45.github.io/hardcase/ . Public API: https://hardcase-taupe.vercel.app . Existing Vercel protection remains enabled for generated deployment/preview URLs. Do not reinitialize the live database, rotate credentials, weaken protection, or change billing to reproduce this work.
 
 Project IDs: Neon `wispy-haze-91153072`, database `hardcase`, owner `hardcase_owner`; Vercel `prj_xNmGw7TnbVsiquXURbedLzAAHzhA`, team `team_NNcxgB3J9dHQnUJYJJYvRMda`. Credentials are not stored in this document.
 
+The Compare view is an unlabeled diagnostic layer over the existing base and experimental endpoints. Its bounded serial suites, rank shifts, receipt readbacks and RRF preview do not change the frozen experiment or grant operator authority. See docs/COMPARISON.md.
+
 ## Completion order
 
-After approval and quota availability, deploy the exact reviewed runtime request with its fixed archive hash. Confirm packaged bundle identities and actual startup probes on the host, then database-backed readiness. Use distinct fresh experimental queries from a browser and a separate HTTP client. Independently read their committed receipts from Neon and require matching deployment, bundle, model, tokenizer, corpus and index identities. Derive evidence/live/pretest.json using deploy/verify_live.py.
+Keep the original pretest and evaluation identity unchanged. After importing the first attempt, restore the original hash-locked inputs and run `python -m evaluation.run --audit-retained evidence/evaluation`. This entry point regrades retained rankings without model execution. Keep unsupported INT8 results missing and preserve all failure records.
 
-Only after that verification may requests/evaluate.json bind the existing selection, compatibility export and pretest digest. The restore helper obtains original trained checkpoints and the compatibility serving archive separately. It must not restore the rejected original serving selection by accident. Execute all planned held-out rows; keep unsupported INT8 observations null with their failure reasons. Do not choose another checkpoint or tune against test results.
+The original request already admitted the test vault. Do not change checkpoints, candidates, export policy, statistical settings or tolerances after seeing results. New generalization claims require a new experiment identity and untouched evaluation data.
 
-Perform the sixteen-request serial public smoke with at least one-second spacing. Combine it with the separately observed local open-loop envelope; the public smoke is not a stable p95 benchmark. Recompute the release decision from actual artifacts. Promote only if every gate passes and publication is authorized. Verify any transition using a fresh request and independent database read.
+The sixteen-request serial public smoke is retained. Combine it with the separately observed local open-loop envelope; the public smoke is not a stable p95 benchmark. Recompute the release decision with `python deploy/decide_release.py`, which checks requests/release-check.json. Refresh execution-dependent checklist rows with `python deploy/refresh_completion.py` and regenerate documentation with `python deploy/render_docs.py`. Promote only if every gate passes and publication is authorized. Verify any transition using a fresh request and independent database read.
 
 Regenerate source-bound documentation, both theme checks, the eighteen-line checklist and final live artifact/persistence verification. Create a product release tag only after the core evidence is complete. Artifact prereleases are not product releases.

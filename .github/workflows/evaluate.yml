@@ -33,6 +33,10 @@ jobs:
           python -m unittest discover -s tests -v
       - name: Execute unchanged full-corpus methods and independent grading
         run: python -m evaluation.run
+      - name: Independently regrade original rankings and labels
+        run: |
+          RESULT_DIR=$(python -c "import json; print('artifacts/evaluation/'+json.load(open('requests/evaluate.json'))['evaluation_id'])")
+          python -m evaluation.run --audit-retained "$RESULT_DIR"
       - name: Preserve all attempted and missing rows
         if: always()
         env:

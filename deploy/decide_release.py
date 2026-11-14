@@ -55,8 +55,16 @@ def decide(config, sources):
 
 
 def main():
-    paths={'selection':'evidence/training/selection.json','export':'evidence/export/selection.json','evaluation':'evidence/evaluation/report.json','live':'evidence/live/pretest.json','serving':'evidence/serving/public-smoke.json','local_serving':'evidence/serving/local-open-loop.json','preparation':'evidence/preparation/prepare.json'}
+    import argparse
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--live-evidence',help='Verified browser/client/DB proof for the deployment used by the public smoke. Defaults to the content-bound release request, then the original pretest.')
+    args=parser.parse_args()
+    requested=load_json('requests/release-check.json') if Path('requests/release-check.json').exists() else {}
+    live_path=args.live_evidence or requested.get('live_evidence','evidence/live/pretest.json')
+    paths={'selection':'evidence/training/selection.json','export':'evidence/export/selection.json','evaluation':'evidence/evaluation/report.json','live':live_path,'serving':'evidence/serving/public-smoke.json','local_serving':'evidence/serving/local-open-loop.json','preparation':'evidence/preparation/prepare.json'}
     sources={name:load_json(path) for name,path in paths.items() if Path(path).exists()}
+    if requested and not args.live_evidence:
+        require(digest(sources.get('live'))==requested['live_digest'] and digest(sources.get('serving'))==requested['serving_digest'],'RELEASE_RUNTIME_EVIDENCE_CHANGED')
     config=load_json('requests/experiment.json')
     sources['runs']={arm:load_json(f'evidence/training/{arm}/run.json') for arm in config['arms'] if Path(f'evidence/training/{arm}/run.json').exists()}
     atomic_json('evidence/release/decision.json',decide(config,sources))

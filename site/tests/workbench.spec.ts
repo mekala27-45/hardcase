@@ -16,7 +16,7 @@ test('responsive evidence views, themes, fonts and refusal states',async({page})
   await page.goto('/hardcase/');
   for(const theme of ['light','dark']){
    if(await page.locator('html').getAttribute('data-theme')!==theme)await page.getByRole('button',{name:'Switch color theme'}).click();
-   for(const [label,heading] of [['01 Search','A model earns its place here.'],['02 Training','What actually changed.'],['03 Evaluation','Improvement is a measurement.'],['04 Release','A candidate can be refused.'],['05 Data','Know what the model saw.']]){
+   for(const [label,heading] of [['01 Search','A model earns its place here.'],['02 Training','What actually changed.'],['03 Evaluation','Improvement is a measurement.'],['04 Release','A candidate can be refused.'],['05 Data','Know what the model saw.'],['06 Compare','See where models disagree.']]){
     await page.getByRole('button',{name:label,exact:true}).click();
     await expect(page.getByRole('heading',{name:heading,exact:true})).toBeVisible();
     const measured=await page.evaluate(async()=>{

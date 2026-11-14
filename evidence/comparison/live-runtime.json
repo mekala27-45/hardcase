@@ -1,0 +1,946 @@
+{
+  "schema_version": 1,
+  "namespace": "live_ranking_diagnostics",
+  "quality_claim": false,
+  "started_at": "2026-11-14T02:50:33.822Z",
+  "depth": 10,
+  "planned": 2,
+  "status": "completed",
+  "rows": [
+    {
+      "index": 0,
+      "query_digest": "c5df9e28bc1ec884758dcfdd5198c825d027885011f083566872646029e12131",
+      "status": "completed",
+      "receipts": {
+        "base": {
+          "id": "e0128415-8d1c-4bea-b15f-9c2208c7cfb8",
+          "alias": "base",
+          "bundle_id": "7d1a32fef82ec596b80a04cfc7abe73a7a0388733464bd4dd60ca112492cc310",
+          "admission_generation": 1,
+          "query_digest": "c5df9e28bc1ec884758dcfdd5198c825d027885011f083566872646029e12131",
+          "request_digest": "5d8a4cc451d8d9ed5c9090003925c5283d69456b892715d96a78292ab3376034",
+          "fresh": true,
+          "replayed": false,
+          "namespace": "live_request",
+          "observed_at": "2026-11-14T02:50:39.216154+00:00",
+          "deployment_id": "dpl_CSHM7YARPRJLj467t5UwSry53Yv6",
+          "results": [
+            {
+              "id": "38131471",
+              "title": "Molecular mechanisms of mammalian DNA repair and the DNA damage checkpoints.",
+              "score": 0.6461664438247681,
+              "visible_text": "Molecular mechanisms of mammalian DNA repair and the DNA damage checkpoints.\n\nDNA damage is a relatively common event in the life of a cell and may lead to mutation, cancer, and cellular or organismic death. Damage to DNA induces several cellular responses that enable the cell either to eliminate or cope with the damage or to activate a programmed cell death process, presumably to eliminate cells with potentially catastrophic mutations. These DNA damage response reactions include: (a) removal of DNA damage and restoration of the continuity of the DNA duplex; (b) activation of a DNA damage checkpoint, which arrests cell cycle progression so as to allow for repair and prevention of the transmission of damaged or incompletely replicated chromosomes; (c) transcriptional response, which causes changes in the transcription profile that may be beneficial to the cell; and (d) apoptosis, which eliminates heavily damaged or seriously deregulated cells. DNA repair mechanisms include direct repair, base excision repair, nucleotide excision repair, double-strand break repair, and cross-link repair. The DNA damage checkpoints employ damage sensor proteins, such as ATM, ATR, the Rad17-RFC complex, and the 9-1-1 complex, to detect DNA damage and to initiate signal",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "38131471",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "13106686",
+              "title": "Oxidative damage of DNA confers resistance to cytosolic nuclease TREX1 degradation and potentiates STING-dependent immune sensing.",
+              "score": 0.5691114664077759,
+              "visible_text": "Oxidative damage of DNA confers resistance to cytosolic nuclease TREX1 degradation and potentiates STING-dependent immune sensing.\n\nImmune sensing of DNA is critical for antiviral immunity but can also trigger autoimmune diseases such as lupus erythematosus (LE). Here we have provided evidence for the involvement of a damage-associated DNA modification in the detection of cytosolic DNA. The oxidized base 8-hydroxyguanosine (8-OHG), a marker of oxidative damage in DNA, potentiated cytosolic immune recognition by decreasing its susceptibility to 3' repair exonuclease 1 (TREX1)-mediated degradation. Oxidizative modifications arose physiologically in pathogen DNA during lysosomal reactive oxygen species (ROS) exposure, as well as in neutrophil extracellular trap (NET) DNA during the oxidative burst. 8-OHG was also abundant in UV-exposed skin lesions of LE patients and colocalized with type I interferon (IFN). Injection of oxidized DNA in the skin of lupus-prone mice induced lesions that closely matched respective lesions in patients. Thus, ox",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "13106686",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "1941721",
+              "title": "Oxygen Metabolism Causes Chromosome Breaks and Is Associated with the Neuronal Apoptosis Observed in DNA Double-Strand Break Repair Mutants",
+              "score": 0.5688037872314453,
+              "visible_text": "Oxygen Metabolism Causes Chromosome Breaks and Is Associated with the Neuronal Apoptosis Observed in DNA Double-Strand Break Repair Mutants\n\nCells deficient in a major DNA double-strand break repair pathway (nonhomologous DNA end joining [NHEJ]) have increased spontaneous chromosome breaks; however, the source of these chromosome breaks has remained undefined. Here, we show that the observed spontaneous chromosome breaks are partially suppressed by reducing the cellular oxygen tension. Conversely, elevating the level of reactive oxygen species by overexpressing the antioxidant enzyme superoxide dismutase 1 (SOD1), in a transgenic mouse, increases chromosome breakage. The effect of SOD1 can also be modulated by cellular oxygen tension. The elevated chromosome breakage correlates histologically with a significant increase in the amount of neuronal cell death in Ku86(-/-) SOD1 transgenic embryos over that seen in Ku86(-/-) embryos. Therefore, oxygen metabolism is a major source of the genomic instability observed in NHEJ-deficient cells and, presumably, in all cells.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "1941721",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "10704438",
+              "title": "The DNA damage response during mitosis.",
+              "score": 0.5629866123199463,
+              "visible_text": "The DNA damage response during mitosis.\n\nCells are equipped with a cell-intrinsic signaling network called the DNA damage response (DDR). This signaling network recognizes DNA lesions and initiates various downstream pathways to coordinate a cell cycle arrest with the repair of the damaged DNA. Alternatively, the DDR can mediate clearance of affected cells that are beyond repair through apoptosis or senescence. The DDR can be activated in response to DNA damage throughout the cell cycle, although the extent of DDR signaling is different in each cell cycle phase. Especially in response to DNA double strand breaks, only a very marginal response was observed during mitosis. Early on it was recognized that cells which are irradiated during mitosis continued division without repairing broken chromosomes. Although these initial observations indicated diminished DNA repair and lack of an acute DNA damage-induced cell cycle arrest, insight into the mechanistic re-wiring of DDR signaling during mitosis was only recently provided. Different mechanisms appear to be at play to inactivate specific signaling axes of the DDR network in mitosis. Importantly, mitotic cells not simply inactivate the entire DDR, but appear to mark their DNA damage for repair after mitotic exit. Since the treatment of cancer frequently involves agents that",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "10704438",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "2701077",
+              "title": "Hematopoietic stem cell quiescence promotes error-prone DNA repair and mutagenesis.",
+              "score": 0.5504950284957886,
+              "visible_text": "Hematopoietic stem cell quiescence promotes error-prone DNA repair and mutagenesis.\n\nMost adult stem cells, including hematopoietic stem cells (HSCs), are maintained in a quiescent or resting state in vivo. Quiescence is widely considered to be an essential protective mechanism for stem cells that minimizes endogenous stress caused by cellular respiration and DNA replication. We demonstrate that HSC quiescence can also have detrimental effects. We found that HSCs have unique cell-intrinsic mechanisms ensuring their survival in response to ionizing irradiation (IR), which include enhanced prosurvival gene expression and strong activation of p53-mediated DNA damage response. We show that quiescent and proliferating HSCs are equally radioprotected but use different types of DNA repair mechanisms. We describe how nonhomologous end joining (NHEJ)-mediated DNA repair in quiescent HSCs is associated with acquisition of genomic rearrangements, which can persist in vivo and contribute to hematopoietic abnormalities. Our results demonstrate that quiescence is a double-edged sword that renders HSCs intrinsically vulnerable to mutagenesis following DNA damage.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "2701077",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "4283694",
+              "title": "Instability and decay of the primary structure of DNA",
+              "score": 0.5474962592124939,
+              "visible_text": "Instability and decay of the primary structure of DNA\n\nAlthough DNA is the carrier of genetic information, it has limited chemical stability. Hydrolysis, oxidation and nonenzymatic methylation of DNA occur at significant ratesin vivo, and are counteracted by specific DNA repair processes. The spontaneous decay of DNA is likely to be a major factor in mutagenesis, carcinogenesis and ageing, and also sets limits for the recovery of DNA fragments from fossils.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "4283694",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "13906892",
+              "title": "DNA damage and Repair Modify DNA methylation and Chromatin Domain of the Targeted Locus: Mechanism of allele methylation polymorphism",
+              "score": 0.5445240139961243,
+              "visible_text": "DNA damage and Repair Modify DNA methylation and Chromatin Domain of the Targeted Locus: Mechanism of allele methylation polymorphism\n\nWe characterize the changes in chromatin structure, DNA methylation and transcription during and after homologous DNA repair (HR). We find that HR modifies the DNA methylation pattern of the repaired segment. HR also alters local histone H3 methylation as well chromatin structure by inducing DNA-chromatin loops connecting the 5' and 3' ends of the repaired gene. During a two-week period after repair, transcription-associated demethylation promoted by Base Excision Repair enzymes further modifies methylation of the repaired DNA. Subsequently, the repaired genes display stable but diverse methylation profiles. These profiles govern the levels of expression in each clone. Our data argue that DNA methylation and chromatin remodelling induced by HR may be a source of permanent variation of gene expression in somatic cells.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "13906892",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "20420780",
+              "title": "The ACF1 complex is required for DNA double-strand break repair in human cells.",
+              "score": 0.5342380404472351,
+              "visible_text": "The ACF1 complex is required for DNA double-strand break repair in human cells.\n\nDNA double-strand breaks (DSBs) are repaired via nonhomologous end-joining (NHEJ) or homologous recombination (HR), but cellular repair processes remain elusive. We show here that the ATP-dependent chromatin-remodeling factors, ACF1 and SNF2H, accumulate rapidly at DSBs and are required for DSB repair in human cells. If the expression of ACF1 or SNF2H is suppressed, cells become extremely sensitive to X-rays and chemical treatments producing DSBs, and DSBs remain unrepaired. ACF1 interacts directly with KU70 and is required for the accumulation of KU proteins at DSBs. The KU70/80 complex becomes physically more associated with the chromatin-remodeling factors of the CHRAC complex, which includes ACF1, SNF2H, CHRAC15, and CHRAC17, after treatments producing DSBs. Furthermore, the frequency of NHEJ as well as HR induced by DSBs in chromosomal DNA is significantly decreased in cells depleted of either of these factors. Thus",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "20420780",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "25838286",
+              "title": "WRN, the protein deficient in Werner syndrome, plays a critical structural role in optimizing DNA repair.",
+              "score": 0.5318953990936279,
+              "visible_text": "WRN, the protein deficient in Werner syndrome, plays a critical structural role in optimizing DNA repair.\n\nWerner syndrome (WS) predisposes patients to cancer and premature aging, owing to mutations in WRN. The WRN protein is a RECQ-like helicase and is thought to participate in DNA double-strand break (DSB) repair by non-homologous end joining (NHEJ) or homologous recombination (HR). It has been previously shown that non-homologous DNA ends develop extensive deletions during repair in WS cells, and that this WS phenotype was complemented by wild-type (wt) WRN. WRN possesses both 3' --> 5' exonuclease and 3' --> 5' helicase activities. To determine the relative contributions of each of these distinct enzymatic activities to DSB repair, we examined NHEJ and HR in WS cells (WRN-/-) complemented with either wtWRN, exonuclease-defective WRN (E-), helicase-defective WRN (H-) or exonuclease/he",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "25838286",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "12552297",
+              "title": "The DNA polymerase λ is required for the repair of non-compatible DNA double strand breaks by NHEJ in mammalian cells",
+              "score": 0.5295814275741577,
+              "visible_text": "The DNA polymerase λ is required for the repair of non-compatible DNA double strand breaks by NHEJ in mammalian cells\n\nDNA polymerase lambda (polλ) is a recently identified DNA polymerase whose cellular function remains elusive. Here we show, that polλ participates at the molecular level in a chromosomal context, in the repair of DNA double strand breaks (DSB) via non-homologous end joining (NHEJ) in mammalian cells. The expression of a catalytically inactive form of polλ (polλDN) decreases the frequency of NHEJ events in response to I-Sce-I-induced DSB whereas inactivated forms of its homologues polβ and polμ do not. Only events requiring DNA end processing before ligation are affected; this defect is associated with large deletions arising in the vicinity of the induced DSB. Furthermore, polλDN-expressing cells exhibit increased sensitization and genomic instability in response to ionizing radiation similar to that of NHEJ-defective cells. Our data support a requirement for polλ in repairing a subset of DSB in genomic DNA, thereby contributing to the maintenance of genetic stability mediated by the NHEJ pathway.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "12552297",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            }
+          ],
+          "top_document_ids": [
+            "38131471",
+            "13106686",
+            "1941721",
+            "10704438",
+            "2701077",
+            "4283694",
+            "13906892",
+            "20420780",
+            "25838286",
+            "12552297"
+          ],
+          "timings": {
+            "encoding_ms": 16.307928000003358,
+            "search_ms": 8.803611000004707,
+            "inference_ms": 25.11610799999886,
+            "serialization_ms": 0.15716099999707467,
+            "elapsed_before_receipt_ms": 211.59192999999732,
+            "process_peak_rss_mib": 417.46875,
+            "memory_observer": "Linux process high-water RSS, including startup"
+          },
+          "graph_digest": "15715adb11109d77b6865accbb4104784c8f71d8fe498c83e5526e5da373ee55",
+          "tokenizer_digest": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+          "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25",
+          "index_digest": "97913a35950fc1e167f85fb20587963de353ce09ccd429529b8dcb96d3bb266e",
+          "completion_generation": 1,
+          "status": "completed"
+        },
+        "experimental": {
+          "id": "1c0dee9f-1275-4876-addc-bdae4c75375e",
+          "alias": "experimental",
+          "bundle_id": "43f7a256426411096133ff091bac9c2564db5c0487ea5a3c99bb5677f1c1cfda",
+          "admission_generation": 1,
+          "query_digest": "c5df9e28bc1ec884758dcfdd5198c825d027885011f083566872646029e12131",
+          "request_digest": "d059f74866f5017ab3a43c4f7bf6a7a282de8dc31e3e772945183ac75a0ec4a2",
+          "fresh": true,
+          "replayed": false,
+          "namespace": "live_request",
+          "observed_at": "2026-11-14T02:50:40.913699+00:00",
+          "deployment_id": "dpl_CSHM7YARPRJLj467t5UwSry53Yv6",
+          "results": [
+            {
+              "id": "38131471",
+              "title": "Molecular mechanisms of mammalian DNA repair and the DNA damage checkpoints.",
+              "score": 0.6231746673583984,
+              "visible_text": "Molecular mechanisms of mammalian DNA repair and the DNA damage checkpoints.\n\nDNA damage is a relatively common event in the life of a cell and may lead to mutation, cancer, and cellular or organismic death. Damage to DNA induces several cellular responses that enable the cell either to eliminate or cope with the damage or to activate a programmed cell death process, presumably to eliminate cells with potentially catastrophic mutations. These DNA damage response reactions include: (a) removal of DNA damage and restoration of the continuity of the DNA duplex; (b) activation of a DNA damage checkpoint, which arrests cell cycle progression so as to allow for repair and prevention of the transmission of damaged or incompletely replicated chromosomes; (c) transcriptional response, which causes changes in the transcription profile that may be beneficial to the cell; and (d) apoptosis, which eliminates heavily damaged or seriously deregulated cells. DNA repair mechanisms include direct repair, base excision repair, nucleotide excision repair, double-strand break repair, and cross-link repair. The DNA damage checkpoints employ damage sensor proteins, such as ATM, ATR, the Rad17-RFC complex, and the 9-1-1 complex, to detect DNA damage and to initiate signal",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "38131471",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "13106686",
+              "title": "Oxidative damage of DNA confers resistance to cytosolic nuclease TREX1 degradation and potentiates STING-dependent immune sensing.",
+              "score": 0.5596842765808105,
+              "visible_text": "Oxidative damage of DNA confers resistance to cytosolic nuclease TREX1 degradation and potentiates STING-dependent immune sensing.\n\nImmune sensing of DNA is critical for antiviral immunity but can also trigger autoimmune diseases such as lupus erythematosus (LE). Here we have provided evidence for the involvement of a damage-associated DNA modification in the detection of cytosolic DNA. The oxidized base 8-hydroxyguanosine (8-OHG), a marker of oxidative damage in DNA, potentiated cytosolic immune recognition by decreasing its susceptibility to 3' repair exonuclease 1 (TREX1)-mediated degradation. Oxidizative modifications arose physiologically in pathogen DNA during lysosomal reactive oxygen species (ROS) exposure, as well as in neutrophil extracellular trap (NET) DNA during the oxidative burst. 8-OHG was also abundant in UV-exposed skin lesions of LE patients and colocalized with type I interferon (IFN). Injection of oxidized DNA in the skin of lupus-prone mice induced lesions that closely matched respective lesions in patients. Thus, ox",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "13106686",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "1941721",
+              "title": "Oxygen Metabolism Causes Chromosome Breaks and Is Associated with the Neuronal Apoptosis Observed in DNA Double-Strand Break Repair Mutants",
+              "score": 0.5485573410987854,
+              "visible_text": "Oxygen Metabolism Causes Chromosome Breaks and Is Associated with the Neuronal Apoptosis Observed in DNA Double-Strand Break Repair Mutants\n\nCells deficient in a major DNA double-strand break repair pathway (nonhomologous DNA end joining [NHEJ]) have increased spontaneous chromosome breaks; however, the source of these chromosome breaks has remained undefined. Here, we show that the observed spontaneous chromosome breaks are partially suppressed by reducing the cellular oxygen tension. Conversely, elevating the level of reactive oxygen species by overexpressing the antioxidant enzyme superoxide dismutase 1 (SOD1), in a transgenic mouse, increases chromosome breakage. The effect of SOD1 can also be modulated by cellular oxygen tension. The elevated chromosome breakage correlates histologically with a significant increase in the amount of neuronal cell death in Ku86(-/-) SOD1 transgenic embryos over that seen in Ku86(-/-) embryos. Therefore, oxygen metabolism is a major source of the genomic instability observed in NHEJ-deficient cells and, presumably, in all cells.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "1941721",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "13906892",
+              "title": "DNA damage and Repair Modify DNA methylation and Chromatin Domain of the Targeted Locus: Mechanism of allele methylation polymorphism",
+              "score": 0.5319628715515137,
+              "visible_text": "DNA damage and Repair Modify DNA methylation and Chromatin Domain of the Targeted Locus: Mechanism of allele methylation polymorphism\n\nWe characterize the changes in chromatin structure, DNA methylation and transcription during and after homologous DNA repair (HR). We find that HR modifies the DNA methylation pattern of the repaired segment. HR also alters local histone H3 methylation as well chromatin structure by inducing DNA-chromatin loops connecting the 5' and 3' ends of the repaired gene. During a two-week period after repair, transcription-associated demethylation promoted by Base Excision Repair enzymes further modifies methylation of the repaired DNA. Subsequently, the repaired genes display stable but diverse methylation profiles. These profiles govern the levels of expression in each clone. Our data argue that DNA methylation and chromatin remodelling induced by HR may be a source of permanent variation of gene expression in somatic cells.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "13906892",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "4283694",
+              "title": "Instability and decay of the primary structure of DNA",
+              "score": 0.5297540426254272,
+              "visible_text": "Instability and decay of the primary structure of DNA\n\nAlthough DNA is the carrier of genetic information, it has limited chemical stability. Hydrolysis, oxidation and nonenzymatic methylation of DNA occur at significant ratesin vivo, and are counteracted by specific DNA repair processes. The spontaneous decay of DNA is likely to be a major factor in mutagenesis, carcinogenesis and ageing, and also sets limits for the recovery of DNA fragments from fossils.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "4283694",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "10704438",
+              "title": "The DNA damage response during mitosis.",
+              "score": 0.5283852815628052,
+              "visible_text": "The DNA damage response during mitosis.\n\nCells are equipped with a cell-intrinsic signaling network called the DNA damage response (DDR). This signaling network recognizes DNA lesions and initiates various downstream pathways to coordinate a cell cycle arrest with the repair of the damaged DNA. Alternatively, the DDR can mediate clearance of affected cells that are beyond repair through apoptosis or senescence. The DDR can be activated in response to DNA damage throughout the cell cycle, although the extent of DDR signaling is different in each cell cycle phase. Especially in response to DNA double strand breaks, only a very marginal response was observed during mitosis. Early on it was recognized that cells which are irradiated during mitosis continued division without repairing broken chromosomes. Although these initial observations indicated diminished DNA repair and lack of an acute DNA damage-induced cell cycle arrest, insight into the mechanistic re-wiring of DDR signaling during mitosis was only recently provided. Different mechanisms appear to be at play to inactivate specific signaling axes of the DDR network in mitosis. Importantly, mitotic cells not simply inactivate the entire DDR, but appear to mark their DNA damage for repair after mitotic exit. Since the treatment of cancer frequently involves agents that",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "10704438",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "2701077",
+              "title": "Hematopoietic stem cell quiescence promotes error-prone DNA repair and mutagenesis.",
+              "score": 0.5220672488212585,
+              "visible_text": "Hematopoietic stem cell quiescence promotes error-prone DNA repair and mutagenesis.\n\nMost adult stem cells, including hematopoietic stem cells (HSCs), are maintained in a quiescent or resting state in vivo. Quiescence is widely considered to be an essential protective mechanism for stem cells that minimizes endogenous stress caused by cellular respiration and DNA replication. We demonstrate that HSC quiescence can also have detrimental effects. We found that HSCs have unique cell-intrinsic mechanisms ensuring their survival in response to ionizing irradiation (IR), which include enhanced prosurvival gene expression and strong activation of p53-mediated DNA damage response. We show that quiescent and proliferating HSCs are equally radioprotected but use different types of DNA repair mechanisms. We describe how nonhomologous end joining (NHEJ)-mediated DNA repair in quiescent HSCs is associated with acquisition of genomic rearrangements, which can persist in vivo and contribute to hematopoietic abnormalities. Our results demonstrate that quiescence is a double-edged sword that renders HSCs intrinsically vulnerable to mutagenesis following DNA damage.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "2701077",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "36831892",
+              "title": "Histone tails: Directing the chromatin response to DNA damage.",
+              "score": 0.5003779530525208,
+              "visible_text": "Histone tails: Directing the chromatin response to DNA damage.\n\nConsiderable energetic investment is devoted to altering large stretches of chromatin adjacent to DNA double strand breaks (DSBs). Immediately ensuing DSB formation, a myriad of histone modifications are elicited to create a platform for inducible and modular assembly of DNA repair protein complexes in the vicinity of the DNA lesion. This complex signaling network is critical to repair DNA damage and communicate with cellular processes that occur in cis and in trans to the genomic lesion. Failure to properly execute DNA damage inducible chromatin changes is associated with developmental abnormalities, immunodeficiency, and malignancy in humans and in genetically engineered mouse models. This review will discuss current knowledge of DNA damage responsive histone changes that occur in mammalian cells, highlighting their involvement in the maintenance of genome integrity.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "36831892",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "10993232",
+              "title": "Cell death from antibiotics without the involvement of reactive oxygen species.",
+              "score": 0.5000377893447876,
+              "visible_text": "Cell death from antibiotics without the involvement of reactive oxygen species.\n\nRecent observations have suggested that classic antibiotics kill bacteria by stimulating the formation of reactive oxygen species (ROS). If true, this notion might guide new strategies to improve antibiotic efficacy. In this study, the model was directly tested. Contrary to the hypothesis, antibiotic treatment did not accelerate the formation of hydrogen peroxide in Escherichia coli and did not elevate intracellular free iron, an essential reactant for the production of lethal damage. Lethality persisted in the absence of oxygen, and DNA repair mutants were not hypersensitive, undermining the idea that toxicity arose from oxidative DNA lesions. We conclude that these antibiotic exposures did not produce ROS and that lethality more likely resulted from the direct inhibition of cell-wall assembly, protein synthesis, and DNA replication.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "10993232",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "22937815",
+              "title": "Roles of chromatin remodellers in DNA double strand break repair.",
+              "score": 0.49886828660964966,
+              "visible_text": "Roles of chromatin remodellers in DNA double strand break repair.\n\nNow that we have a good understanding of the DNA double strand break (DSB) repair mechanisms and DSB-induced damage signalling, attention is focusing on the changes to the chromatin environment needed for efficient DSB repair. Mutations in chromatin remodelling complexes have been identified in cancers, making it important to evaluate how they impact upon genomic stability. Our current understanding of the DSB repair pathways suggests that each one has distinct requirements for chromatin remodelling. Moreover, restricting the extent of chromatin modifications could be a significant factor regulating the decision of pathway usage. In this review, we evaluate the distinct DSB repair pathways for their potential need for chromatin remodelling and review the roles of ATP-driven chromatin remodellers in the pathways.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "22937815",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            }
+          ],
+          "top_document_ids": [
+            "38131471",
+            "13106686",
+            "1941721",
+            "13906892",
+            "4283694",
+            "10704438",
+            "2701077",
+            "36831892",
+            "10993232",
+            "22937815"
+          ],
+          "timings": {
+            "encoding_ms": 19.70859300000427,
+            "search_ms": 1.979866000006325,
+            "inference_ms": 21.69185800000406,
+            "serialization_ms": 0.134973000001537,
+            "elapsed_before_receipt_ms": 201.46738800000463,
+            "process_peak_rss_mib": 417.46875,
+            "memory_observer": "Linux process high-water RSS, including startup"
+          },
+          "graph_digest": "2f06d8230fd96b1f81e0e38097788e414911f61b017d67ad2ed109a9e4b7556d",
+          "tokenizer_digest": "851ca67100d372ca3ae031a6abd168f53489eebfd7d89523f35c5c9b4d372c3c",
+          "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25",
+          "index_digest": "ab07bd120db0168e9da37c94022ce2e7c488da9e4493aee30668e12a7a6a1ab1",
+          "completion_generation": 1,
+          "status": "completed"
+        }
+      },
+      "milliseconds": {
+        "base": 503.84420000000046,
+        "experimental": 477.1839
+      },
+      "comparison": {
+        "depth": 10,
+        "shared": 7,
+        "jaccard": 0.5384615384615384,
+        "mean_shared_rank_shift": 1.1428571428571428,
+        "rows": [
+          {
+            "id": "38131471",
+            "title": "Molecular mechanisms of mammalian DNA repair and the DNA damage checkpoints.",
+            "base_rank": 1,
+            "learned_rank": 1,
+            "rank_change": 0,
+            "rrf_score": 0.03278688524590164
+          },
+          {
+            "id": "13106686",
+            "title": "Oxidative damage of DNA confers resistance to cytosolic nuclease TREX1 degradation and potentiates STING-dependent immune sensing.",
+            "base_rank": 2,
+            "learned_rank": 2,
+            "rank_change": 0,
+            "rrf_score": 0.03225806451612903
+          },
+          {
+            "id": "1941721",
+            "title": "Oxygen Metabolism Causes Chromosome Breaks and Is Associated with the Neuronal Apoptosis Observed in DNA Double-Strand Break Repair Mutants",
+            "base_rank": 3,
+            "learned_rank": 3,
+            "rank_change": 0,
+            "rrf_score": 0.031746031746031744
+          },
+          {
+            "id": "10704438",
+            "title": "The DNA damage response during mitosis.",
+            "base_rank": 4,
+            "learned_rank": 6,
+            "rank_change": -2,
+            "rrf_score": 0.030776515151515152
+          },
+          {
+            "id": "13906892",
+            "title": "DNA damage and Repair Modify DNA methylation and Chromatin Domain of the Targeted Locus: Mechanism of allele methylation polymorphism",
+            "base_rank": 7,
+            "learned_rank": 4,
+            "rank_change": 3,
+            "rrf_score": 0.03055037313432836
+          },
+          {
+            "id": "4283694",
+            "title": "Instability and decay of the primary structure of DNA",
+            "base_rank": 6,
+            "learned_rank": 5,
+            "rank_change": 1,
+            "rrf_score": 0.030536130536130537
+          },
+          {
+            "id": "2701077",
+            "title": "Hematopoietic stem cell quiescence promotes error-prone DNA repair and mutagenesis.",
+            "base_rank": 5,
+            "learned_rank": 7,
+            "rank_change": -2,
+            "rrf_score": 0.030309988518943745
+          },
+          {
+            "id": "20420780",
+            "title": "The ACF1 complex is required for DNA double-strand break repair in human cells.",
+            "base_rank": 8,
+            "learned_rank": null,
+            "rank_change": null,
+            "rrf_score": 0.014705882352941176
+          },
+          {
+            "id": "36831892",
+            "title": "Histone tails: Directing the chromatin response to DNA damage.",
+            "base_rank": null,
+            "learned_rank": 8,
+            "rank_change": null,
+            "rrf_score": 0.014705882352941176
+          },
+          {
+            "id": "10993232",
+            "title": "Cell death from antibiotics without the involvement of reactive oxygen species.",
+            "base_rank": null,
+            "learned_rank": 9,
+            "rank_change": null,
+            "rrf_score": 0.014492753623188406
+          },
+          {
+            "id": "25838286",
+            "title": "WRN, the protein deficient in Werner syndrome, plays a critical structural role in optimizing DNA repair.",
+            "base_rank": 9,
+            "learned_rank": null,
+            "rank_change": null,
+            "rrf_score": 0.014492753623188406
+          },
+          {
+            "id": "12552297",
+            "title": "The DNA polymerase λ is required for the repair of non-compatible DNA double strand breaks by NHEJ in mammalian cells",
+            "base_rank": 10,
+            "learned_rank": null,
+            "rank_change": null,
+            "rrf_score": 0.014285714285714285
+          },
+          {
+            "id": "22937815",
+            "title": "Roles of chromatin remodellers in DNA double strand break repair.",
+            "base_rank": null,
+            "learned_rank": 10,
+            "rank_change": null,
+            "rrf_score": 0.014285714285714285
+          }
+        ],
+        "rrf_constant": 60
+      }
+    },
+    {
+      "index": 1,
+      "query_digest": "69ae296573c3fbb88dbd39111d8ef72d3ede51ff86f2ba993e6f47cc0e937147",
+      "status": "completed",
+      "receipts": {
+        "base": {
+          "id": "f91693c0-2feb-415b-8efa-c139eb16c203",
+          "alias": "base",
+          "bundle_id": "7d1a32fef82ec596b80a04cfc7abe73a7a0388733464bd4dd60ca112492cc310",
+          "admission_generation": 1,
+          "query_digest": "69ae296573c3fbb88dbd39111d8ef72d3ede51ff86f2ba993e6f47cc0e937147",
+          "request_digest": "b984daac3176b134206bc8ad4034429a8b96046a44f52351b70a1be474c1d17c",
+          "fresh": true,
+          "replayed": false,
+          "namespace": "live_request",
+          "observed_at": "2026-11-14T02:50:42.583329+00:00",
+          "deployment_id": "dpl_CSHM7YARPRJLj467t5UwSry53Yv6",
+          "results": [
+            {
+              "id": "1605196",
+              "title": "Atg5-independent autophagy regulates mitochondrial clearance and is essential for iPSC reprogramming",
+              "score": 0.714150071144104,
+              "visible_text": "Atg5-independent autophagy regulates mitochondrial clearance and is essential for iPSC reprogramming\n\nSuccessful generation of induced pluripotent stem cells entails a major metabolic switch from mitochondrial oxidative phosphorylation to glycolysis during the reprogramming process. The mechanism of this metabolic reprogramming, however, remains elusive. Here, our results suggest that an Atg5-independent autophagic process mediates mitochondrial clearance, a characteristic event involved in the metabolic switch. We found that blocking such autophagy, but not canonical autophagy, inhibits mitochondrial clearance, in turn, preventing iPSC induction. Furthermore, AMPK seems to be upstream of this autophagic pathway and can be targeted by small molecules to modulate mitochondrial clearance during metabolic reprogramming. Our work not only reveals that the Atg5-independent autophagy is crucial for establishing pluripotency, but it also suggests that iPSC generation and tumorigenesis share a similar metabolic switch.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "1605196",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "26952804",
+              "title": "The role of autophagy in cancer development and response to therapy",
+              "score": 0.6515040397644043,
+              "visible_text": "The role of autophagy in cancer development and response to therapy\n\nAutophagy is a process in which subcellular membranes undergo dynamic morphological changes that lead to the degradation of cellular proteins and cytoplasmic organelles. This process is an important cellular response to stress or starvation. Many studies have shed light on the importance of autophagy in cancer, but it is still unclear whether autophagy suppresses tumorigenesis or provides cancer cells with a rescue mechanism under unfavourable conditions. What is the present state of our knowledge about the role of autophagy in cancer development, and in response to therapy? And how can the autophagic process be manipulated to improve anticancer therapeutics?",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "26952804",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "19922508",
+              "title": "Monitoring starvation-induced reactive oxygen species formation.",
+              "score": 0.6366783380508423,
+              "visible_text": "Monitoring starvation-induced reactive oxygen species formation.\n\nReactive oxygen species (ROS) are potentially harmful to cells because of their ability to oxidize cell constituents such as DNA, proteins, and lipids. However, at low levels, and under tight control, this feature makes them excellent modifiers in a variety of signal transduction pathways, including autophagy. Autophagy was traditionally associated with oxidative stress, acting in the degradation of oxidized proteins and organelles. Recently, a signaling role was suggested for ROS in the regulation of autophagy, leading, under different circumstances, either to survival or to death. To study the effects of ROS on this pathway, one must determine the localization, intensity, kinetics, and essentiality of the oxidative signal in autophagy. Moreover, once characterized, detection and manipulation of ROS formation could be used to monitor and control autophagic activity. In this chapter we discuss methods to examine ROS in the context of autophagy.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "19922508",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "6227220",
+              "title": "Autophagy deficiency leads to protection from obesity and insulin resistance by inducing Fgf21 as a mitokine",
+              "score": 0.6292756795883179,
+              "visible_text": "Autophagy deficiency leads to protection from obesity and insulin resistance by inducing Fgf21 as a mitokine\n\nDespite growing interest and a recent surge in papers, the role of autophagy in glucose and lipid metabolism is unclear. We produced mice with skeletal muscle–specific deletion of Atg7 (encoding autophagy-related 7). Unexpectedly, these mice showed decreased fat mass and were protected from diet-induced obesity and insulin resistance; this phenotype was accompanied by increased fatty acid oxidation and browning of white adipose tissue (WAT) owing to induction of fibroblast growth factor 21 (Fgf21). Mitochondrial dysfunction induced by autophagy deficiency increased Fgf21 expression through induction of Atf4, a master regulator of the integrated stress response. Mitochondrial respiratory chain inhibitors also induced Fgf21 in an Atf4-dependent manner. We also observed induction of Fgf21, resistance to diet-induced obesity and amelioration of insulin resistance in mice with autophagy deficiency in the liver, another insulin target tissue. These findings suggest that autophagy deficiency and subsequent mitochondrial dysfunction promote Fgf21 expression, a hormone we consequently term a 'mitokine', and together these processes promote protection from diet-",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "6227220",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "4399311",
+              "title": "A role for mitochondria in NLRP3 inflammasome activation",
+              "score": 0.6092295050621033,
+              "visible_text": "A role for mitochondria in NLRP3 inflammasome activation\n\nAn inflammatory response initiated by the NLRP3 inflammasome is triggered by a variety of situations of host ‘danger’, including infection and metabolic dysregulation. Previous studies suggested that NLRP3 inflammasome activity is negatively regulated by autophagy and positively regulated by reactive oxygen species (ROS) derived from an uncharacterized organelle. Here we show that mitophagy/autophagy blockade leads to the accumulation of damaged, ROS-generating mitochondria, and this in turn activates the NLRP3 inflammasome. Resting NLRP3 localizes to endoplasmic reticulum structures, whereas on inflammasome activation both NLRP3 and its adaptor ASC redistribute to the perinuclear space where they co-localize with endoplasmic reticulum and mitochondria organelle clusters. Notably, both ROS generation and inflammasome activation are suppressed when mitochondrial activity is dysregulated by inhibition of the voltage-dependent anion channel. This indicates that NLRP3 infl",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "4399311",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "8425533",
+              "title": "Elimination of paternal mitochondria in mouse embryos occurs through autophagic degradation dependent on PARKIN and MUL1",
+              "score": 0.5970510244369507,
+              "visible_text": "Elimination of paternal mitochondria in mouse embryos occurs through autophagic degradation dependent on PARKIN and MUL1\n\nA defining feature of mitochondria is their maternal mode of inheritance. However, little is understood about the cellular mechanism through which paternal mitochondria, delivered from sperm, are eliminated from early mammalian embryos. Autophagy has been implicated in nematodes, but whether this mechanism is conserved in mammals has been disputed. Here, we show that cultured mouse fibroblasts and pre-implantation embryos use a common pathway for elimination of mitochondria. Both situations utilize mitophagy, in which mitochondria are sequestered by autophagosomes and delivered to lysosomes for degradation. The E3 ubiquitin ligases PARKIN and MUL1 play redundant roles in elimination of paternal mitochondria. The process is associated with depolarization of paternal mitochondria and additionally requires the mitochondrial outer membrane protein FIS1, the autophagy adaptor P62, and PINK1 kinase. Our results indicate that strict maternal transmission of mitochondria relies on mitophagy and uncover a collaboration between MUL1 and PARKIN",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "8425533",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "13651792",
+              "title": "Human IRGM Regulates Autophagy and Its Cell-Autonomous Immunity Functions Through Mitochondria",
+              "score": 0.5831838846206665,
+              "visible_text": "Human IRGM Regulates Autophagy and Its Cell-Autonomous Immunity Functions Through Mitochondria\n\nIRGM, a human immunity-related GTPase, confers autophagic defence against intracellular pathogens by an unknown mechanism. Here, we report an unexpected mode of IRGM action. IRGM demonstrated differential affinity for the mitochondrial lipid cardiolipin, translocated to mitochondria, affected mitochondrial fission and induced autophagy. Mitochondrial fission was necessary for autophagic control of intracellular mycobacteria by IRGM. IRGM influenced mitochondrial membrane polarization and cell death. Overexpression of IRGMd, but not IRGMb splice isoforms, caused mitochondrial depolarization and autophagy-independent, but Bax/Bak-dependent, cell death. By acting on mitochondria, IRGM confers autophagic protection or cell death, explaining IRGM action both in defence against tuberculosis and in the damaging inflammation caused by Crohn's disease.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "13651792",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "10463997",
+              "title": "Defective regulation of adipose tissue autophagy in obesity",
+              "score": 0.5815863609313965,
+              "visible_text": "Defective regulation of adipose tissue autophagy in obesity\n\nObjectives: Autophagy is a highly regulated process that has an important role in the control of a wide range of cellular functions, such as organelle recycling, nutrient availability and tissue differentiation. A recent study has shown an increased autophagic activity in the adipose tissue of obese subjects, and a role for autophagy in obesity-associated insulin resistance was proposed. Body mass reduction is the most efficient approach to tackle insulin resistance in over-weight subjects; however, the impact of weight loss in adipose tissue autophagy is unknown. Subjects:Adipose tissue autophagy was evaluated in mice and humans. Results:First, a mouse model of diet-induced obesity and diabetes was maintained on a 15-day, 40% caloric restriction. At baseline, markers of autophagy were increased in obese mice as compared with lean controls. Upon caloric restriction, autophagy increased in the lean mice, whereas it decreased in the obese mice. The reintroduction of ad libitum feeding was sufficient to rapidly reduce autophagy in the lean mice and increase autophagy in the obese mice. In the second part of the study, autophagy was evaluated in",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "10463997",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "31882215",
+              "title": "Autophagy and mTORC1 regulate the stochastic phase of somatic cell reprogramming",
+              "score": 0.580656111240387,
+              "visible_text": "Autophagy and mTORC1 regulate the stochastic phase of somatic cell reprogramming\n\nWe describe robust induction of autophagy during the reprogramming of mouse fibroblasts to induced pluripotent stem cells by four reprogramming factors (Sox2, Oct4, Klf4 and c-Myc), henceforth 4F. This process occurs independently of p53 activation, and is mediated by the synergistic downregulation of mechanistic target of rapamycin complex 1 (mTORC1) and the induction of autophagy-related genes. The 4F coordinately repress mTORC1, but bifurcate in their regulation of autophagy-related genes, with Klf4 and c-Myc inducing them but Sox2 and Oct4 inhibiting them. On one hand, inhibition of mTORC1 facilitates reprogramming by promoting cell reshaping (mitochondrial remodelling and cell size reduction). On the other hand, mTORC1 paradoxically impairs reprogramming by triggering autophagy. Autophagy does not participate in cell reshaping in reprogramming but instead degrade",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "31882215",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "11903247",
+              "title": "Regulation of autophagy by cytoplasmic p53",
+              "score": 0.5653387904167175,
+              "visible_text": "Regulation of autophagy by cytoplasmic p53\n\nMultiple cellular stressors, including activation of the tumour suppressor p53, can stimulate autophagy. Here we show that deletion, depletion or inhibition of p53 can induce autophagy in human, mouse and nematode cells subjected to knockout, knockdown or pharmacological inhibition of p53. Enhanced autophagy improved the survival of p53-deficient cancer cells under conditions of hypoxia and nutrient depletion, allowing them to maintain high ATP levels. Inhibition of p53 led to autophagy in enucleated cells, and cytoplasmic, not nuclear, p53 was able to repress the enhanced autophagy of p53−/− cells. Many different inducers of autophagy (for example, starvation, rapamycin and toxins affecting the endoplasmic reticulum) stimulated proteasome-mediated degradation of p53 through a pathway relying on the E3 ubiquitin ligase HDM2. Inhibition of p53 degradation prevented the activation of autophagy in several cell lines, in response to several distinct stimuli. These results provide evidence of a key signalling pathway that links",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "11903247",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            }
+          ],
+          "top_document_ids": [
+            "1605196",
+            "26952804",
+            "19922508",
+            "6227220",
+            "4399311",
+            "8425533",
+            "13651792",
+            "10463997",
+            "31882215",
+            "11903247"
+          ],
+          "timings": {
+            "encoding_ms": 12.883228999996277,
+            "search_ms": 6.014632000002962,
+            "inference_ms": 18.900578000000223,
+            "serialization_ms": 0.11281900000170708,
+            "elapsed_before_receipt_ms": 186.9529330000006,
+            "process_peak_rss_mib": 417.46875,
+            "memory_observer": "Linux process high-water RSS, including startup"
+          },
+          "graph_digest": "15715adb11109d77b6865accbb4104784c8f71d8fe498c83e5526e5da373ee55",
+          "tokenizer_digest": "be50c3628f2bf5bb5e3a7f17b1f74611b2561a3a27eeab05e5aa30f411572037",
+          "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25",
+          "index_digest": "97913a35950fc1e167f85fb20587963de353ce09ccd429529b8dcb96d3bb266e",
+          "completion_generation": 1,
+          "status": "completed"
+        },
+        "experimental": {
+          "id": "0217d037-a627-495f-b3da-c480cc09a1d9",
+          "alias": "experimental",
+          "bundle_id": "43f7a256426411096133ff091bac9c2564db5c0487ea5a3c99bb5677f1c1cfda",
+          "admission_generation": 1,
+          "query_digest": "69ae296573c3fbb88dbd39111d8ef72d3ede51ff86f2ba993e6f47cc0e937147",
+          "request_digest": "f75c69734cbf973f63a46c83b9d2601e4ae9f88184069556b3ff5e127c66c4f9",
+          "fresh": true,
+          "replayed": false,
+          "namespace": "live_request",
+          "observed_at": "2026-11-14T02:50:44.336775+00:00",
+          "deployment_id": "dpl_CSHM7YARPRJLj467t5UwSry53Yv6",
+          "results": [
+            {
+              "id": "1605196",
+              "title": "Atg5-independent autophagy regulates mitochondrial clearance and is essential for iPSC reprogramming",
+              "score": 0.6932312250137329,
+              "visible_text": "Atg5-independent autophagy regulates mitochondrial clearance and is essential for iPSC reprogramming\n\nSuccessful generation of induced pluripotent stem cells entails a major metabolic switch from mitochondrial oxidative phosphorylation to glycolysis during the reprogramming process. The mechanism of this metabolic reprogramming, however, remains elusive. Here, our results suggest that an Atg5-independent autophagic process mediates mitochondrial clearance, a characteristic event involved in the metabolic switch. We found that blocking such autophagy, but not canonical autophagy, inhibits mitochondrial clearance, in turn, preventing iPSC induction. Furthermore, AMPK seems to be upstream of this autophagic pathway and can be targeted by small molecules to modulate mitochondrial clearance during metabolic reprogramming. Our work not only reveals that the Atg5-independent autophagy is crucial for establishing pluripotency, but it also suggests that iPSC generation and tumorigenesis share a similar metabolic switch.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "1605196",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "26952804",
+              "title": "The role of autophagy in cancer development and response to therapy",
+              "score": 0.6542513370513916,
+              "visible_text": "The role of autophagy in cancer development and response to therapy\n\nAutophagy is a process in which subcellular membranes undergo dynamic morphological changes that lead to the degradation of cellular proteins and cytoplasmic organelles. This process is an important cellular response to stress or starvation. Many studies have shed light on the importance of autophagy in cancer, but it is still unclear whether autophagy suppresses tumorigenesis or provides cancer cells with a rescue mechanism under unfavourable conditions. What is the present state of our knowledge about the role of autophagy in cancer development, and in response to therapy? And how can the autophagic process be manipulated to improve anticancer therapeutics?",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "26952804",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "6227220",
+              "title": "Autophagy deficiency leads to protection from obesity and insulin resistance by inducing Fgf21 as a mitokine",
+              "score": 0.6296099424362183,
+              "visible_text": "Autophagy deficiency leads to protection from obesity and insulin resistance by inducing Fgf21 as a mitokine\n\nDespite growing interest and a recent surge in papers, the role of autophagy in glucose and lipid metabolism is unclear. We produced mice with skeletal muscle–specific deletion of Atg7 (encoding autophagy-related 7). Unexpectedly, these mice showed decreased fat mass and were protected from diet-induced obesity and insulin resistance; this phenotype was accompanied by increased fatty acid oxidation and browning of white adipose tissue (WAT) owing to induction of fibroblast growth factor 21 (Fgf21). Mitochondrial dysfunction induced by autophagy deficiency increased Fgf21 expression through induction of Atf4, a master regulator of the integrated stress response. Mitochondrial respiratory chain inhibitors also induced Fgf21 in an Atf4-dependent manner. We also observed induction of Fgf21, resistance to diet-induced obesity and amelioration of insulin resistance in mice with autophagy deficiency in the liver, another insulin target tissue. These findings suggest that autophagy deficiency and subsequent mitochondrial dysfunction promote Fgf21 expression, a hormone we consequently term a 'mitokine', and together these processes promote protection from diet-",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "6227220",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "19922508",
+              "title": "Monitoring starvation-induced reactive oxygen species formation.",
+              "score": 0.6178107857704163,
+              "visible_text": "Monitoring starvation-induced reactive oxygen species formation.\n\nReactive oxygen species (ROS) are potentially harmful to cells because of their ability to oxidize cell constituents such as DNA, proteins, and lipids. However, at low levels, and under tight control, this feature makes them excellent modifiers in a variety of signal transduction pathways, including autophagy. Autophagy was traditionally associated with oxidative stress, acting in the degradation of oxidized proteins and organelles. Recently, a signaling role was suggested for ROS in the regulation of autophagy, leading, under different circumstances, either to survival or to death. To study the effects of ROS on this pathway, one must determine the localization, intensity, kinetics, and essentiality of the oxidative signal in autophagy. Moreover, once characterized, detection and manipulation of ROS formation could be used to monitor and control autophagic activity. In this chapter we discuss methods to examine ROS in the context of autophagy.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "19922508",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "10463997",
+              "title": "Defective regulation of adipose tissue autophagy in obesity",
+              "score": 0.5910763740539551,
+              "visible_text": "Defective regulation of adipose tissue autophagy in obesity\n\nObjectives: Autophagy is a highly regulated process that has an important role in the control of a wide range of cellular functions, such as organelle recycling, nutrient availability and tissue differentiation. A recent study has shown an increased autophagic activity in the adipose tissue of obese subjects, and a role for autophagy in obesity-associated insulin resistance was proposed. Body mass reduction is the most efficient approach to tackle insulin resistance in over-weight subjects; however, the impact of weight loss in adipose tissue autophagy is unknown. Subjects:Adipose tissue autophagy was evaluated in mice and humans. Results:First, a mouse model of diet-induced obesity and diabetes was maintained on a 15-day, 40% caloric restriction. At baseline, markers of autophagy were increased in obese mice as compared with lean controls. Upon caloric restriction, autophagy increased in the lean mice, whereas it decreased in the obese mice. The reintroduction of ad libitum feeding was sufficient to rapidly reduce autophagy in the lean mice and increase autophagy in the obese mice. In the second part of the study, autophagy was evaluated in",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "10463997",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "8425533",
+              "title": "Elimination of paternal mitochondria in mouse embryos occurs through autophagic degradation dependent on PARKIN and MUL1",
+              "score": 0.5851972103118896,
+              "visible_text": "Elimination of paternal mitochondria in mouse embryos occurs through autophagic degradation dependent on PARKIN and MUL1\n\nA defining feature of mitochondria is their maternal mode of inheritance. However, little is understood about the cellular mechanism through which paternal mitochondria, delivered from sperm, are eliminated from early mammalian embryos. Autophagy has been implicated in nematodes, but whether this mechanism is conserved in mammals has been disputed. Here, we show that cultured mouse fibroblasts and pre-implantation embryos use a common pathway for elimination of mitochondria. Both situations utilize mitophagy, in which mitochondria are sequestered by autophagosomes and delivered to lysosomes for degradation. The E3 ubiquitin ligases PARKIN and MUL1 play redundant roles in elimination of paternal mitochondria. The process is associated with depolarization of paternal mitochondria and additionally requires the mitochondrial outer membrane protein FIS1, the autophagy adaptor P62, and PINK1 kinase. Our results indicate that strict maternal transmission of mitochondria relies on mitophagy and uncover a collaboration between MUL1 and PARKIN",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "8425533",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "4399311",
+              "title": "A role for mitochondria in NLRP3 inflammasome activation",
+              "score": 0.5721262097358704,
+              "visible_text": "A role for mitochondria in NLRP3 inflammasome activation\n\nAn inflammatory response initiated by the NLRP3 inflammasome is triggered by a variety of situations of host ‘danger’, including infection and metabolic dysregulation. Previous studies suggested that NLRP3 inflammasome activity is negatively regulated by autophagy and positively regulated by reactive oxygen species (ROS) derived from an uncharacterized organelle. Here we show that mitophagy/autophagy blockade leads to the accumulation of damaged, ROS-generating mitochondria, and this in turn activates the NLRP3 inflammasome. Resting NLRP3 localizes to endoplasmic reticulum structures, whereas on inflammasome activation both NLRP3 and its adaptor ASC redistribute to the perinuclear space where they co-localize with endoplasmic reticulum and mitochondria organelle clusters. Notably, both ROS generation and inflammasome activation are suppressed when mitochondrial activity is dysregulated by inhibition of the voltage-dependent anion channel. This indicates that NLRP3 infl",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "4399311",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "11903247",
+              "title": "Regulation of autophagy by cytoplasmic p53",
+              "score": 0.5572549104690552,
+              "visible_text": "Regulation of autophagy by cytoplasmic p53\n\nMultiple cellular stressors, including activation of the tumour suppressor p53, can stimulate autophagy. Here we show that deletion, depletion or inhibition of p53 can induce autophagy in human, mouse and nematode cells subjected to knockout, knockdown or pharmacological inhibition of p53. Enhanced autophagy improved the survival of p53-deficient cancer cells under conditions of hypoxia and nutrient depletion, allowing them to maintain high ATP levels. Inhibition of p53 led to autophagy in enucleated cells, and cytoplasmic, not nuclear, p53 was able to repress the enhanced autophagy of p53−/− cells. Many different inducers of autophagy (for example, starvation, rapamycin and toxins affecting the endoplasmic reticulum) stimulated proteasome-mediated degradation of p53 through a pathway relying on the E3 ubiquitin ligase HDM2. Inhibition of p53 degradation prevented the activation of autophagy in several cell lines, in response to several distinct stimuli. These results provide evidence of a key signalling pathway that links",
+              "truncated": true,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "11903247",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "15728433",
+              "title": "Tightrope act: autophagy in stem cell renewal, differentiation, proliferation, and aging",
+              "score": 0.5559571981430054,
+              "visible_text": "Tightrope act: autophagy in stem cell renewal, differentiation, proliferation, and aging\n\nAutophagy is a constitutive lysosomal catabolic pathway that degrades damaged organelles and protein aggregates. Stem cells are characterized by self-renewal, pluripotency, and quiescence; their long life span, limited capacity to dilute cellular waste and spent organelles due to quiescence, along with their requirement for remodeling in order to differentiate, all suggest that they require autophagy more than other cell types. Here, we review the current literature on the role of autophagy in embryonic and adult stem cells, including hematopoietic, mesenchymal, and neuronal stem cells, highlighting the diverse and contrasting roles autophagy plays in their biology. Furthermore, we review the few studies on stem cells, lysosomal activity, and autophagy. Novel techniques to detect autophagy in primary cells are required to study autophagy in different stem cell types. These will help to elucidate the importance of autophagy in stem cells during transplantation, a promising therapeutic approach for many diseases.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "15728433",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            },
+            {
+              "id": "13651792",
+              "title": "Human IRGM Regulates Autophagy and Its Cell-Autonomous Immunity Functions Through Mitochondria",
+              "score": 0.5522399544715881,
+              "visible_text": "Human IRGM Regulates Autophagy and Its Cell-Autonomous Immunity Functions Through Mitochondria\n\nIRGM, a human immunity-related GTPase, confers autophagic defence against intracellular pathogens by an unknown mechanism. Here, we report an unexpected mode of IRGM action. IRGM demonstrated differential affinity for the mitochondrial lipid cardiolipin, translocated to mitochondria, affected mitochondrial fission and induced autophagy. Mitochondrial fission was necessary for autophagic control of intracellular mycobacteria by IRGM. IRGM influenced mitochondrial membrane polarization and cell death. Overexpression of IRGMd, but not IRGMb splice isoforms, caused mitochondrial depolarization and autophagy-independent, but Bax/Bak-dependent, cell death. By acting on mitochondria, IRGM confers autophagic protection or cell death, explaining IRGM action both in defence against tuberculosis and in the damaging inflammation caused by Crohn's disease.",
+              "truncated": false,
+              "source_reference": {
+                "dataset": "BEIR SciFact",
+                "document_id": "13651792",
+                "dataset_url": "https://huggingface.co/datasets/BeIR/scifact",
+                "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25"
+              }
+            }
+          ],
+          "top_document_ids": [
+            "1605196",
+            "26952804",
+            "6227220",
+            "19922508",
+            "10463997",
+            "8425533",
+            "4399311",
+            "11903247",
+            "15728433",
+            "13651792"
+          ],
+          "timings": {
+            "encoding_ms": 20.670963000000597,
+            "search_ms": 2.1889539999975227,
+            "inference_ms": 22.862678000002745,
+            "serialization_ms": 0.1360269999963748,
+            "elapsed_before_receipt_ms": 224.50096200000047,
+            "process_peak_rss_mib": 417.46875,
+            "memory_observer": "Linux process high-water RSS, including startup"
+          },
+          "graph_digest": "2f06d8230fd96b1f81e0e38097788e414911f61b017d67ad2ed109a9e4b7556d",
+          "tokenizer_digest": "851ca67100d372ca3ae031a6abd168f53489eebfd7d89523f35c5c9b4d372c3c",
+          "corpus_digest": "2a81d1ae61e0cae63737e871a2a74693abcfa091412fd669532686d53c559c25",
+          "index_digest": "ab07bd120db0168e9da37c94022ce2e7c488da9e4493aee30668e12a7a6a1ab1",
+          "completion_generation": 1,
+          "status": "completed"
+        }
+      },
+      "milliseconds": {
+        "base": 481.97149999999965,
+        "experimental": 480.41649999999936
+      },
+      "comparison": {
+        "depth": 10,
+        "shared": 9,
+        "jaccard": 0.8181818181818182,
+        "mean_shared_rank_shift": 1.3333333333333333,
+        "rows": [
+          {
+            "id": "1605196",
+            "title": "Atg5-independent autophagy regulates mitochondrial clearance and is essential for iPSC reprogramming",
+            "base_rank": 1,
+            "learned_rank": 1,
+            "rank_change": 0,
+            "rrf_score": 0.03278688524590164
+          },
+          {
+            "id": "26952804",
+            "title": "The role of autophagy in cancer development and response to therapy",
+            "base_rank": 2,
+            "learned_rank": 2,
+            "rank_change": 0,
+            "rrf_score": 0.03225806451612903
+          },
+          {
+            "id": "19922508",
+            "title": "Monitoring starvation-induced reactive oxygen species formation.",
+            "base_rank": 3,
+            "learned_rank": 4,
+            "rank_change": -1,
+            "rrf_score": 0.03149801587301587
+          },
+          {
+            "id": "6227220",
+            "title": "Autophagy deficiency leads to protection from obesity and insulin resistance by inducing Fgf21 as a mitokine",
+            "base_rank": 4,
+            "learned_rank": 3,
+            "rank_change": 1,
+            "rrf_score": 0.03149801587301587
+          },
+          {
+            "id": "4399311",
+            "title": "A role for mitochondria in NLRP3 inflammasome activation",
+            "base_rank": 5,
+            "learned_rank": 7,
+            "rank_change": -2,
+            "rrf_score": 0.030309988518943745
+          },
+          {
+            "id": "8425533",
+            "title": "Elimination of paternal mitochondria in mouse embryos occurs through autophagic degradation dependent on PARKIN and MUL1",
+            "base_rank": 6,
+            "learned_rank": 6,
+            "rank_change": 0,
+            "rrf_score": 0.030303030303030304
+          },
+          {
+            "id": "10463997",
+            "title": "Defective regulation of adipose tissue autophagy in obesity",
+            "base_rank": 8,
+            "learned_rank": 5,
+            "rank_change": 3,
+            "rrf_score": 0.030090497737556562
+          },
+          {
+            "id": "13651792",
+            "title": "Human IRGM Regulates Autophagy and Its Cell-Autonomous Immunity Functions Through Mitochondria",
+            "base_rank": 7,
+            "learned_rank": 10,
+            "rank_change": -3,
+            "rrf_score": 0.029211087420042643
+          },
+          {
+            "id": "11903247",
+            "title": "Regulation of autophagy by cytoplasmic p53",
+            "base_rank": 10,
+            "learned_rank": 8,
+            "rank_change": 2,
+            "rrf_score": 0.028991596638655463
+          },
+          {
+            "id": "15728433",
+            "title": "Tightrope act: autophagy in stem cell renewal, differentiation, proliferation, and aging",
+            "base_rank": null,
+            "learned_rank": 9,
+            "rank_change": null,
+            "rrf_score": 0.014492753623188406
+          },
+          {
+            "id": "31882215",
+            "title": "Autophagy and mTORC1 regulate the stochastic phase of somatic cell reprogramming",
+            "base_rank": 9,
+            "learned_rank": null,
+            "rank_change": null,
+            "rrf_score": 0.014492753623188406
+          }
+        ],
+        "rrf_constant": 60
+      }
+    }
+  ],
+  "snapshot": {
+    "base": {
+      "bundle_id": "7d1a32fef82ec596b80a04cfc7abe73a7a0388733464bd4dd60ca112492cc310",
+      "generation": 1
+    },
+    "experimental": {
+      "bundle_id": "43f7a256426411096133ff091bac9c2564db5c0487ea5a3c99bb5677f1c1cfda",
+      "generation": 1
+    }
+  },
+  "ended_at": "2026-11-14T02:50:44.106Z",
+  "source_commit": "local",
+  "module_sha256": "61b18befbefd7b279c1d673280f65f0179b1c19a25ee03401dbb7186316e86c5",
+  "observer": "Independent Node HTTPS client executing the comparison module; not browser evidence",
+  "queries_origin": "Two authored diagnostic examples; not benchmark quality labels"
+}

@@ -1,0 +1,26 @@
+{
+  "phase": "authorized_public_runtime",
+  "url": "https://hardcase-taupe.vercel.app",
+  "approved_hosts": [
+    "hardcase-taupe.vercel.app"
+  ],
+  "candidate_bundle_id": "43f7a256426411096133ff091bac9c2564db5c0487ea5a3c99bb5677f1c1cfda",
+  "queries": [
+    "How do autophagy pathways maintain mitochondrial function during cellular stress?",
+    "DNA repair mechanisms following oxidative damage",
+    "Immune cell signaling during viral infection",
+    "Regulation of gene expression by chromatin remodeling",
+    "Protein folding and endoplasmic reticulum stress",
+    "Metabolic changes during stem cell differentiation",
+    "Role of extracellular vesicles in cell communication",
+    "Mechanisms of antibiotic resistance in bacteria",
+    "Interactions between gut microbes and host immunity",
+    "Neuronal plasticity and memory formation",
+    "Inflammatory signaling in tissue repair",
+    "Effects of hypoxia on cellular metabolism",
+    "Cell cycle checkpoints and genomic stability",
+    "Mechanisms of programmed cell death",
+    "RNA processing and alternative splicing",
+    "How does protein phosphorylation regulate signal transduction?"
+  ]
+}

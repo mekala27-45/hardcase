@@ -1,0 +1,104 @@
+{
+  "started_at": "2026-11-14T02:32:10.866Z",
+  "ended_at": "2026-11-14T02:32:37.471Z",
+  "rows": [
+    {
+      "status": "failed",
+      "index": 0,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 1,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 2,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 3,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 4,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 5,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 6,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 7,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 8,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 9,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 10,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 11,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 12,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 13,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 14,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    },
+    {
+      "status": "failed",
+      "index": 15,
+      "milliseconds": null,
+      "error": "Error: Readback mismatch"
+    }
+  ],
+  "planned": 16,
+  "client": "Node fetch HTTPS, independent of browser"
+}

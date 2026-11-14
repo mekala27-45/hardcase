@@ -156,5 +156,39 @@ def run():
         terminal.update(report_digest=report['report_digest'], main_completed_rows=report['main_completed_rows'], export_completed_rows=report['export_completed_rows'])
 
 
+def audit_retained(root):
+    """Regrade the first retained attempt, without executing or selecting models."""
+    from .audit import audit
+    root = Path(root)
+    config = load_json('requests/experiment.json')
+    request = load_json('requests/evaluate.json')
+    live = load_json('evidence/live/pretest.json')
+    require(live.get('status') == 'verified' and all(live.get(k) is True for k in ('learned_fresh_browser', 'learned_fresh_client', 'independent_db_match')) and digest(live) == request['pretest_live_digest'], 'PRETEST_LIVE_EVIDENCE_MISSING')
+    selection = load_json('evidence/training/selection.json')
+    exported = load_json('evidence/export/selection.json')
+    for item, key in ((selection, 'selection_id'), (exported, 'export_id')):
+        require(digest({k:v for k,v in item.items() if k != key}) == item[key] == request[key], 'EVALUATION_FREEZE_CHANGED')
+    require(exported['selection_id'] == selection['selection_id'], 'EXPORT_PARENT_CHANGED')
+    documents = load_json('data/processed/documents.json')
+    require(digest(documents) == load_json('data/manifests/preparation.json')['document_view_digest'], 'TEST_DOCUMENT_VIEW_CHANGED')
+    queries = load_json('data/vault/test-queries.json')
+    labels = load_json('data/vault/test-qrels.json')
+    names = ['report', 'planned-inventory', 'main-rows', 'export-rows', 'executions', 'test-groups']
+    names += [m+'-rankings' for m in ['bm25', 'base_encoder']+config['arms']+['candidate_float32', 'candidate_int8']]
+    artifacts = {name: load_json(root/(name+'.json')) for name in names}
+    require(artifacts['report']['candidate'] == selection['candidate']['arm'], 'EVALUATION_CANDIDATE_CHANGED')
+    result = audit(config, request, load_json('data/manifests/source.json'), queries, documents, labels, artifacts)
+    result.update(source_commit=os.getenv('GITHUB_SHA', 'local'), run_id=os.getenv('GITHUB_RUN_ID', 'local'))
+    atomic_json(root/'independent-audit.json', result)
+    require(result['passed'], 'INDEPENDENT_RANKING_AUDIT_FAILED')
+
+
 if __name__ == '__main__':
-    run()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--audit-retained', metavar='DIRECTORY')
+    args = parser.parse_args()
+    if args.audit_retained:
+        audit_retained(args.audit_retained)
+    else:
+        run()
