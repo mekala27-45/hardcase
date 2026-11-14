@@ -30,7 +30,7 @@ try {
   if(Math.abs(record.after.dpr/record.before.dpr-2)>.02||Math.abs(record.before.viewport/record.after.viewport-2)>.05)throw new Error('Native 200-percent zoom was not established: '+JSON.stringify(record.after));
   for(const theme of ['light','dark']){
     if(await page.evaluate(()=>document.documentElement.dataset.theme)!==theme)await page.locator('#theme').click();
-    for(const view of ['search','training','evaluation','release','data']){
+    for(const view of ['search','training','evaluation','release','data','compare']){
       await page.locator('[data-panel="'+view+'"]').click();
       await page.waitForFunction(view=>document.querySelector('[data-panel="'+view+'"]').getAttribute('aria-current')==='page',view);
       await page.evaluate(()=>document.fonts.ready);

@@ -12,7 +12,7 @@ A controlled study of selective retrieval-encoder fine-tuning, mined weak negati
 
 ## Current execution state
 
-The published interface displays retained evidence. Live learned search has not yet been verified. Production publication, registry initialization and deployment credentials await explicit approval. Vercel also rejected the prepared preview at its daily free deployment limit. Final test evaluation remains closed until the pretest live check passes. Training state is recorded in the linked workflow and imported terminal manifests, not inferred from this description.
+Public learned search has verified browser, separate-client and independent database receipts. The baseline remains the default; public sessions cannot promote or roll back a model. See [live deployment evidence](docs/LIVE-DEPLOYMENT.md). The frozen held-out evaluation has been requested. No final test quality claim is made until its retained report and independent audit are available. Training, evaluation, public runtime checks and exploratory comparisons remain separate evidence.
 
 [Actual training workflow](https://github.com/mekala27-45/hardcase/actions/runs/42113390181)
 
@@ -43,6 +43,10 @@ This is a portfolio project, not employment experience or a medical product. The
 ## Rights
 
 Source code is MIT licensed. Dataset and model rights remain separate; see THIRD_PARTY_NOTICES.md.
+
+## Paired diagnostic workbench
+
+The [Compare view](https://mekala27-45.github.io/hardcase/#compare) runs bounded, serial baseline/candidate pairs with alias snapshots, persisted receipt verification and explicit failure states. It shows shared documents, rank changes and a browser-only reciprocal-rank fusion preview. Downloadable reports omit raw query text and credentials. These unlabeled diagnostics do not alter the frozen study, select a checkpoint or establish quality. See [the comparison guide](docs/COMPARISON.md).
 
 ## Completed training and frozen validation selection
 

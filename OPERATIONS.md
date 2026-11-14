@@ -14,7 +14,7 @@ Retain exact input archives using .github/workflows/retain.yml. Verify archive S
 
 To assemble the API, create requests/runtime.json only from observed export and release assets. It must contain release_tag, asset_sha256, export_id and variant. Run `python deploy/package_runtime.py` in a clean build. It verifies the fixed repository asset, safe archive members, bundle hashes and startup probes. Use only the base and chosen candidate under the measured memory envelope. Activate the reviewed FastAPI entry only after the package is verified. The health scaffold remains explicitly not ready until then.
 
-Provide DATABASE_URL with TLS through protected deployment settings and OPERATOR_TOKEN through a protected operator workflow. Never place either in a command argument, source file, artifact or chat. The current Vercel credential transfer requires explicit user approval because automatic approval review rejected that secret disclosure. Do not work around the rejection through another transport.
+Provide DATABASE_URL with TLS through protected deployment settings and OPERATOR_TOKEN through a protected operator workflow. Never place either in a command argument, source file, artifact or chat. Ajay explicitly authorized the Hardcase registry initialization and credential storage, and the setup is complete. See docs/LIVE-DEPLOYMENT.md. Preserve the existing secret values and deployment protection; this authorization does not extend to other projects.
 
 After deployment, verify /readyz, submit distinct fresh experimental queries from browser and separate HTTP client, and independently read matching database receipts. Capture current deployment/bundle identity. Only then bind the pretest receipt digest in requests/evaluate.json and run `python -m evaluation.run`. Do not execute test evaluation to fill a live-serving gap.
 
@@ -25,3 +25,7 @@ For promotion, follow .agents/skills/promote-model-bundle/SKILL.md. Prepare a co
 Regenerate RESULTS.md with `python -m hardcase.claims`. Include the observed run IDs, model/asset digests, completion state and any approval blocker. Keep prepared, running, failed and completed states distinct.
 
 Before cleanup, resolve absolute paths and confirm they are inside this checkout or an explicitly named disposable directory. Never remove another daily project or a shared schema. Preserve frozen input assets, selected model assets, raw rankings, notices, source commits and terminal manifests before removing reproducible caches.
+
+## Diagnostic and verification additions
+
+See docs/COMPARISON.md for serial paired searches, cancellation, report privacy, and the limits of unlabeled rank diagnostics. Run `python -m evaluation.run --audit-retained evidence/evaluation` to independently regrade the first retained attempt after restoring original inputs. Run `python deploy/decide_release.py` using the content-bound requests/release-check.json; the original pretest remains frozen. Then run `python deploy/refresh_completion.py`, `python deploy/render_docs.py`, and `python deploy/build_site_data.py`. Frontend verification requires generated site/public/evidence.json before building.

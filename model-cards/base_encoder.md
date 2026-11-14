@@ -38,4 +38,6 @@ No benchmark training measurements are asserted here. Setup and resume probes ar
 
 ## Evaluation and deployment
 
-Final held-out quality and live serving are not established by this card. See RESULTS.md and the immutable evaluation/release artifacts when available. Test qrels may be incomplete, pretrained benchmark exposure is unknown, and one training seed does not demonstrate stability. Source notices are retained separately. Do not describe the teacher as an independent evaluator or this project as foundation-model pretraining.
+Public learned search has verified browser, separate-client and independent database receipts. The baseline remains the default; public sessions cannot promote or roll back a model. See [live deployment evidence](docs/LIVE-DEPLOYMENT.md). The frozen held-out evaluation has been requested. No final test quality claim is made until its retained report and independent audit are available. Training, evaluation, public runtime checks and exploratory comparisons remain separate evidence.
+
+Test qrels may be incomplete, pretrained benchmark exposure is unknown, and one training seed does not demonstrate stability. Source notices are retained separately. Do not describe the teacher as an independent evaluator or this project as foundation-model pretraining.

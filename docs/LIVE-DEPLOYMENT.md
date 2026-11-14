@@ -15,3 +15,8 @@ Anonymous readiness and experimental HTTP search succeeded. The public browser w
 The repository's unchanged deploy/verify_live.py passed on the independently captured browser download, separate HTTP response, fresh Neon readback, and retained runtime package. See evidence/live/pretest.json and its raw inputs. An initial Windows console import replaced a Greek letter; the verifier correctly refused it. Reading the original browser JSON file directly as UTF-8 resolved the transport issue without changing the receipt or relaxing the verifier.
 
 This establishes live serving and protected operations, not held-out model quality or promotion. Next follow the frozen evaluation procedure: bind the verified pretest digest, restore the original training checkpoints and the accepted float32 compatibility archive separately, retain the rejected INT8 attempt, complete all planned held-out rows and serving checks, and calculate release gates. No held-out evaluation or promotion was performed in this deployment step. No operator key rotation, billing changes or exposure of preview URLs is required.
+
+
+## Subsequent verification
+
+A separate proof set in evidence/live/release-20261114/ verifies browser and client receipts for deployment `dpl_CSHM7YARPRJLj467t5UwSry53Yv6`, serving source `728a25e88931d98aa0ae960c9b246c38efee1050`. The bounded public smoke and all receipt readbacks use that same deployment. requests/release-check.json pins these proof digests without replacing the original pretest. The first held-out evaluation request is now admitted; its outcomes are reported separately under evidence/evaluation when retained.

@@ -43,6 +43,12 @@ def build():
             method['claims'][metric]={'measurement':item,'rendered':render_measurement(item)}
         method['claim_title']=method['method']+': '+format(method['ndcg10'],'.4f')+' mean nDCG@10 across '+str(method['planned_queries'])+' test queries'
     result['training'].update(parameters=parameters,claims=claims,selection=selection)
+    result['evaluation']['independent_audit']=existing('evidence/evaluation/independent-audit.json',{})
+    completed=existing('evidence/completion.json',{})
+    done=sum(row.get('status')=='done' and row.get('verified') is True for row in completed.values())
+    result['completion_state']=f'{done} / {len(completed)} core checks verified' if completed else 'Experiment in progress'
+    if release.get('decision'):
+        result['release_note']='The learned candidate is eligible for a separately authorized promotion; the baseline remains active.' if release.get('passed') else 'The learned candidate did not pass every registered release gate. The pretrained baseline remains the default.'
     result['evaluation'].update(paired_rows=existing('evidence/evaluation/paired-rows.json',[]),slices=existing('evidence/evaluation/slices.json',{}),export_drift=existing('evidence/evaluation/export-drift.json',[]),error_details=existing('evidence/evaluation/error-sample.json',[]),timing=existing('evidence/serving/paired-timing.json',{}))
     audit_comments={(r['query_id'],r['document_id']):r for r in existing('evidence/preparation/audit-commentary.json',{}).get('rows',[])}
     for row in result['data']['audit']:
