@@ -12,7 +12,7 @@ The intended learned bundle is `43f7a256426411096133ff091bac9c2564db5c0487ea5a3c
 
 ## Current execution and authority
 
-The original live pretest is immutable at evidence/live/pretest.json. requests/evaluate.json binds its digest and the frozen model/export selection. The first held-out attempt is [43545916335](https://github.com/mekala27-45/hardcase/actions/runs/43545916335); import its retained outcomes rather than launching another selection or overwriting the attempt.
+The original live pretest is immutable at evidence/live/pretest.json. requests/evaluate.json binds its digest and the frozen model/export selection. The first held-out attempt [43545916335](https://github.com/mekala27-45/hardcase/actions/runs/43545916335) is retained and independently audited. Product release [v0.2.0](https://github.com/mekala27-45/hardcase/releases/tag/v0.2.0) is published. Do not launch another selection or overwrite the first outcome. All promotion gates pass, but the baseline remains the default; no operator promotion was executed.
 
 Later public verification is kept separately in evidence/live/release-20261114/. Its browser and separate-client receipts match independent Neon records on the same deployment as the sixteen-query public smoke. requests/release-check.json pins those later proof digests. The initial observer failure from comparing JSON key order is retained, and the corrected observer compares structural values.
 

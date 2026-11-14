@@ -1,0 +1,10 @@
+{
+  "status": "published",
+  "tag": "v0.2.0",
+  "commit": "cfeae934c08481f43fac1b3124bcf40a41475dab",
+  "url": "https://github.com/mekala27-45/hardcase/releases/tag/v0.2.0",
+  "published_at": "2026-11-14T03:00:03Z",
+  "workflow_run": 43549158194,
+  "observed_tag_commit": "cfeae934c08481f43fac1b3124bcf40a41475dab",
+  "scope": "Code/evidence release. No alias promotion, credential changes or protection changes."
+}

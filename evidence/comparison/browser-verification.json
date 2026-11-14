@@ -1,0 +1,118 @@
+{
+  "status": "verified",
+  "observer": "Public browser UI, separate independent Neon read",
+  "source_commit": "cfeae934c08481f43fac1b3124bcf40a41475dab",
+  "deployment_id": "dpl_13FvhnVWAnShEJG7vkmVdHxdQ98o",
+  "url": "https://mekala27-45.github.io/hardcase/#compare",
+  "completed_pairs": 2,
+  "observed_pairs": [
+    {
+      "query_digest": "c5df9e28bc1ec884758dcfdd5198c825d027885011f083566872646029e12131",
+      "base_id": "3f8473d6-bfad-4ac2-811e-750d068d8f73",
+      "learned_id": "984c4ce9-bbcb-47e9-9c3f-0c879c313622",
+      "shared": 7,
+      "jaccard_percent_display": 53.8,
+      "mean_shared_rank_shift_display": 1.14
+    },
+    {
+      "query_digest": "69ae296573c3fbb88dbd39111d8ef72d3ede51ff86f2ba993e6f47cc0e937147",
+      "base_id": "238da172-1446-4878-b8b1-be04c0e3115b",
+      "learned_id": "457e4009-9a00-4ca5-9551-6d243be68901",
+      "shared": 9,
+      "jaccard_percent_display": 81.8,
+      "mean_shared_rank_shift_display": 1.33
+    }
+  ],
+  "independent_database_rows": [
+    {
+      "id": "238da172-1446-4878-b8b1-be04c0e3115b",
+      "status": "completed",
+      "alias": "base",
+      "query_digest": "69ae296573c3fbb88dbd39111d8ef72d3ede51ff86f2ba993e6f47cc0e937147",
+      "bundle_id": "7d1a32fef82ec596b80a04cfc7abe73a7a0388733464bd4dd60ca112492cc310",
+      "deployment_id": "dpl_13FvhnVWAnShEJG7vkmVdHxdQ98o",
+      "fresh": true,
+      "replayed": false,
+      "document_ids": [
+        "1605196",
+        "26952804",
+        "19922508",
+        "6227220",
+        "4399311",
+        "8425533",
+        "13651792",
+        "10463997",
+        "31882215",
+        "11903247"
+      ]
+    },
+    {
+      "id": "3f8473d6-bfad-4ac2-811e-750d068d8f73",
+      "status": "completed",
+      "alias": "base",
+      "query_digest": "c5df9e28bc1ec884758dcfdd5198c825d027885011f083566872646029e12131",
+      "bundle_id": "7d1a32fef82ec596b80a04cfc7abe73a7a0388733464bd4dd60ca112492cc310",
+      "deployment_id": "dpl_13FvhnVWAnShEJG7vkmVdHxdQ98o",
+      "fresh": true,
+      "replayed": false,
+      "document_ids": [
+        "38131471",
+        "13106686",
+        "1941721",
+        "10704438",
+        "2701077",
+        "4283694",
+        "13906892",
+        "20420780",
+        "25838286",
+        "12552297"
+      ]
+    },
+    {
+      "id": "457e4009-9a00-4ca5-9551-6d243be68901",
+      "status": "completed",
+      "alias": "experimental",
+      "query_digest": "69ae296573c3fbb88dbd39111d8ef72d3ede51ff86f2ba993e6f47cc0e937147",
+      "bundle_id": "43f7a256426411096133ff091bac9c2564db5c0487ea5a3c99bb5677f1c1cfda",
+      "deployment_id": "dpl_13FvhnVWAnShEJG7vkmVdHxdQ98o",
+      "fresh": true,
+      "replayed": false,
+      "document_ids": [
+        "1605196",
+        "26952804",
+        "6227220",
+        "19922508",
+        "10463997",
+        "8425533",
+        "4399311",
+        "11903247",
+        "15728433",
+        "13651792"
+      ]
+    },
+    {
+      "id": "984c4ce9-bbcb-47e9-9c3f-0c879c313622",
+      "status": "completed",
+      "alias": "experimental",
+      "query_digest": "c5df9e28bc1ec884758dcfdd5198c825d027885011f083566872646029e12131",
+      "bundle_id": "43f7a256426411096133ff091bac9c2564db5c0487ea5a3c99bb5677f1c1cfda",
+      "deployment_id": "dpl_13FvhnVWAnShEJG7vkmVdHxdQ98o",
+      "fresh": true,
+      "replayed": false,
+      "document_ids": [
+        "38131471",
+        "13106686",
+        "1941721",
+        "13906892",
+        "4283694",
+        "10704438",
+        "2701077",
+        "36831892",
+        "10993232",
+        "22937815"
+      ]
+    }
+  ],
+  "download_verification": "Report content and download were tested in automated Playwright. A downloaded file in this local Chrome session was not confirmed; no claim of local file persistence.",
+  "scope": "Authored unlabeled queries; agreement is not relevance."
+}

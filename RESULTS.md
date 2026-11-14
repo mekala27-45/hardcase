@@ -42,5 +42,5 @@ compute budget and environment. A candidate may fail promotion.
    Evidence: Runtime 42127323550 passed all 78 tests without skips. CI 42129215961 passed both hash seeds, and interface review 42129215925 passed native zoom. Input/model/compatibility assets retain hashes and release provenance; bounded requests and failed attempts are preserved.
 17  done: Clean-worktree rederivation and final live artifact/persistence verification.
    Evidence: Hash-locked original inputs were restored into a fresh checkout for independent regrading. Public browser/client/DB proof is separate in evidence/live/release-20261114/; the original pretest is unchanged.
-18  not done: Authorized release and tag after commits with this evidence checklist.
-   Evidence: Main contains the merged implementation and live proof. A product release tag remains pending final verified core evidence; asset prereleases do not satisfy this line.
+18  done: Authorized release and tag after commits with this evidence checklist.
+   Evidence: Merged implementation history is retained. Product release/tag: v0.2.0

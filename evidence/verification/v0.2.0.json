@@ -1,0 +1,51 @@
+{
+  "status": "passed",
+  "source_commit": "cfeae934c08481f43fac1b3124bcf40a41475dab",
+  "observed_at": "2026-11-14T03:05:59.061Z",
+  "operator_checks": [
+    {
+      "route": "/ops/promotions",
+      "credential_class": "missing",
+      "status": 401
+    },
+    {
+      "route": "/ops/promotions",
+      "credential_class": "public_session",
+      "status": 403
+    },
+    {
+      "route": "/ops/promotions",
+      "credential_class": "invalid",
+      "status": 403
+    },
+    {
+      "route": "/ops/rollback",
+      "credential_class": "missing",
+      "status": 401
+    },
+    {
+      "route": "/ops/rollback",
+      "credential_class": "public_session",
+      "status": 403
+    },
+    {
+      "route": "/ops/rollback",
+      "credential_class": "invalid",
+      "status": 403
+    }
+  ],
+  "generated_deployment_unauthenticated_status": 302,
+  "generated_deployment": "hardcase-d1m059f2n-mekala27-45s-projects.vercel.app",
+  "ci_runs": [
+    43549158234,
+    43549158201
+  ],
+  "ci_conclusions": [
+    "success",
+    "success"
+  ],
+  "release_run": 43549158194,
+  "release_conclusion": "success",
+  "aliases_changed": false,
+  "credentials_changed": false
+}
