@@ -6,7 +6,7 @@ Training, teacher supervision, held-out quality and live serving evidence
 are reported separately. Results apply to the declared data, artifacts,
 compute budget and environment. A candidate may fail promotion.
 
-Status: No imported benchmark training terminal manifest yet.
+Status: completed.
 
 Base model: sentence-transformers/all-MiniLM-L6-v2
 
@@ -34,7 +34,13 @@ cross_encoder | executed pair count | 3625 pairs | denominator 1 | fit | teacher
 
 ## Learning evidence
 
-No benchmark training measurements are asserted here. Setup and resume probes are separate evidence.
+hard_contrastive | actual completed run | 120 optimizer updates | denominator 1 | fit | actual_training | 2026-11-05T21:32:40.192018+00:00 to 2026-11-05T21:57:21.810318+00:00 | source evidence/training/hard_contrastive/run.json (dbbe8252d0482d1c956233700f269832148a59d896026d614ced82c8c40a6258)
+
+hard_contrastive | actual completed run | 960 query examples | denominator 1 | fit | actual_training | 2026-11-05T21:32:40.192018+00:00 to 2026-11-05T21:57:21.810318+00:00 | source evidence/training/hard_contrastive/run.json (dbbe8252d0482d1c956233700f269832148a59d896026d614ced82c8c40a6258)
+
+hard_contrastive | actual completed run | 3548928 parameters | denominator 1 | fit | actual_training | 2026-11-05T21:32:40.192018+00:00 to 2026-11-05T21:57:21.810318+00:00 | source evidence/training/hard_contrastive/run.json (dbbe8252d0482d1c956233700f269832148a59d896026d614ced82c8c40a6258)
+
+Selected checkpoint and parameter hashes: [evidence/training/hard_contrastive/run.json](../evidence/training/hard_contrastive/run.json).
 
 ## Evaluation and deployment
 

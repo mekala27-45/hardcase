@@ -1,0 +1,8 @@
+{
+  "original_export_id": "fc6d57815ece729c258f2ade8bfc123bc0216f16176f0f1ec2b6eb1e6b726bb0",
+  "original_asset_sha256": "11fc590c7057fc0469350a24dabaa8822b261cf2f87e1f10d586828f9fa2f262",
+  "diagnostic_run": 42126500327,
+  "action": "Freeze unchanged float32 candidate after observed INT8 portability failure before test access",
+  "diagnostic_git_blob": "9bd39408f0c4175c24a19bb1ec7077cf42f3f92d",
+  "attempt": 2
+}

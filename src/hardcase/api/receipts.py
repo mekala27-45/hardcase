@@ -58,6 +58,7 @@ def commit_receipt(admission, receipt, status="completed"):
         receipt["status"] = final_status
         if final_status != "completed":
             receipt["results"] = []
+            receipt["top_document_ids"] = []
         updated = db.execute("UPDATE hardcase.query_receipts SET status=%s,receipt=%s,completed_at=now() WHERE id=%s AND status='pending'", (final_status, Jsonb(receipt), admission["request_id"]))
         require(updated.rowcount == 1, 'RECEIPT_ALREADY_TERMINAL')
         db.execute("UPDATE hardcase.sessions SET busy_request=NULL,busy_until=NULL WHERE capability_digest=%s AND busy_request=%s", (admission["session_digest"], admission["request_id"]))

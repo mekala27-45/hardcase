@@ -1,0 +1,14 @@
+{
+  "status": "blocked",
+  "stage": "protected_preview_creation",
+  "source_commit": "8be6d4ddfdad3da4e8d1ec95092655750bd28cbc",
+  "project_id": "prj_xNmGw7TnbVsiquXURbedLzAAHzhA",
+  "team_id": "team_NNcxgB3J9dHQnUJYJJYvRMda",
+  "http_status": 402,
+  "code": "api-deployments-free-per-day",
+  "retry_after_seconds": 86400,
+  "observed_at": "2026-11-05T23:04:23.899Z",
+  "created": false,
+  "credentials_transferred": false,
+  "billing_changed": false
+}

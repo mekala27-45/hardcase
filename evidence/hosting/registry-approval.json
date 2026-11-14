@@ -1,0 +1,19 @@
+{
+  "status": "blocked",
+  "executed": false,
+  "project_id": "wispy-haze-91153072",
+  "database": "hardcase",
+  "model_versions_planned": 2,
+  "bundles_planned": 2,
+  "aliases_planned": [
+    "base",
+    "default",
+    "experimental"
+  ],
+  "generation": 1,
+  "manifest_hashes_independently_verified": true,
+  "approval_review_reason": "Persistent model, bundle, alias and release-event writes into the shared Neon database require explicit authorization.",
+  "prepared_sql": "deploy/registry-initialization.sql",
+  "source_run": 42127323550,
+  "observed_at": "2026-11-05T23:19:22.127Z"
+}

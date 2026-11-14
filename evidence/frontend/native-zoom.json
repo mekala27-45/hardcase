@@ -1,0 +1,100 @@
+{
+  "namespace": "interface_accessibility",
+  "model_execution": false,
+  "source_commit": "71fe9d256ca434d6552f033d12b25d60971ed4f7",
+  "zoom_method": "Native Chromium page zoom using X11 keyboard events",
+  "observations": [
+    {
+      "theme": "light",
+      "view": "search",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "light",
+      "view": "training",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "light",
+      "view": "evaluation",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "light",
+      "view": "release",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "light",
+      "view": "data",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "dark",
+      "view": "search",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "dark",
+      "view": "training",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "dark",
+      "view": "evaluation",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "dark",
+      "view": "release",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    },
+    {
+      "theme": "dark",
+      "view": "data",
+      "viewport": 720,
+      "document": 712,
+      "dpr": 2,
+      "font": "Varta, sans-serif"
+    }
+  ],
+  "before": {
+    "dpr": 1,
+    "viewport": 1440,
+    "outer": 1440
+  },
+  "after": {
+    "dpr": 2,
+    "viewport": 720,
+    "outer": 1440
+  },
+  "status": "passed",
+  "observed_at": "2026-11-05T23:30:01.034Z"
+}

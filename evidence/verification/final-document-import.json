@@ -1,0 +1,21 @@
+{
+  "namespace": "source_bound_document_derivation",
+  "model_execution": false,
+  "run_id": 42129655117,
+  "source_commit": "efb53650b72612ded8a5c79c75916f80807e62bf",
+  "url": "https://github.com/mekala27-45/hardcase/actions/runs/42129655117",
+  "paths": [
+    "README.md",
+    "RESULTS.md",
+    "evidence/claims/preparation.json",
+    "model-cards/base_encoder.md",
+    "model-cards/hard_contrastive.md",
+    "model-cards/hard_distilled.md",
+    "model-cards/uniform_contrastive.md"
+  ],
+  "completion": {
+    "done": 10,
+    "not_done": 8
+  },
+  "note": "Generated source-bound documents imported without changing numeric claims. Interface observation files retain the runner's actual tested merge SHA."
+}

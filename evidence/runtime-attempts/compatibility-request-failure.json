@@ -1,0 +1,8 @@
+{
+  "run_id": 42126831552,
+  "status": "failed",
+  "reason": "Request omitted the required diagnostic Git blob identity. Guard failed before creating any new export or release.",
+  "source_commit": "6913431a1ed6335208b65a0d46da0a3855c00081",
+  "preserved_terminal_branch": "results/compatibility-42126831552",
+  "test_access": false
+}

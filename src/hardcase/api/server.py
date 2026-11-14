@@ -104,7 +104,7 @@ async def refusal(request, error):
 
 @app.get("/healthz")
 def health():
-    return {"status": "ok", "schema_version": 1, "commit": os.getenv("VERCEL_GIT_COMMIT_SHA", "local")}
+    return {"status": "ok", "schema_version": 1, "commit": os.getenv("VERCEL_GIT_COMMIT_SHA", "local"), "artifact_startup": {"status": "verified" if bundles and not startup_error else "unavailable", "bundle_ids": sorted(bundles)}, "live_search_verified": False}
 
 
 @app.get("/readyz")
@@ -113,7 +113,10 @@ def ready():
         return JSONResponse({"ready": False, "reason": "BUNDLE_STARTUP_FAILED", "diagnostic": startup_error}, status_code=503)
     try:
         with connect() as db:
-            db.execute("SELECT 1 FROM hardcase.bundles LIMIT 1")
+            rows=db.execute("SELECT b.id,b.manifest,s.valid FROM hardcase.bundles b JOIN hardcase.bundle_status s ON s.bundle_id=b.id WHERE b.id=ANY(%s)",(list(bundles),)).fetchall()
+            require(len(rows)==len(bundles) and all(row['valid'] and digest(row['manifest'])==row['id'] for row in rows),'REGISTRY_PACKAGE_NOT_READY')
+            aliases=db.execute("SELECT name,bundle_id FROM hardcase.release_aliases WHERE name IN ('base','default','experimental')").fetchall()
+            require(len(aliases)==3 and all(row['bundle_id'] in bundles for row in aliases),'ALIASES_NOT_READY')
     except Exception:
         return JSONResponse({"ready": False, "reason": "DATABASE_UNREACHABLE"}, status_code=503)
     return {"ready": True, "bundles": sorted(bundles), "commit": os.getenv("VERCEL_GIT_COMMIT_SHA", "local")}
@@ -123,7 +126,8 @@ def ready():
 def models():
     with connect() as db:
         aliases = db.execute("SELECT a.name,a.bundle_id,a.generation,s.valid FROM hardcase.release_aliases a JOIN hardcase.bundle_status s USING(bundle_id) ORDER BY a.name").fetchall()
-    return {"aliases": [dict(r) | {"available": r["bundle_id"] in bundles and r["valid"], "experimental": r["name"] == "experimental"} for r in aliases]}
+    report=load_json('runtime/report.json') if Path('runtime/report.json').exists() else {}
+    return {"evaluation_state":report.get('status','pending'),"aliases": [dict(r) | {"available": r["bundle_id"] in bundles and r["valid"], "experimental": r["name"] == "experimental"} for r in aliases]}
 
 
 @app.post("/api/v1/sessions")
@@ -143,6 +147,8 @@ def execute_search(payload, token, key):
         bundle = bundles.get(admission["bundle_id"])
         require(bundle is not None, "MODEL_UNAVAILABLE")
         results, stages = bundle.search(payload.query, payload.top_k)
+        for result in results:
+            result['source_reference']={'dataset':'BEIR SciFact','document_id':result['id'],'dataset_url':'https://huggingface.co/datasets/BeIR/scifact','corpus_digest':bundle.manifest['corpus_digest']}
         serialize_start = time.perf_counter()
         json.dumps(results, allow_nan=False)
         stages["serialization_ms"] = (time.perf_counter() - serialize_start) * 1000
@@ -195,7 +201,7 @@ def documents(document_id: str):
     document = next(iter(bundles.values())).documents.get(document_id)
     if not document:
         raise HTTPException(404, "DOCUMENT_NOT_FOUND")
-    return document
+    return document | {"source_reference":{"dataset":"BEIR SciFact","document_id":document_id,"dataset_url":"https://huggingface.co/datasets/BeIR/scifact"}}
 
 
 @app.get("/api/v1/experiments/latest")

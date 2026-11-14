@@ -1,0 +1,291 @@
+{
+  "namespace": "teacher_supervision",
+  "reviewer": "assistant semantic inspection of retained encoded spans",
+  "human_expert_adjudication": false,
+  "created_at": "2026-11-05T22:54:28.298Z",
+  "source": "evidence/preparation/mining-audit.json",
+  "scope": "Post-training diagnostic commentary on the existing frozen audit. No labels, candidates, scores, schedule, model selection or evaluation policy changed.",
+  "limitation": "Absence from the encoded span does not prove irrelevance of the full document. These comments are neither gold labels nor medical claims. The teacher scores are uncalibrated weak supervision.",
+  "rows": [
+    {
+      "query_id": "1328",
+      "document_id": "31293581",
+      "category": "topic_mismatch",
+      "comment": "The visible passage concerns irradiation, senescence and DNA damage in mice. It does not discuss tuberculosis granulomas or a granuloma-versus-surrounding-tissue protein comparison.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "591",
+      "document_id": "24211561",
+      "category": "topic_mismatch",
+      "comment": "The passage compares postoperative vomiting after dexamethasone and placebo in children. It supplies no dementia incidence comparison or diagnostic-definition evidence.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "390",
+      "document_id": "12903921",
+      "category": "topic_mismatch",
+      "comment": "The visible study concerns leukemia, oxidative stress and depression-like responses in rats. Ethanol-induced bacterial PSP expression is not addressed.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "18",
+      "document_id": "31682248",
+      "category": "related_missing_relation",
+      "comment": "The paper concerns colorectal tumor progression in experimental models. The claimed proportion diagnosed with regional or distant metastases is not present in the encoded span, despite the teacher's slight preference.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "559",
+      "document_id": "4380287",
+      "category": "ambiguous_background",
+      "comment": "The passage discusses tissue-specific immune responses and regulatory memory in peripheral tissue. This is a plausible thematic neighbor to geographic segregation, but the truncated span does not establish the query's precise relation. Treat it as a possible false-negative risk, not a verified negative.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "265",
+      "document_id": "13953762",
+      "category": "related_missing_relation",
+      "comment": "The passage connects PICH, DNA under tension and the mitotic spindle. It does not identify clathrin as the stabilizing agent, so shared mitosis language alone cannot establish relevance.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "182",
+      "document_id": "8385277",
+      "category": "related_missing_relation",
+      "comment": "The visible study profiles genomic abnormalities in Fanconi-anemia patients with marrow failure, MDS or AML. It does not describe marrow transplantation as treatment in the encoded span. The teacher preference is not an adjudication.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "253",
+      "document_id": "3215494",
+      "category": "related_missing_relation",
+      "comment": "The review covers homocysteine, folate and vascular disease. It lacks the Chinese population, TT genotype comparison and claimed direction of stroke vulnerability in the visible text.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "479",
+      "document_id": "35660758",
+      "category": "topic_mismatch",
+      "comment": "The passage concerns platelet integrin signaling and actin assembly. It does not address Gpr124, blood-brain barrier breakdown or ischemic-stroke models.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "154",
+      "document_id": "41650417",
+      "category": "related_missing_relation",
+      "comment": "KRAS, EGFR and erlotinib response overlap with the query. The visible passage lacks the B3-galectin and RalB mechanism, so this is related context with an unestablished relation.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "1109",
+      "document_id": "5114940",
+      "category": "topic_mismatch",
+      "comment": "The visible review describes smoking cessation and premature mortality. It does not examine suboptimal nutrition; the shared mortality wording may explain superficial similarity.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "584",
+      "document_id": "23915841",
+      "category": "related_missing_relation",
+      "comment": "The paper measures neutralizing antibodies in HIV-infected humans. It does not test tenofovir injections or rectal viral transmission in rhesus macaques.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "149",
+      "document_id": "6718824",
+      "category": "related_missing_relation",
+      "comment": "The rat study concerns dietary protein restriction, liver lipids and insulin. The encoded passage does not manipulate liver autophagy or establish the query's autophagy-to-insulin-resistance relation.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "430",
+      "document_id": "44640124",
+      "category": "related_missing_relation",
+      "comment": "The review describes ROS regulation of extracellular matrix and integrins. FoxO3a activation and neuronal death are absent from the encoded span.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "393",
+      "document_id": "46346525",
+      "category": "related_missing_relation",
+      "comment": "The visible bacterial study manipulates superoxide dismutase and examines oxidative stress. It does not test ethanol or SRL expression.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "398",
+      "document_id": "27602752",
+      "category": "related_missing_relation",
+      "comment": "The passage concerns HIV-infected leukocyte migration through a blood-brain barrier model. It does not examine B-cell exhaustion or impaired antibody responses.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "126",
+      "document_id": "10976596",
+      "category": "topic_mismatch",
+      "comment": "The review concerns Epstein-Barr virus and Burkitt lymphoma. It provides neither HTLV-1 prevalence nor the claimed United Kingdom count.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "1105",
+      "document_id": "39300105",
+      "category": "topic_mismatch",
+      "comment": "This study records pharmacy interventions in a teaching hospital. It does not follow medical students from early performance to later professional misconduct.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "481",
+      "document_id": "23700330",
+      "category": "related_missing_relation",
+      "comment": "The passage describes Ang-1, Rho-family GTPases and p190 RhoGAP in vascular permeability. It does not demonstrate the named Rho-GDI/p75 NTR interaction.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "838",
+      "document_id": "1568684",
+      "category": "related_missing_relation",
+      "comment": "The passage concerns bile-acid effects on human brown adipose activity through TGR5. It does not establish an NR5A2 role in reverse cholesterol transport.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "951",
+      "document_id": "2727303",
+      "category": "related_missing_relation",
+      "comment": "Cell migration, epithelial cells and calcium sensing overlap, but the named sensor is STIM1 with Orai1. Piezo1 is not examined in the encoded span.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "912",
+      "document_id": "21804115",
+      "category": "topic_mismatch",
+      "comment": "The review concerns BMP signaling and nephron progenitors. It does not address spinal potentiation, PKG-la or the specified knockout model.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "406",
+      "document_id": "58006489",
+      "category": "related_missing_relation",
+      "comment": "The study describes osteoblast-derived PGE2 and sensory-nerve control of bone formation. It does not identify F4/80-positive macrophages as the maintenance mechanism.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "493",
+      "document_id": "4434951",
+      "category": "related_missing_relation",
+      "comment": "The passage concerns age-associated liver methylation and longevity interventions. It does not identify HOXB4 in fetal-liver secretome populations.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "790",
+      "document_id": "41120293",
+      "category": "related_missing_relation",
+      "comment": "The review concerns gut immunity and metabolic inflammation. It does not classify microglia or locate them in a nervous-system compartment.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "500",
+      "document_id": "23785605",
+      "category": "related_missing_relation",
+      "comment": "The study links migraine with a cardiovascular risk profile. Cognitive impairment is not measured in the encoded span, so the headache overlap does not answer the query.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "376",
+      "document_id": "10617916",
+      "category": "related_missing_relation",
+      "comment": "The trial measures malaria-treatment effects on gametocytes and transmission. It does not quantify the funding needed to eliminate remaining sporadic cases.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "1193",
+      "document_id": "20363389",
+      "category": "related_missing_relation",
+      "comment": "The passage compares uncoupling-protein expression across tissues. It does not compare beige-cell appearance in visceral and subcutaneous fat.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "417",
+      "document_id": "9239963",
+      "category": "related_missing_relation",
+      "comment": "The paper describes steroidogenic transcription in endometrial cancer cells. It does not compare APOE4 carrier reproductive periods or lifetime estrogen exposure.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "515",
+      "document_id": "712078",
+      "category": "related_missing_relation",
+      "comment": "The passage concerns cystic-fibrosis models and PPAR-gamma signaling. It does not study CRP as a predictor of COPD exacerbations.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "766",
+      "document_id": "37578311",
+      "category": "topic_mismatch",
+      "comment": "The discussion concerns risks of angiogenesis therapy in cardiovascular disease. It does not examine obesity medications.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "917",
+      "document_id": "14019636",
+      "category": "related_missing_relation",
+      "comment": "The study connects PTEN loss with rDNA copy number and mTOR-related observations. SRF transcriptional activity is not addressed in the encoded passage.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "316",
+      "document_id": "36830715",
+      "category": "topic_mismatch",
+      "comment": "The study concerns microtubule stabilization after spinal injury. It does not measure the specified PGE2 conversion or resulting accumulation.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "315",
+      "document_id": "2543135",
+      "category": "related_missing_relation",
+      "comment": "The study describes autophagy-dependent catalase degradation and cell death. It does not examine p62 loss in prostate-tumor stroma.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "1328",
+      "document_id": "14893428",
+      "category": "topic_mismatch",
+      "comment": "This protocol introduces genes into the embryonic mouse nervous system. It provides no tuberculosis granuloma protein-signature comparison.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "1174",
+      "document_id": "17402386",
+      "category": "topic_mismatch",
+      "comment": "The passage describes N-terminal domains of glutamate receptors. It does not describe MDA5 CARD-domain composition, despite the teacher's preference.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "1127",
+      "document_id": "23983289",
+      "category": "related_missing_relation",
+      "comment": "The study evaluates administrative-code accuracy for cardiovascular risk factors. The encoded span does not assess systemic lupus erythematosus as a risk factor.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "74",
+      "document_id": "2095573",
+      "category": "topic_mismatch",
+      "comment": "The study maps genetic associations with LDL cholesterol. H. pylori urease structure and subunits are not addressed.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "301",
+      "document_id": "21414718",
+      "category": "topic_mismatch",
+      "comment": "The passage describes TFF1/Piezo1 binding and gastric-cell mobility. It does not discuss TFRC1 mRNA iron-responsive elements.",
+      "judgment_unchanged": "unjudged"
+    },
+    {
+      "query_id": "758",
+      "document_id": "12892137",
+      "category": "topic_mismatch",
+      "comment": "The passage concerns homologous DNA pairing by Rad51 and RPA. It does not concern primate brain-region homology or Broca's area.",
+      "judgment_unchanged": "unjudged"
+    }
+  ]
+}

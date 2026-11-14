@@ -5,7 +5,7 @@ test('responsive evidence views, themes, fonts and refusal states',async({page})
  const errors:string[]=[];
  page.on('pageerror',error=>errors.push(error.message));
  const observations:any[]=[];
- for(const width of [360,768,1280]){
+ for(const width of [360,768,1440]){
   await page.setViewportSize({width,height:900});
   await page.goto('/hardcase/');
   for(const theme of ['light','dark']){
@@ -19,10 +19,12 @@ test('responsive evidence views, themes, fonts and refusal states',async({page})
      const rgb=(hex:string)=>hex.trim().slice(1).match(/../g)!.map(s=>parseInt(s,16)/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4);
      const luminance=(hex:string)=>rgb(hex).reduce((n,v,i)=>n+v*[.2126,.7152,.0722][i],0);
      const ratio=(a:string,b:string)=>{const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);};
-     return {viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,headingFont:document.fonts.check('24px Fahkwang'),bodyFont:document.fonts.check('18px Varta'),monoFont:document.fonts.check('12px "M PLUS Code Latin"'),inkContrast:ratio(cs.getPropertyValue('--ink'),cs.getPropertyValue('--surface')),secondaryContrast:ratio(cs.getPropertyValue('--secondary'),cs.getPropertyValue('--surface')),controlContrast:ratio(cs.getPropertyValue('--control'),cs.getPropertyValue('--surface'))};
+     const canvas=document.createElement('canvas'),context=canvas.getContext('2d')!;context.font='16px "M PLUS Code Latin"';const digitWidths='0123456789'.split('').map(d=>context.measureText(d).width);const equalDigitAdvances=Math.max(...digitWidths)-Math.min(...digitWidths)<.01;
+     return {equalDigitAdvances,digitWidths,viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,headingFont:document.fonts.check('24px Fahkwang'),bodyFont:document.fonts.check('18px Varta'),monoFont:document.fonts.check('12px "M PLUS Code Latin"'),inkContrast:ratio(cs.getPropertyValue('--ink'),cs.getPropertyValue('--surface')),secondaryContrast:ratio(cs.getPropertyValue('--secondary'),cs.getPropertyValue('--surface')),controlContrast:ratio(cs.getPropertyValue('--control'),cs.getPropertyValue('--surface'))};
     });
     expect(measured.documentWidth).toBeLessThanOrEqual(width);
     expect(measured.headingFont&&measured.bodyFont&&measured.monoFont).toBeTruthy();
+    expect(measured.equalDigitAdvances).toBeTruthy();
     expect(measured.inkContrast).toBeGreaterThanOrEqual(4.5);
     expect(measured.secondaryContrast).toBeGreaterThanOrEqual(4.5);
     expect(measured.controlContrast).toBeGreaterThanOrEqual(3);

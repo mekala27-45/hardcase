@@ -43,3 +43,20 @@ class APITests(unittest.TestCase):
         response = self.client.get("/healthz")
         self.assertEqual(response.status_code, 200)
         self.assertNotIn("ready", response.json())
+
+    def test_registered_package_and_aliases_are_required_for_readiness(self):
+        from unittest.mock import MagicMock, patch
+        from hardcase.api import server
+        from hardcase.contracts import digest
+        manifest={'method':'authored readiness fixture'}
+        identity=digest(manifest)
+        db=MagicMock()
+        connection=MagicMock()
+        connection.__enter__.return_value=db
+        with patch.dict(server.bundles,{identity:object()},clear=True),patch.object(server,'startup_error',None),patch.object(server,'connect',return_value=connection):
+            db.execute.return_value.fetchall.side_effect=[[]]
+            self.assertEqual(self.client.get('/readyz').status_code,503)
+            db.execute.return_value.fetchall.side_effect=[[{'id':identity,'manifest':manifest,'valid':True}],[{'name':name,'bundle_id':'different'} for name in ('base','default','experimental')]]
+            self.assertEqual(self.client.get('/readyz').status_code,503)
+            db.execute.return_value.fetchall.side_effect=[[{'id':identity,'manifest':manifest,'valid':True}],[{'name':name,'bundle_id':identity} for name in ('base','default','experimental')]]
+            self.assertEqual(self.client.get('/readyz').status_code,200)

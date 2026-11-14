@@ -21,7 +21,7 @@ def register():
                 require(prior['manifest']==version,'IMMUTABLE_MODEL_VERSION_CONFLICT')
             else:
                 db.execute('INSERT INTO hardcase.model_versions(id,manifest) VALUES (%s,%s)',(version_id,Jsonb(version)))
-        versions.append({'method':row['method'],'model_version_id':version_id,'parent_state_digest':version['parent_state_digest'],'bundle_id':bundle.id})
+        versions.append({'method':row['method'],'model_version_id':version_id,'parent_state_digest':version['parent_state_digest'],'bundle_id':bundle.id,'manifest':version})
         ids[row['method']]=register_bundle(bundle.manifest)
         del bundle
     candidate=[method for method in ids if method!='base_float32']

@@ -20,7 +20,7 @@ After deployment, verify /readyz, submit distinct fresh experimental queries fro
 
 Serve the site with `npm ci`, `npm run build` and `npm run preview` inside site. The workflow generates site/public/evidence.json from retained source artifacts. An absent PUBLIC_API_URL must remain visibly unavailable. The site stores only the theme preference; session capabilities stay in memory.
 
-For promotion, follow skills/promote-model-bundle/SKILL.md. Prepare a concrete immutable report and proposal. A failed gate keeps the base default. For rollback, activate a retained verified bundle with a new generation and verify a new request plus separate DB observation. Never delete release history to simulate rollback.
+For promotion, follow .agents/skills/promote-model-bundle/SKILL.md. Prepare a concrete immutable report and proposal. A failed gate keeps the base default. For rollback, activate a retained verified bundle with a new generation and verify a new request plus separate DB observation. Never delete release history to simulate rollback.
 
 Regenerate RESULTS.md with `python -m hardcase.claims`. Include the observed run IDs, model/asset digests, completion state and any approval blocker. Keep prepared, running, failed and completed states distinct.
 
