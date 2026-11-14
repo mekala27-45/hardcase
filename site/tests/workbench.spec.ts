@@ -2,6 +2,12 @@ import {test,expect} from '@playwright/test';
 import fs from 'node:fs';
 
 test('responsive evidence views, themes, fonts and refusal states',async({page})=>{
+ // Keep the unavailable-API scenario deterministic after the public demo is connected.
+ await page.route('**/evidence.json',async route=>{
+  const response=await route.fetch();
+  const evidence=await response.json();
+  await route.fulfill({json:{...evidence,api_url:''}});
+ });
  const errors:string[]=[];
  page.on('pageerror',error=>errors.push(error.message));
  const observations:any[]=[];

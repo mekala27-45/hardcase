@@ -24,6 +24,8 @@ jobs:
         with:
           python-version: '3.12.13'
       - run: python deploy/build_site_data.py
+        env:
+          PUBLIC_API_URL: https://hardcase-taupe.vercel.app
       - name: Resolve frontend lock
         working-directory: site
         run: |
